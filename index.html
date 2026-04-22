@@ -223,12 +223,6 @@
         .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
         .dashboard-url { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); margin-left: 0.75rem; }
 
-        .dashboard-placeholder {
-            width: 100%; height: 500px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 1rem; color: var(--muted);
-        }
-        .dashboard-placeholder .big-icon { font-size: 3rem; opacity: 0.25; }
-        .dashboard-placeholder p { font-family: 'Space Mono', monospace; font-size: 0.75rem; text-align: center; line-height: 1.7; }
         .dashboard-iframe { width: 100%; height: 500px; border: none; display: block; }
 
         /* inputs IoT azul */
@@ -413,27 +407,6 @@
 
         <div class="section-title">// galería de proyectos</div>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════════╗
-        ║  GALERÍA DE INICIO — CÓMO AGREGAR TUS FOTOS                 ║
-        ╠══════════════════════════════════════════════════════════════╣
-        ║  Cada tarjeta tiene un .photo-inner con un emoji placeholder.║
-        ║  Para reemplazarlo con una imagen real:                      ║
-        ║                                                              ║
-        ║  1. Coloca tus fotos en la misma carpeta que index.html      ║
-        ║     (o en una subcarpeta, ej: fotos/mi-imagen.jpg)           ║
-        ║                                                              ║
-        ║  2. BORRA el emoji + el párrafo de texto del .photo-inner    ║
-        ║                                                              ║
-        ║  3. ESCRIBE dentro de .photo-inner:                          ║
-        ║         <img src="fotos/mi-imagen.jpg"                       ║
-        ║              style="width:100%;height:100%;                  ║
-        ║                     object-fit:cover;">                      ║
-        ║                                                              ║
-        ║  El .photo-overlay (título al hover) NO necesita cambios.    ║
-        ╚══════════════════════════════════════════════════════════════╝
-        -->
-
         <div class="photo-grid">
             <div class="photo-item">
                 <div class="photo-inner">
@@ -511,13 +484,17 @@
                     ↗ Abrir en Grafana
                 </a>
             </div>
-            <!-- ─── IMAGEN ESTÁTICA: siempre visible como base ─── -->
-            <div id="iot-charts-area" style="min-height:420px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+
+            <!--
+                IMAGEN FIJA del dashboard — siempre visible.
+                El script de Grafana SOLO la reemplaza si recibe paneles con datos reales.
+                Si hay error CORS o no hay datos, esta imagen queda intacta.
+            -->
+            <div id="iot-charts-area" style="min-height:420px; overflow:hidden;">
                 <img
-                    id="iot-fallback-img"
                     src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
                     alt="Dashboard IoT"
-                    style="width:100%; height:auto; border-radius:0 0 10px 10px; display:block;"
+                    style="width:100%; height:auto; display:block;"
                 >
             </div>
         </div>
@@ -555,32 +532,6 @@
     </div>
 
     <div class="page-content">
-
-        <!--
-        ╔══════════════════════════════════════════════════════════════╗
-        ║  UAV — CÓMO AGREGAR TUS VIDEOS                               ║
-        ╠══════════════════════════════════════════════════════════════╣
-        ║  YouTube:                                                    ║
-        ║    1. Abre tu video → Compartir → Insertar (Embed).          ║
-        ║    2. Del iframe resultante, copia la URL del src=:           ║
-        ║           https://www.youtube.com/embed/VIDEO_ID             ║
-        ║    3. Pégala en el campo del vuelo y presiona CARGAR.        ║
-        ║                                                              ║
-        ║  UAV — MAPA INTERACTIVO (Google Maps):                       ║
-        ║    1. Abre Google Maps → Compartir → Insertar un mapa.       ║
-        ║    2. Copia la URL del src= del iframe:                      ║
-        ║           https://www.google.com/maps/embed?pb=...           ║
-        ║    3. Pégala en "Mapa Interactivo" y presiona CARGAR.        ║
-        ║                                                              ║
-        ║  UAV — MODELO 3D (Sketchfab):                                ║
-        ║    1. Sube tu modelo a sketchfab.com.                        ║
-        ║    2. Abre el modelo → Share → Embed.                        ║
-        ║    3. Copia la URL del src del iframe:                       ║
-        ║           https://sketchfab.com/models/XXXXXXXX/embed        ║
-        ║    4. Pégala en "Modelo 3D" y presiona CARGAR.               ║
-        ╚══════════════════════════════════════════════════════════════╝
-        -->
-
         <div class="section-title">// videos de vuelo</div>
         <div class="media-grid">
             <div class="media-card">
@@ -647,24 +598,6 @@
     </div>
 
     <div class="page-content">
-
-        <!--
-        ╔══════════════════════════════════════════════════════════════╗
-        ║  AUTOMATIZACIÓN — CÓMO AGREGAR TUS WORKFLOWS DE N8N          ║
-        ╠══════════════════════════════════════════════════════════════╣
-        ║  1. En n8n abre el workflow → menú (···) → Share.            ║
-        ║  2. Activa "Allow sharing" y copia la URL pública.           ║
-        ║  3. Pega esa URL en el campo del workflow y presiona CARGAR. ║
-        ║                                                              ║
-        ║  AUTOMATIZACIÓN — LINKS DE GITHUB                            ║
-        ╠══════════════════════════════════════════════════════════════╣
-        ║  En cada .github-card hay un onclick="window.open('#', ...)".║
-        ║  Reemplaza el '#' por la URL real de tu repositorio:         ║
-        ║      onclick="window.open('https://github.com/TU/REPO','_blank')" ║
-        ║  Cambia también .repo-name y .repo-desc con tu info real.    ║
-        ╚══════════════════════════════════════════════════════════════╝
-        -->
-
         <div class="auto-layout">
             <div>
                 <div class="section-title">// workflows n8n</div>
@@ -720,7 +653,6 @@
 
             <div class="github-sidebar">
                 <div class="section-title">// repositorios github</div>
-                <!-- REEMPLAZA '#' con la URL real de cada repo -->
                 <div class="github-card" onclick="window.open('#', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">iot-telemetry-esp32</span></div>
                     <div class="repo-desc">Firmware ESP32 para captura de temperatura y GPS. Envío por MQTT a AWS.</div>
@@ -756,14 +688,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function loadIotDashboard() {
-        const url = document.getElementById('iot-url-input').value.trim();
-        if (!url) return;
-        document.getElementById('iot-url-display').textContent = url;
-        document.getElementById('iot-dashboard-body').innerHTML =
-            `<iframe class="dashboard-iframe" src="${url}" allowfullscreen></iframe>`;
-    }
-
     function loadVideo(n) {
         const url = document.getElementById('video-' + n + '-url').value.trim();
         if (!url) return;
@@ -793,8 +717,17 @@
         placeholder.outerHTML = `<iframe style="width:100%;height:240px;border:none;display:block;" src="${url}"></iframe>`;
     }
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
+    /*
+     * ── LÓGICA GRAFANA ──────────────────────────────────────────────────────
+     * La imagen del dashboard ya está en el HTML y se muestra siempre.
+     * Este script intenta cargar el snapshot de Grafana en segundo plano.
+     *   ✔ Si Grafana responde Y tiene paneles con datos → reemplaza la imagen.
+     *   ✗ Si falla (CORS, red, sin datos) → no toca nada. La imagen queda fija.
+     * ───────────────────────────────────────────────────────────────────────
+     */
     const SNAPSHOT_KEY = 'e1OaqzTUdsfGMbpwMoH86rW4CQWjRbae';
     const GRAFANA_HOST = 'https://snapshots.raintank.io';
     let snapshotLoaded = false;
@@ -807,20 +740,31 @@
     async function loadGrafanaSnapshot() {
         if (snapshotLoaded) return;
         const area = document.getElementById('iot-charts-area');
+
         try {
             const res = await fetch(`${GRAFANA_HOST}/api/snapshots/${SNAPSHOT_KEY}`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const snap = await res.json();
+
+            const panels = snap.dashboard?.panels ?? [];
+
+            // Sin paneles → conservar imagen
+            if (!panels.length) return;
+
+            // Sin datos en ningún panel → conservar imagen
+            const hayDatos = panels.some(p => {
+                const d = p.snapshotData ?? p.cachedData ?? [];
+                return Array.isArray(d) && d.length > 0;
+            });
+            if (!hayDatos) return;
+
+            // Solo aquí se reemplaza la imagen con las gráficas interactivas
             snapshotLoaded = true;
             renderSnapshot(snap, area);
+
         } catch (err) {
-            // ── CORRECCIÓN: si falla Grafana, mantener la imagen estática ──
-            area.innerHTML = `
-                <img
-                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
-                    alt="Dashboard IoT"
-                    style="width:100%; height:auto; border-radius:0 0 10px 10px; display:block;"
-                >`;
+            // CORS u otro error de red → no hacer nada, imagen queda visible
+            console.warn('Grafana snapshot no disponible:', err.message);
         }
     }
 
@@ -828,7 +772,6 @@
         chartInstances.forEach(c => c.destroy());
         chartInstances.length = 0;
         const panels = snap.dashboard?.panels ?? [];
-        if (!panels.length) { area.innerHTML = '<p style="color:var(--muted);padding:2rem;">Sin paneles.</p>'; return; }
 
         area.innerHTML = `<div id="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;padding:1.25rem;width:100%;"></div>`;
         const grid = document.getElementById('charts-grid');
