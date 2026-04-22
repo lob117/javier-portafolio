@@ -480,6 +480,7 @@
         </div>
     </div>
 </div>
+
 <!-- ════════ IoT DASHBOARD ════════ -->
 <div class="view" id="view-iot">
     <div class="page-header">
@@ -510,10 +511,12 @@
                     ↗ Abrir en Grafana
                 </a>
             </div>
-            <div id="iot-charts-area" style="min-height:420px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <img 
-                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png" 
-                    alt="Dashboard IoT" 
+            <!-- ─── IMAGEN ESTÁTICA: siempre visible como base ─── -->
+            <div id="iot-charts-area" style="min-height:420px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img
+                    id="iot-fallback-img"
+                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
+                    alt="Dashboard IoT"
                     style="width:100%; height:auto; border-radius:0 0 10px 10px; display:block;"
                 >
             </div>
@@ -811,24 +814,13 @@
             snapshotLoaded = true;
             renderSnapshot(snap, area);
         } catch (err) {
+            // ── CORRECCIÓN: si falla Grafana, mantener la imagen estática ──
             area.innerHTML = `
-                <div style="display:flex;flex-direction:column;align-items:center;
-                            justify-content:center;height:360px;gap:1.25rem;
-                            color:var(--muted);text-align:center;">
-                    <div style="font-size:2rem;opacity:0.3;">🔒</div>
-                    <p style="font-family:'Space Mono',monospace;font-size:0.72rem;line-height:1.8;">
-                        CORS bloqueó la petición.<br>
-                        Funciona cuando la página está en un servidor<br>
-                        (GitHub Pages, Netlify, etc.)
-                    </p>
-                    <a href="${GRAFANA_HOST}/dashboard/snapshot/${SNAPSHOT_KEY}"
-                       target="_blank"
-                       style="font-family:'Orbitron',sans-serif;font-size:0.65rem;color:var(--iot);
-                              text-decoration:none;border:1px solid rgba(37,99,235,0.4);
-                              padding:0.65rem 1.4rem;border-radius:5px;">
-                        ↗ Ver snapshot en Grafana
-                    </a>
-                </div>`;
+                <img
+                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
+                    alt="Dashboard IoT"
+                    style="width:100%; height:auto; border-radius:0 0 10px 10px; display:block;"
+                >`;
         }
     }
 
@@ -838,7 +830,7 @@
         const panels = snap.dashboard?.panels ?? [];
         if (!panels.length) { area.innerHTML = '<p style="color:var(--muted);padding:2rem;">Sin paneles.</p>'; return; }
 
-        area.innerHTML = `<div id="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;"></div>`;
+        area.innerHTML = `<div id="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;padding:1.25rem;width:100%;"></div>`;
         const grid = document.getElementById('charts-grid');
         const colors = ['#2563eb','#10851e','#e84c0e','#8b5cf6','#06b6d4'];
         let totalPoints = 0;
@@ -903,5 +895,4 @@
     }
 </script>
 </body>
-</html>
 </html>
