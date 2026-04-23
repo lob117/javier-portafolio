@@ -592,55 +592,41 @@
         <hr class="section-divider">
         <div class="section-title">// mapas &amp; modelos 3D</div>
         <div class="media-grid">
-
-            <!-- ══════════════════════════════════════════════════════════
-                 MAPA INTERACTIVO
-                 ► Para agregar un mapa, reemplaza el contenido de map-1-area
-                   con un <iframe> de Google Maps embed.
-                 Ejemplo de src para Google Maps:
-                   https://www.google.com/maps/embed?pb=TU_CODIGO_AQUI
-                 Para obtener el embed: Google Maps → Compartir → Insertar mapa → copia la URL del src
-            ════════════════════════════════════════════════════════════ -->
+        
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Mapa Interactivo</span>
                     <span class="media-badge badge-map">Mapa</span>
                 </div>
                 <div class="media-body">
-                    <!-- ▼ CAMBIA AQUÍ: reemplaza el div por un <iframe src="URL_DE_GOOGLE_MAPS_EMBED"> ▼ -->
-                    <div class="map-placeholder" id="map-1-area">
-                        <div class="map-icon">🗺️</div>
-                        <p>Reemplaza este bloque con un iframe de Google Maps embed</p>
+                    <div id="map-1-area">
+                        <img 
+                            src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png"
+                            alt="Mapa DTM generado con dron"
+                            style="width: 100%; height: auto; display: block; border-radius: 4px;"
+                        />
                     </div>
-                    <!-- ▲ FIN Mapa ▲ -->
                     <p class="media-desc">Ortofoto o mapa generado a partir del vuelo.</p>
                 </div>
             </div>
-
-            <!-- ══════════════════════════════════════════════════════════
-                 MODELO 3D
-                 ► Para agregar un modelo 3D, reemplaza el contenido de model-1-area
-                   con un <iframe> de Sketchfab o Cesium.
-                 Ejemplo de src para Sketchfab:
-                   https://sketchfab.com/models/TU_MODEL_ID/embed
-                 Para obtener el embed: Sketchfab → Share → Embed → copia la URL del src
-            ════════════════════════════════════════════════════════════ -->
+        
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Modelo 3D / Ortofoto</span>
                     <span class="media-badge badge-model">3D</span>
                 </div>
                 <div class="media-body">
-                    <!-- ▼ CAMBIA AQUÍ: reemplaza el div por un <iframe src="URL_DE_SKETCHFAB_O_CESIUM"> ▼ -->
-                    <div class="map-placeholder" id="model-1-area">
-                        <div class="map-icon">🏔️</div>
-                        <p>Reemplaza este bloque con un iframe de Sketchfab o Cesium embed</p>
+                    <div id="model-1-area">
+                        <img 
+                            src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png"
+                            alt="Modelo DEM 3D generado con fotogrametría"
+                            style="width: 100%; height: auto; display: block; border-radius: 4px;"
+                        />
                     </div>
-                    <!-- ▲ FIN Modelo 3D ▲ -->
                     <p class="media-desc">Modelo tridimensional generado con fotogrametría.</p>
                 </div>
             </div>
-
+        
         </div>
     </div>
 </div>
