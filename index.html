@@ -225,23 +225,6 @@
 
         .dashboard-iframe { width: 100%; height: 500px; border: none; display: block; }
 
-        /* inputs IoT azul */
-        .url-input-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
-        .url-input {
-            flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
-            padding: 0.6rem 1rem; color: var(--text); font-family: 'Space Mono', monospace;
-            font-size: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .url-input:focus { border-color: var(--iot); box-shadow: 0 0 12px var(--iot-glow); }
-        .url-input::placeholder { color: var(--muted); }
-
-        .url-btn-iot {
-            background: var(--iot); color: #fff; border: none; border-radius: 6px;
-            padding: 0.6rem 1.4rem; font-family: 'Orbitron', sans-serif; font-size: 0.62rem;
-            font-weight: 700; letter-spacing: 0.08em; cursor: pointer; transition: box-shadow 0.2s;
-        }
-        .url-btn-iot:hover { box-shadow: 0 0 16px var(--iot-glow); }
-
         /* tech cards */
         .tech-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; margin-top: 1.5rem; }
         .tech-card {
@@ -269,42 +252,30 @@
         .badge-video, .badge-map, .badge-model { background: rgba(16,133,30,0.12); color: var(--uav); border: 1px solid rgba(16,133,30,0.4); }
         .media-body { padding: 1.5rem; }
 
-        .video-placeholder, .map-placeholder {
+        /* Video nativo HTML5 */
+        .native-video {
+            width: 100%;
+            border-radius: 6px;
+            display: block;
+            background: #000;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder {
             width: 100%; background: var(--bg2); border-radius: 6px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             gap: 0.75rem; border: 1px dashed var(--border); color: var(--muted); margin-bottom: 1rem; transition: border-color 0.2s;
         }
-        .video-placeholder { aspect-ratio: 16/9; cursor: pointer; }
         .map-placeholder   { height: 260px; position: relative; overflow: hidden; }
-        .video-placeholder:hover { border-color: var(--uav); }
         .map-placeholder::before {
             content: ''; position: absolute; inset: 0;
             background-image: linear-gradient(rgba(16,133,30,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(16,133,30,0.06) 1px,transparent 1px);
             background-size: 28px 28px;
         }
-        .play-icon { font-size: 2.5rem; opacity: 0.35; }
         .map-icon  { font-size: 2.5rem; opacity: 0.3; position: relative; }
-        .video-placeholder p, .map-placeholder p { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-align: center; position: relative; }
+        .map-placeholder p { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-align: center; position: relative; }
         .media-desc { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
-
-        /* inputs UAV verde */
-        .url-mini-input { margin-top: 0.75rem; display: flex; gap: 0.5rem; }
-        .url-mini-input input {
-            flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 5px;
-            padding: 0.45rem 0.75rem; color: var(--text); font-family: 'Space Mono', monospace;
-            font-size: 0.68rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        #view-uav .url-mini-input input:focus  { border-color: var(--uav);  box-shadow: 0 0 10px var(--uav-glow);  }
-        #view-auto .url-mini-input input:focus { border-color: var(--auto); box-shadow: 0 0 10px var(--auto-glow); }
-        .url-mini-input button {
-            border: none; border-radius: 5px; padding: 0.45rem 0.9rem;
-            font-family: 'Orbitron', sans-serif; font-size: 0.56rem; font-weight: 700;
-            letter-spacing: 0.08em; cursor: pointer; color: #fff; transition: box-shadow 0.2s;
-        }
-        #view-uav  .url-mini-input button { background: var(--uav);  }
-        #view-uav  .url-mini-input button:hover { box-shadow: 0 0 12px var(--uav-glow); }
-        #view-auto .url-mini-input button { background: var(--auto); }
-        #view-auto .url-mini-input button:hover { box-shadow: 0 0 12px var(--auto-glow); }
 
         /* ─── AUTO ─── */
         .auto-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; }
@@ -320,6 +291,14 @@
         .workflow-title { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; color: var(--auto); }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--auto); box-shadow: 0 0 8px var(--auto); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+
+        /* Workflow embed iframe */
+        .workflow-embed {
+            width: 100%;
+            height: 240px;
+            border: none;
+            display: block;
+        }
 
         .n8n-placeholder {
             width: 100%; height: 240px; background: var(--bg2);
@@ -485,11 +464,6 @@
                 </a>
             </div>
 
-            <!--
-                IMAGEN FIJA del dashboard — siempre visible.
-                El script de Grafana SOLO la reemplaza si recibe paneles con datos reales.
-                Si hay error CORS o no hay datos, esta imagen queda intacta.
-            -->
             <div id="iot-charts-area" style="min-height:420px; overflow:hidden;">
                 <img
                     src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
@@ -502,7 +476,7 @@
         <hr class="section-divider">
         <div class="section-title">// stack tecnológico</div>
         <div class="tech-cards">
-            <div class="tech-card"><div class="tech-icon">🔌</div><div><div class="tech-name">ESP32</div><div class="tech-desc">Captura temperatura y coordenadas GPS. Envía por MQTT cada 30 s.</div></div></div>
+            <div class="tech-card"><div class="tech-icon">🔌</div><div><div class="tech-name">ESP32</div><div class="tech-desc">Captura temperatura y coordenadas GPS. Envío por MQTT cada 30 s.</div></div></div>
             <div class="tech-card"><div class="tech-icon">☁️</div><div><div class="tech-name">AWS Lambda</div><div class="tech-desc">Procesa y valida cada payload. Enruta datos a la base de datos.</div></div></div>
             <div class="tech-card"><div class="tech-icon">🐘</div><div><div class="tech-name">Neon Postgres</div><div class="tech-desc">Almacenamiento serverless de series de tiempo indexadas por timestamp.</div></div></div>
             <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
@@ -534,55 +508,139 @@
     <div class="page-content">
         <div class="section-title">// videos de vuelo</div>
         <div class="media-grid">
+
+            <!-- ══════════════════════════════════════════════════════════
+                 VIDEO 1 — Vuelo de Mapeo #1
+                 Usando video alojado en GitHub (raw.githubusercontent.com).
+                 ► Para cambiar el video, reemplaza la URL en el atributo src
+                   de la etiqueta <video> que está justo abajo.
+                 Formato recomendado: MP4 (H.264)
+                 URL actual: Video Project 1.mp4 de tu repo GitHub
+            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
-                <div class="media-card-header"><span class="media-card-title">Vuelo de Mapeo #1</span><span class="media-badge badge-video">Video</span></div>
+                <div class="media-card-header">
+                    <span class="media-card-title">Vuelo de Mapeo #1</span>
+                    <span class="media-badge badge-video">Video</span>
+                </div>
                 <div class="media-body">
-                    <div class="video-placeholder" id="video-1-area"><div class="play-icon">▶</div><p>URL de YouTube/Vimeo embed abajo</p></div>
+                    <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 1 ▼ -->
+                    <video
+                        class="native-video"
+                        controls
+                        preload="metadata"
+                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%201.mp4">
+                        Tu navegador no soporta video HTML5.
+                    </video>
+                    <!-- ▲ FIN Video 1 ▲ -->
                     <p class="media-desc">Descripción: zona, altitud, cámara, área cubierta.</p>
-                    <div class="url-mini-input">
-                        <input type="text" id="video-1-url" placeholder="https://www.youtube.com/embed/VIDEO_ID">
-                        <button onclick="loadVideo(1)">Cargar</button>
-                    </div>
                 </div>
             </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+                 VIDEO 2 — Vuelo de Mapeo #2
+                 ► Para cambiar el video, reemplaza la URL en el atributo src
+                   de la etiqueta <video> que está justo abajo.
+                 URL actual: Video Project 3.mp4 de tu repo GitHub
+            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
-                <div class="media-card-header"><span class="media-card-title">Vuelo de Mapeo #2</span><span class="media-badge badge-video">Video</span></div>
-                <div class="media-body">
-                    <div class="video-placeholder" id="video-2-area"><div class="play-icon">▶</div><p>URL de YouTube/Vimeo embed abajo</p></div>
-                    <p class="media-desc">Descripción: zona, altitud, cámara, área cubierta.</p>
-                    <div class="url-mini-input">
-                        <input type="text" id="video-2-url" placeholder="https://www.youtube.com/embed/VIDEO_ID">
-                        <button onclick="loadVideo(2)">Cargar</button>
-                    </div>
+                <div class="media-card-header">
+                    <span class="media-card-title">Vuelo de Mapeo #2</span>
+                    <span class="media-badge badge-video">Video</span>
                 </div>
+                <div class="media-body">
+                    <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 2 ▼ -->
+                    <video
+                        class="native-video"
+                        controls
+                        preload="metadata"
+                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%203.mp4">
+                        Tu navegador no soporta video HTML5.
+                    </video>
+                    <!-- ▲ FIN Video 2 ▲ -->
+                    <p class="media-desc">Descripción: zona, altitud, cámara, área cubierta.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             VIDEO 3 — Vuelo de Mapeo #3 (ancho completo)
+             ► Para cambiar el video, reemplaza la URL en el atributo src
+               de la etiqueta <video> que está justo abajo.
+             URL actual: Video Project 7.mp4 de tu repo GitHub
+        ════════════════════════════════════════════════════════════ -->
+        <div class="media-card" style="margin-bottom: 2rem;">
+            <div class="media-card-header">
+                <span class="media-card-title">Vuelo de Mapeo #3</span>
+                <span class="media-badge badge-video">Video</span>
+            </div>
+            <div class="media-body">
+                <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 3 ▼ -->
+                <video
+                    class="native-video"
+                    controls
+                    preload="metadata"
+                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%207.mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+                <!-- ▲ FIN Video 3 ▲ -->
+                <p class="media-desc">Descripción: zona, altitud, cámara, área cubierta.</p>
             </div>
         </div>
+        <!-- ══════════════════════════════════════════════════════════ -->
 
         <hr class="section-divider">
         <div class="section-title">// mapas &amp; modelos 3D</div>
         <div class="media-grid">
+
+            <!-- ══════════════════════════════════════════════════════════
+                 MAPA INTERACTIVO
+                 ► Para agregar un mapa, reemplaza el contenido de map-1-area
+                   con un <iframe> de Google Maps embed.
+                 Ejemplo de src para Google Maps:
+                   https://www.google.com/maps/embed?pb=TU_CODIGO_AQUI
+                 Para obtener el embed: Google Maps → Compartir → Insertar mapa → copia la URL del src
+            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
-                <div class="media-card-header"><span class="media-card-title">Mapa Interactivo</span><span class="media-badge badge-map">Mapa</span></div>
+                <div class="media-card-header">
+                    <span class="media-card-title">Mapa Interactivo</span>
+                    <span class="media-badge badge-map">Mapa</span>
+                </div>
                 <div class="media-body">
-                    <div class="map-placeholder" id="map-1-area"><div class="map-icon">🗺️</div><p>Google Maps embed aquí</p></div>
+                    <!-- ▼ CAMBIA AQUÍ: reemplaza el div por un <iframe src="URL_DE_GOOGLE_MAPS_EMBED"> ▼ -->
+                    <div class="map-placeholder" id="map-1-area">
+                        <div class="map-icon">🗺️</div>
+                        <p>Reemplaza este bloque con un iframe de Google Maps embed</p>
+                    </div>
+                    <!-- ▲ FIN Mapa ▲ -->
                     <p class="media-desc">Ortofoto o mapa generado a partir del vuelo.</p>
-                    <div class="url-mini-input">
-                        <input type="text" id="map-1-url" placeholder="https://www.google.com/maps/embed?pb=...">
-                        <button onclick="loadMap(1)">Cargar</button>
-                    </div>
                 </div>
             </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+                 MODELO 3D
+                 ► Para agregar un modelo 3D, reemplaza el contenido de model-1-area
+                   con un <iframe> de Sketchfab o Cesium.
+                 Ejemplo de src para Sketchfab:
+                   https://sketchfab.com/models/TU_MODEL_ID/embed
+                 Para obtener el embed: Sketchfab → Share → Embed → copia la URL del src
+            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
-                <div class="media-card-header"><span class="media-card-title">Modelo 3D / Ortofoto</span><span class="media-badge badge-model">3D</span></div>
+                <div class="media-card-header">
+                    <span class="media-card-title">Modelo 3D / Ortofoto</span>
+                    <span class="media-badge badge-model">3D</span>
+                </div>
                 <div class="media-body">
-                    <div class="map-placeholder" id="model-1-area"><div class="map-icon">🏔️</div><p>Sketchfab o Cesium embed aquí</p></div>
-                    <p class="media-desc">Modelo tridimensional generado con fotogrametría.</p>
-                    <div class="url-mini-input">
-                        <input type="text" id="model-1-url" placeholder="https://sketchfab.com/models/XXXXXXXXXX/embed">
-                        <button onclick="loadModel(1)">Cargar</button>
+                    <!-- ▼ CAMBIA AQUÍ: reemplaza el div por un <iframe src="URL_DE_SKETCHFAB_O_CESIUM"> ▼ -->
+                    <div class="map-placeholder" id="model-1-area">
+                        <div class="map-icon">🏔️</div>
+                        <p>Reemplaza este bloque con un iframe de Sketchfab o Cesium embed</p>
                     </div>
+                    <!-- ▲ FIN Modelo 3D ▲ -->
+                    <p class="media-desc">Modelo tridimensional generado con fotogrametría.</p>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -601,6 +659,21 @@
         <div class="auto-layout">
             <div>
                 <div class="section-title">// workflows n8n</div>
+
+                <!-- ══════════════════════════════════════════════════════════
+                     WORKFLOW n8n #1
+                     ► Para mostrar tu workflow, reemplaza el bloque .n8n-placeholder
+                       por un <iframe> con la URL de tu instancia n8n.
+                     Si tu n8n es público/cloud, usa la URL directa del workflow.
+                     Ejemplo:
+                       <iframe
+                           class="workflow-embed"
+                           src="https://tu-instancia.n8n.cloud/workflow/TU_ID"
+                           allowfullscreen>
+                       </iframe>
+                     Alternativamente puedes usar una captura de pantalla:
+                       <img src="URL_DE_IMAGEN" style="width:100%;border-radius:6px;">
+                ════════════════════════════════════════════════════════════ -->
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #1</span>
@@ -609,6 +682,7 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
+                    <!-- ▼ CAMBIA AQUÍ: reemplaza este div por un <iframe src="URL_N8N_WORKFLOW_1"> ▼ -->
                     <div class="n8n-placeholder">
                         <div class="n8n-nodes">
                             <div class="n8n-node">🔔</div><div class="n8n-connector"></div>
@@ -618,14 +692,19 @@
                         </div>
                         <p style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--muted);text-align:center;">Descripción del workflow aquí</p>
                     </div>
-                    <div class="n8n-footer">
-                        <div class="url-mini-input">
-                            <input type="text" id="n8n-1-url" placeholder="https://tu-n8n.app/workflow/XXXXXXX">
-                            <button onclick="loadN8n(1)">Cargar</button>
-                        </div>
-                    </div>
+                    <!-- ▲ FIN Workflow 1 ▲ -->
                 </div>
 
+                <!-- ══════════════════════════════════════════════════════════
+                     WORKFLOW n8n #2
+                     ► Mismas instrucciones que el Workflow #1 arriba.
+                     Ejemplo con iframe:
+                       <iframe
+                           class="workflow-embed"
+                           src="https://tu-instancia.n8n.cloud/workflow/TU_ID_2"
+                           allowfullscreen>
+                       </iframe>
+                ════════════════════════════════════════════════════════════ -->
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #2</span>
@@ -634,6 +713,7 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
+                    <!-- ▼ CAMBIA AQUÍ: reemplaza este div por un <iframe src="URL_N8N_WORKFLOW_2"> ▼ -->
                     <div class="n8n-placeholder">
                         <div class="n8n-nodes">
                             <div class="n8n-node">🌐</div><div class="n8n-connector"></div>
@@ -642,32 +722,51 @@
                         </div>
                         <p style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--muted);text-align:center;">Descripción del workflow aquí</p>
                     </div>
-                    <div class="n8n-footer">
-                        <div class="url-mini-input">
-                            <input type="text" id="n8n-2-url" placeholder="https://tu-n8n.app/workflow/XXXXXXX">
-                            <button onclick="loadN8n(2)">Cargar</button>
-                        </div>
-                    </div>
+                    <!-- ▲ FIN Workflow 2 ▲ -->
                 </div>
+
             </div>
 
             <div class="github-sidebar">
                 <div class="section-title">// repositorios github</div>
-                <div class="github-card" onclick="window.open('#', '_blank')">
+
+                <!-- ══════════════════════════════════════════════════════════
+                     REPO GITHUB #1
+                     ► Cambia el onclick con la URL real de tu repositorio.
+                     ► Cambia repo-name y repo-desc con el nombre y descripción reales.
+                ════════════════════════════════════════════════════════════ -->
+                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 1 ▼ -->
+                <div class="github-card" onclick="window.open('https://github.com/lob117/javier-portafolio', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">iot-telemetry-esp32</span></div>
                     <div class="repo-desc">Firmware ESP32 para captura de temperatura y GPS. Envío por MQTT a AWS.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#f34b7d;"></span>C++</span></div>
                 </div>
+                <!-- ▲ FIN Repo 1 ▲ -->
+
+                <!-- ══════════════════════════════════════════════════════════
+                     REPO GITHUB #2
+                     ► Cambia el onclick con la URL real de tu repositorio.
+                ════════════════════════════════════════════════════════════ -->
+                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 2 ▼ -->
                 <div class="github-card" onclick="window.open('#', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">python-automation</span></div>
                     <div class="repo-desc">Scripts para scraping, procesamiento de datos y automatización de flujos.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
+                <!-- ▲ FIN Repo 2 ▲ -->
+
+                <!-- ══════════════════════════════════════════════════════════
+                     REPO GITHUB #3
+                     ► Cambia el onclick con la URL real de tu repositorio.
+                ════════════════════════════════════════════════════════════ -->
+                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 3 ▼ -->
                 <div class="github-card" onclick="window.open('#', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">gis-drone-analysis</span></div>
                     <div class="repo-desc">Procesamiento de imágenes UAV y generación de modelos geoespaciales.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
+                <!-- ▲ FIN Repo 3 ▲ -->
+
                 <div class="add-repo-btn"><span>＋</span><span>Duplica una tarjeta arriba para agregar otro repo</span></div>
             </div>
         </div>
@@ -686,35 +785,6 @@
         document.getElementById('view-' + name).classList.add('active');
         document.getElementById('nav-' + name).classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function loadVideo(n) {
-        const url = document.getElementById('video-' + n + '-url').value.trim();
-        if (!url) return;
-        document.getElementById('video-' + n + '-area').outerHTML =
-            `<iframe id="video-${n}-area" style="width:100%;aspect-ratio:16/9;border:none;border-radius:6px;display:block;" src="${url}" allowfullscreen></iframe>`;
-    }
-
-    function loadMap(n) {
-        const url = document.getElementById('map-' + n + '-url').value.trim();
-        if (!url) return;
-        document.getElementById('map-' + n + '-area').outerHTML =
-            `<iframe id="map-${n}-area" style="width:100%;height:260px;border:none;border-radius:6px;display:block;" src="${url}" allowfullscreen></iframe>`;
-    }
-
-    function loadModel(n) {
-        const url = document.getElementById('model-' + n + '-url').value.trim();
-        if (!url) return;
-        document.getElementById('model-' + n + '-area').outerHTML =
-            `<iframe id="model-${n}-area" style="width:100%;height:260px;border:none;border-radius:6px;display:block;" src="${url}" allowfullscreen></iframe>`;
-    }
-
-    function loadN8n(n) {
-        const url = document.getElementById('n8n-' + n + '-url').value.trim();
-        if (!url) return;
-        const card = document.getElementById('n8n-' + n + '-url').closest('.workflow-card');
-        const placeholder = card.querySelector('.n8n-placeholder');
-        placeholder.outerHTML = `<iframe style="width:100%;height:240px;border:none;display:block;" src="${url}"></iframe>`;
     }
 </script>
 
@@ -747,23 +817,18 @@
             const snap = await res.json();
 
             const panels = snap.dashboard?.panels ?? [];
-
-            // Sin paneles → conservar imagen
             if (!panels.length) return;
 
-            // Sin datos en ningún panel → conservar imagen
             const hayDatos = panels.some(p => {
                 const d = p.snapshotData ?? p.cachedData ?? [];
                 return Array.isArray(d) && d.length > 0;
             });
             if (!hayDatos) return;
 
-            // Solo aquí se reemplaza la imagen con las gráficas interactivas
             snapshotLoaded = true;
             renderSnapshot(snap, area);
 
         } catch (err) {
-            // CORS u otro error de red → no hacer nada, imagen queda visible
             console.warn('Grafana snapshot no disponible:', err.message);
         }
     }
