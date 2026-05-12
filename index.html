@@ -477,9 +477,9 @@
     <div class="page-content">
         <div class="stats-row">
             <div class="stat-card"><div class="stat-label">Temperatura</div><div class="stat-value" id="stat-temp">--</div><div class="stat-unit">°C</div></div>
-            <div class="stat-card"><div class="stat-label">Latitud GPS</div><div class="stat-value" id="stat-lat">--</div><div class="stat-unit">grados decimales</div></div>
-            <div class="stat-card"><div class="stat-label">Longitud GPS</div><div class="stat-value" id="stat-lon">--</div><div class="stat-unit">grados decimales</div></div>
-            <div class="stat-card"><div class="stat-label">Registros</div><div class="stat-value" id="stat-count">--</div><div class="stat-unit">puntos en snapshot</div></div>
+            <div class="stat-card"><div class="stat-label">Humedad</div><div class="stat-value" id="stat-hum">--</div><div class="stat-unit">%</div></div>
+            <div class="stat-card"><div class="stat-label">Sensación T.</div><div class="stat-value" id="stat-sens">--</div><div class="stat-unit">°C</div></div>
+            <div class="stat-card"><div class="stat-label">Nivel Agua</div><div class="stat-value" id="stat-niv">--</div><div class="stat-unit">cm</div></div>
         </div>
 
         <div class="dashboard-container">
@@ -914,5 +914,51 @@
         if(totalPoints) document.getElementById('stat-count').textContent = totalPoints.toLocaleString();
     }
 </script>
+<script>
+
+    let intervaloActualizacion;
+    const URL_API = 'https://334k3vqy92.execute-api.us-east-1.amazonaws.com/default/api_last_data'; // Pega tu URL de AWS aquí
+
+    async function actualizarDatosNeon() {
+        try {
+            const response = await fetch(URL_API);
+            const data = await response.json();
+
+            if (data.temperatura !== null) document.getElementById('stat-temp').textContent = data.temperatura.toFixed(1);
+            if (data.humedad !== null) document.getElementById('stat-hum').textContent = data.humedad.toFixed(1);
+            if (data.sensacion_termica !== null) document.getElementById('stat-sens').textContent = data.sensacion_termica.toFixed(1);
+            if (data.nivel !== null) document.getElementById('stat-niv').textContent = data.nivel.toFixed(1);
+
+            console.log("Datos actualizados desde AWS:", data);
+        } catch (error) {
+            console.error("Error consultando la API de Neon:", error);
+        }
+    }
+
+    // 1. Iniciar la actualización automática
+    function iniciarMonitoreo() {
+        actualizarDatosNeon(); // Traer datos inmediatamente
+        intervaloActualizacion = setInterval(actualizarDatosNeon, 30000); // Luego cada 30s
+    }
+
+    // 2. Detener la actualización
+    function detenerMonitoreo() {
+        clearInterval(intervaloActualizacion);
+        console.log("Pestaña oculta: Monitoreo pausado para ahorrar peticiones a la API.");
+    }
+
+    // 3. Detectar si el usuario está mirando la pestaña o no
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            detenerMonitoreo(); // Pausa si cambia de pestaña
+        } else {
+            iniciarMonitoreo(); // Reanuda si vuelve a tu portafolio
+        }
+    });
+
+    // Arrancar la primera vez que carga la página
+    iniciarMonitoreo();
+</script>
+
 </body>
 </html>
