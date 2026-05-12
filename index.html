@@ -512,9 +512,10 @@
             <div class="tech-card"><div class="tech-icon">🐘</div><div><div class="tech-name">Neon Postgres</div><div class="tech-desc">Almacenamiento serverless de series de tiempo indexadas por timestamp.</div></div></div>
             <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
         </div>
-
+        <!-- cambiar el link por el de iot -->
         <div style="margin-top:1.75rem;">
-            <a href="#"
+            <a href="https://github.com/lob117/Shot_detection_ia_app" 
+               target="_blank" rel="noopener"
                style="font-family:'Orbitron',sans-serif;font-size:0.62rem;letter-spacing:0.08em;
                       color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.4);
                       padding:0.65rem 1.4rem;border-radius:5px;display:inline-block;transition:box-shadow 0.2s;"
@@ -915,50 +916,68 @@
     }
 </script>
 <script>
-
     let intervaloActualizacion;
-    const URL_API = 'https://334k3vqy92.execute-api.us-east-1.amazonaws.com/default/api_last_data'; // Pega tu URL de AWS aquí
+    const URL_API = 'https://334k3vqy92.execute-api.us-east-1.amazonaws.com/default/api_last_data';
 
     async function actualizarDatosNeon() {
+        // Indicador visual de carga
+        ['stat-temp','stat-hum','stat-sens','stat-niv'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.textContent === '--') el.textContent = '…';
+        });
+
         try {
-            const response = await fetch(URL_API);
+            const response = await fetch(URL_API, {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
             const data = await response.json();
+            console.log("✅ Datos recibidos:", data);
 
-            if (data.temperatura !== null) document.getElementById('stat-temp').textContent = data.temperatura.toFixed(1);
-            if (data.humedad !== null) document.getElementById('stat-hum').textContent = data.humedad.toFixed(1);
-            if (data.sensacion_termica !== null) document.getElementById('stat-sens').textContent = data.sensacion_termica.toFixed(1);
-            if (data.nivel !== null) document.getElementById('stat-niv').textContent = data.nivel.toFixed(1);
+            // Intenta varios nombres de campo por si la API usa nombres distintos
+            const temp = data.temperatura   ?? data.temperature  ?? data.temp ?? null;
+            const hum  = data.humedad       ?? data.humidity     ?? data.hum  ?? null;
+            const sens = data.sensacion_termica ?? data.feels_like ?? data.heat_index ?? null;
+            const niv  = data.nivel         ?? data.level        ?? data.water_level ?? null;
 
-            console.log("Datos actualizados desde AWS:", data);
+            if (temp !== null) document.getElementById('stat-temp').textContent = Number(temp).toFixed(1);
+            if (hum  !== null) document.getElementById('stat-hum').textContent  = Number(hum).toFixed(1);
+            if (sens !== null) document.getElementById('stat-sens').textContent = Number(sens).toFixed(1);
+            if (niv  !== null) document.getElementById('stat-niv').textContent  = Number(niv).toFixed(1);
+
+            // Si algún campo sigue sin datos, muéstralo
+            if (temp === null) document.getElementById('stat-temp').textContent = 'N/A';
+            if (hum  === null) document.getElementById('stat-hum').textContent  = 'N/A';
+            if (sens === null) document.getElementById('stat-sens').textContent = 'N/A';
+            if (niv  === null) document.getElementById('stat-niv').textContent  = 'N/A';
+
         } catch (error) {
-            console.error("Error consultando la API de Neon:", error);
+            console.error("❌ Error consultando API:", error);
+            ['stat-temp','stat-hum','stat-sens','stat-niv'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = 'ERR';
+            });
         }
     }
 
-    // 1. Iniciar la actualización automática
     function iniciarMonitoreo() {
-        actualizarDatosNeon(); // Traer datos inmediatamente
-        intervaloActualizacion = setInterval(actualizarDatosNeon, 30000); // Luego cada 30s
+        actualizarDatosNeon();
+        intervaloActualizacion = setInterval(actualizarDatosNeon, 30000);
     }
 
-    // 2. Detener la actualización
     function detenerMonitoreo() {
         clearInterval(intervaloActualizacion);
-        console.log("Pestaña oculta: Monitoreo pausado para ahorrar peticiones a la API.");
     }
 
-    // 3. Detectar si el usuario está mirando la pestaña o no
     document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            detenerMonitoreo(); // Pausa si cambia de pestaña
-        } else {
-            iniciarMonitoreo(); // Reanuda si vuelve a tu portafolio
-        }
+        if (document.hidden) detenerMonitoreo();
+        else iniciarMonitoreo();
     });
 
-    // Arrancar la primera vez que carga la página
     iniciarMonitoreo();
 </script>
-
 </body>
 </html>
