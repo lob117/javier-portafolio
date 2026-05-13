@@ -41,5 +41,6 @@ Puede ser desplegado directamente utilizando:
 
 Especializado en el desarrollo de sistemas ciberfísicos, combinando el diseño de hardware embebido (IoT), procesamiento de datos geoespaciales (GIS/UAV) y arquitecturas en la nube. 
 
+https://lob117.github.io/javier-portafolio/#
 ---
 *Diseñado y codificado desde cero - 2025*
