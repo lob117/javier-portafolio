@@ -88,6 +88,21 @@
         #nav-auto::after { background: var(--auto); }
         .nav-links li button.active::after { left: 0.9rem; right: 0.9rem; }
 
+        /* contact icons in nav */
+        .nav-contact { display: flex; align-items: center; gap: 0.5rem; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 1px solid var(--border); }
+        .nav-contact a {
+            display: flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 6px;
+            border: 1px solid var(--border); background: var(--surface);
+            color: var(--muted); text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .nav-contact a:hover { background: var(--bg2); }
+        .nav-contact a.linkedin:hover { border-color: #0a66c2; color: #0a66c2; box-shadow: 0 0 10px rgba(10,102,194,0.35); }
+        .nav-contact a.github:hover   { border-color: #e8eaf0; color: #e8eaf0; box-shadow: 0 0 10px rgba(232,234,240,0.2); }
+        .nav-contact a.email:hover    { border-color: var(--auto); color: var(--auto); box-shadow: 0 0 10px var(--auto-glow); }
+        .nav-contact a svg { width: 15px; height: 15px; fill: currentColor; }
+
         .view { display: none; min-height: 100vh; padding-top: 64px; position: relative; z-index: 1; }
         .view.active { display: block; animation: fadeIn 0.35s ease; }
 
@@ -157,6 +172,250 @@
         .skill-chip:nth-child(3n+1):hover { border-color: var(--iot);  color: var(--iot);  cursor: default; }
         .skill-chip:nth-child(3n+2):hover { border-color: var(--uav);  color: var(--uav);  cursor: default; }
         .skill-chip:nth-child(3n):hover   { border-color: var(--auto); color: var(--auto); cursor: default; }
+
+        /* ─── TECH ICONS GRID ─── */
+        .tech-stack-section { margin-bottom: 3.5rem; }
+        .tech-category-label {
+            font-family: 'Space Mono', monospace; font-size: 0.6rem;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+            margin-bottom: 1rem; margin-top: 1.5rem;
+        }
+        .tech-icons-grid {
+            display: flex; flex-wrap: wrap; gap: 0.85rem;
+        }
+        .tech-icon-item {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            cursor: default;
+        }
+        .tech-icon-box {
+            width: 58px; height: 58px;
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            position: relative; overflow: hidden;
+        }
+        .tech-icon-box img { width: 34px; height: 34px; object-fit: contain; }
+        .tech-icon-box:hover { transform: translateY(-3px); }
+        .tech-icon-item:nth-child(3n+1) .tech-icon-box:hover { border-color: var(--iot); box-shadow: 0 6px 18px var(--iot-glow); }
+        .tech-icon-item:nth-child(3n+2) .tech-icon-box:hover { border-color: var(--uav); box-shadow: 0 6px 18px var(--uav-glow); }
+        .tech-icon-item:nth-child(3n)   .tech-icon-box:hover { border-color: var(--auto); box-shadow: 0 6px 18px var(--auto-glow); }
+        .tech-icon-name {
+            font-family: 'Space Mono', monospace; font-size: 0.58rem;
+            color: var(--muted); text-align: center; letter-spacing: 0.03em;
+        }
+
+        /* ─── PROFILE / CV SECTION ─── */
+        .profile-section {
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* Summary card */
+        .profile-summary-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .profile-summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--iot), var(--uav), var(--auto));
+        }
+        .profile-summary-header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 1.25rem;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .profile-summary-header span {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.62rem; font-weight: 700;
+            letter-spacing: 0.1em; color: var(--iot);
+        }
+        .profile-badge {
+            margin-left: auto;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 3px;
+            background: rgba(37,99,235,0.1);
+            border: 1px solid rgba(37,99,235,0.3);
+            color: var(--iot);
+            letter-spacing: 0.06em;
+        }
+        .profile-summary-body {
+            padding: 1.5rem;
+        }
+        .profile-summary-body p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            line-height: 1.85;
+            color: #9aa3be;
+        }
+        .profile-summary-body p strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        /* Info sidebar */
+        .profile-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .info-card:hover { border-color: rgba(37,99,235,0.4); box-shadow: 0 0 14px var(--iot-glow); }
+        .info-card-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+        .info-card-value {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .info-card-value a {
+            color: var(--iot);
+            text-decoration: none;
+        }
+        .info-card-value a:hover { text-decoration: underline; }
+
+        /* Experience timeline */
+        .experience-section { margin-bottom: 3rem; }
+
+        .exp-timeline { display: flex; flex-direction: column; gap: 1.25rem; }
+
+        .exp-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+        }
+        .exp-item.exp-iot::before   { background: var(--iot); }
+        .exp-item.exp-uav::before   { background: var(--uav); }
+        .exp-item.exp-auto::before  { background: var(--auto); }
+
+        .exp-item:hover { box-shadow: 0 0 16px rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
+
+        .exp-header {
+            padding: 1rem 1.25rem 0.75rem 1.5rem;
+            display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+        }
+        .exp-role {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .exp-company {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+        }
+        .exp-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--muted);
+            white-space: nowrap;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .exp-body {
+            padding: 0 1.25rem 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 0;
+        }
+        .exp-list {
+            list-style: none;
+            margin-top: 0.85rem;
+        }
+        .exp-list li {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.67rem;
+            color: #8a95b4;
+            line-height: 1.7;
+            padding-left: 1.1rem;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+        .exp-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--iot);
+            font-size: 0.6rem;
+        }
+        .exp-item.exp-uav .exp-list li::before  { color: var(--uav); }
+        .exp-item.exp-auto .exp-list li::before { color: var(--auto); }
+
+        /* Education row */
+        .edu-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .edu-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .edu-card:hover { border-color: rgba(37,99,235,0.35); }
+        .edu-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
+        .edu-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--text); margin-bottom: 0.25rem;
+            letter-spacing: 0.04em;
+        }
+        .edu-institution {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.63rem; color: var(--muted);
+            margin-bottom: 0.3rem;
+        }
+        .edu-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--iot);
+        }
 
         /* foto grid */
         .photo-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 0.75rem; margin-bottom: 2rem; }
@@ -252,7 +511,6 @@
         .badge-video, .badge-map, .badge-model { background: rgba(16,133,30,0.12); color: var(--uav); border: 1px solid rgba(16,133,30,0.4); }
         .media-body { padding: 1.5rem; }
 
-        /* Video nativo HTML5 */
         .native-video {
             width: 100%;
             border-radius: 6px;
@@ -292,7 +550,6 @@
         .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--auto); box-shadow: 0 0 8px var(--auto); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
 
-        /* Workflow embed iframe */
         .workflow-embed {
             width: 100%;
             height: 240px;
@@ -315,7 +572,6 @@
         .n8n-connector { width: 28px; height: 2px; background: linear-gradient(90deg, var(--auto), var(--iot)); border-radius: 1px; }
         .n8n-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
 
-        /* GitHub */
         .github-sidebar { display: flex; flex-direction: column; gap: 1rem; }
         .github-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
@@ -330,13 +586,6 @@
         .repo-meta { display: flex; gap: 1rem; }
         .repo-lang { font-family: 'Space Mono', monospace; font-size: 0.63rem; color: var(--muted); display: flex; align-items: center; gap: 0.35rem; }
         .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
-        .add-repo-btn {
-            background: var(--surface); border: 1px dashed var(--border); border-radius: 10px;
-            padding: 1.2rem; text-align: center; color: var(--muted); font-family: 'Space Mono', monospace;
-            font-size: 0.7rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
-            display: flex; flex-direction: column; gap: 0.4rem; align-items: center;
-        }
-        .add-repo-btn:hover { border-color: var(--auto); color: var(--auto); }
 
         footer {
             background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem;
@@ -348,7 +597,11 @@
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--iot); }
 
-        @media (max-width: 860px) { .auto-layout { grid-template-columns: 1fr; } }
+        @media (max-width: 860px) {
+            .auto-layout { grid-template-columns: 1fr; }
+            .profile-grid { grid-template-columns: 1fr; }
+            .edu-row { grid-template-columns: 1fr; }
+        }
         @media (max-width: 680px) {
             .media-grid { grid-template-columns: 1fr; }
             .photo-grid { grid-template-columns: 1fr 1fr; }
@@ -367,23 +620,271 @@
         <li><button onclick="showView('uav')"    id="nav-uav">UAV &amp; GIS</button></li>
         <li><button onclick="showView('auto')"   id="nav-auto">Automatización</button></li>
     </ul>
+    <!-- ▼ CAMBIA AQUÍ tus links de contacto ▼ -->
+    <div class="nav-contact">
+        <!-- LinkedIn: reemplaza href con tu URL de LinkedIn -->
+        <a href="https://www.linkedin.com/in/javier-lobato-ceballos" target="_blank" rel="noopener" class="linkedin" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/lob117" target="_blank" rel="noopener" class="github" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <!-- Email: reemplaza href con tu correo -->
+        <a href="mailto:javier.lobato@email.com" class="email" title="Correo electrónico">
+            <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
+        </a>
+    </div>
+    <!-- ▲ FIN links de contacto ▲ -->
 </nav>
 
 <!-- ════════ INICIO ════════ -->
 <div class="view active" id="view-inicio">
     <div class="hero">
-        <div class="hero-label">Portafolio · Ingeniería Aplicada </div>
+        <div class="hero-label">Portafolio · Ingeniería Aplicada</div>
         <h1>Javier<br>Lobato<br>Ceballos</h1>
         <p class="hero-sub">Crear sistemas donde el hardware se encuentra con la nube — desde sensores ESP32 hasta análisis GIS con drones.</p>
-        <div class="skills-row">
-            <span class="skill-chip">ESP32</span><span class="skill-chip">AWS Lambda</span>
-            <span class="skill-chip">Grafana</span><span class="skill-chip">Python</span>
-            <span class="skill-chip">MQTT</span><span class="skill-chip">Drone Mapping</span>
-            <span class="skill-chip">GIS / QGIS</span><span class="skill-chip">n8n</span>
-            <span class="skill-chip">PostgreSQL</span><span class="skill-chip">C++</span>
-            <span class="skill-chip">WebScraping</span><span class="skill-chip">REST APIs</span>
+        <!-- skills row removed — tech grid shown before gallery -->
+
+        <!-- ══════════════════════════════════════════
+             PERFIL PROFESIONAL / CV
+        ═══════════════════════════════════════════ -->
+        <div class="profile-section">
+            <div class="section-title">// perfil profesional</div>
+
+            <div class="profile-grid">
+                <!-- Resumen -->
+                <div class="profile-summary-card">
+                    <div class="profile-summary-header">
+                        <span>RESUMEN EJECUTIVO</span>
+                        <div class="profile-badge">Disponible</div>
+                    </div>
+                    <div class="profile-summary-body">
+                        <p>
+                            <strong>Ingeniero Electrónico</strong> con enfoque en automatización de procesos y análisis de datos. Experiencia en soluciones basadas en <strong>Inteligencia Artificial</strong> (OCR, Geoparsing) e integración de flujos de trabajo complejos mediante <strong>n8n</strong> y contenedores <strong>Docker</strong>.
+                        </p>
+                        <br>
+                        <p>
+                            Competente en bases de datos <strong>SQL</strong> y lenguajes de programación como <strong>Python y C</strong>. Sólida formación en análisis geoespacial con satélites y drones — generación de índices de vegetación, modelos 3D y cartografía especializada.
+                        </p>
+                        <br>
+                        <p>
+                            Capaz de <strong>transformar datos técnicos en informes estratégicos</strong> y optimizar la eficiencia operativa mediante infraestructura tecnológica inteligente. Orientado al desarrollo backend y análisis de datos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Datos personales / contacto -->
+                <div class="profile-sidebar">
+                    <div class="info-card">
+                        <div class="info-card-label">🎓 Formación</div>
+                        <div class="info-card-value">Ing. Electrónica<br><span style="color:var(--muted);font-size:0.8rem;">Univ. del Magdalena · 2020–2025</span></div>
+                    </div>
+                    <!-- Contact icons card -->
+                    <div class="info-card">
+                        <div class="info-card-label">Contacto</div>
+                        <div style="display:flex;gap:0.7rem;margin-top:0.35rem;">
+                            <a href="https://www.linkedin.com/in/javier-lobato-ceballos" target="_blank" rel="noopener"
+                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
+                               onmouseover="this.style.borderColor='#0a66c2';this.style.color='#0a66c2';this.style.boxShadow='0 0 10px rgba(10,102,194,0.35)'"
+                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
+                               title="LinkedIn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </a>
+                            <a href="https://github.com/lob117" target="_blank" rel="noopener"
+                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
+                               onmouseover="this.style.borderColor='#e8eaf0';this.style.color='#e8eaf0';this.style.boxShadow='0 0 10px rgba(232,234,240,0.2)'"
+                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
+                               title="GitHub">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            </a>
+                            <!-- ▼ CAMBIA AQUÍ tu correo ▼ -->
+                            <a href="mailto:javier.lobato@email.com"
+                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
+                               onmouseover="this.style.borderColor='var(--auto)';this.style.color='var(--auto)';this.style.boxShadow='0 0 10px var(--auto-glow)'"
+                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
+                               title="Correo">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- ══════════════════════════════════════════
+             EXPERIENCIA LABORAL
+        ═══════════════════════════════════════════ -->
+        <div class="experience-section">
+            <div class="section-title">// experiencia laboral</div>
+            <div class="exp-timeline">
+
+                <div class="exp-item exp-auto">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Ingeniero Electrónico &amp; Automatización de Procesos</div>
+                            <div class="exp-company">Corporación NaturalSIG · CORPOCESAR / COOAGROPUERTO</div>
+                        </div>
+                        <div class="exp-date">Ago 2025 – Dic 2025</div>
+                    </div>
+                    <div class="exp-body">
+                        <ul class="exp-list">
+                            <li>Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO.</li>
+                            <li>Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial.</li>
+                            <li>Extracción y procesamiento de información geoespacial y documental.</li>
+                            <li>Creación de flujos de trabajo automatizados con N8N y contenedores Docker.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item exp-uav">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Consultor SIG &amp; Mantenimiento de Datos UAV</div>
+                            <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
+                        </div>
+                        <div class="exp-date">Ene 2025 – Jun 2025 · Ago 2024 – Dic 2024</div>
+                    </div>
+                    <div class="exp-body">
+                        <ul class="exp-list">
+                            <li>Creación de planes de vuelo para drones EbeeX y Phantom 4 con certificación APD RAC 100.</li>
+                            <li>Construcción de mosaicos RGB fotogramétricos y multiespectrales para índices de vegetación y suelo.</li>
+                            <li>Modelos 3D y clasificación de puntos para determinar ríos, rutas, casas y vegetación.</li>
+                            <li>Elaboración de informes ambientales técnicos y cartografía especializada para análisis de salud vegetal.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+             EDUCACIÓN
+        ═══════════════════════════════════════════ -->
+        <div class="section-title">// formación académica</div>
+        <div class="edu-row" style="margin-bottom: 3rem;">
+            <div class="edu-card">
+                <div class="edu-icon">🎓</div>
+                <div class="edu-title">Ingeniería Electrónica</div>
+                <div class="edu-institution">Universidad del Magdalena</div>
+                <div class="edu-date">2020 – 2025</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-icon">🚁</div>
+                <div class="edu-title">Piloto de Dron — APD RAC 100</div>
+                <div class="edu-institution">Curso de piloto con certificación oficial</div>
+                <div class="edu-date">2025</div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+             TECNOLOGÍAS & HERRAMIENTAS (iconos)
+        ═══════════════════════════════════════════ -->
+        <div class="tech-stack-section">
+            <div class="section-title">// tecnologías &amp; herramientas</div>
+
+            <div class="tech-category-label">Lenguajes &amp; Backend</div>
+            <div class="tech-icons-grid">
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+                    <span class="tech-icon-name">Python</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"></div>
+                    <span class="tech-icon-name">C</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
+                    <span class="tech-icon-name">C++</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
+                    <span class="tech-icon-name">JavaScript</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></div>
+                    <span class="tech-icon-name">HTML5</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></div>
+                    <span class="tech-icon-name">CSS3</span>
+                </div>
+            </div>
+
+            <div class="tech-category-label">Cloud &amp; Datos</div>
+            <div class="tech-icons-grid">
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div>
+                    <span class="tech-icon-name">AWS</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
+                    <span class="tech-icon-name">PostgreSQL</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
+                    <span class="tech-icon-name">MySQL</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box" style="background:#f46800;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg" alt="Grafana">
+                    </div>
+                    <span class="tech-icon-name">Grafana</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
+                    <span class="tech-icon-name">Docker</span>
+                </div>
+            </div>
+
+            <div class="tech-category-label">IoT &amp; Embedded</div>
+            <div class="tech-icons-grid">
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino/ESP32"></div>
+                    <span class="tech-icon-name">ESP32</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi"></div>
+                    <span class="tech-icon-name">Raspberry Pi</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box" style="padding:6px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/MQTT_Logo.svg/320px-MQTT_Logo.svg.png" alt="MQTT" style="width:42px;height:auto;">
+                    </div>
+                    <span class="tech-icon-name">MQTT</span>
+                </div>
+            </div>
+
+            <div class="tech-category-label">Herramientas</div>
+            <div class="tech-icons-grid">
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+                    <span class="tech-icon-name">Git</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1);"></div>
+                    <span class="tech-icon-name">GitHub</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></div>
+                    <span class="tech-icon-name">VS Code</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box" style="padding:4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/QGIS_logo_new.svg/320px-QGIS_logo_new.svg.png" alt="QGIS" style="width:42px;height:auto;">
+                    </div>
+                    <span class="tech-icon-name">QGIS</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box" style="background:#ea4b71;padding:10px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/N8n-logo.png/320px-N8n-logo.png" alt="n8n" style="width:36px;height:auto;filter:brightness(0) invert(1);">
+                    </div>
+                    <span class="tech-icon-name">n8n</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galería de proyectos -->
         <div class="section-title">// galería de proyectos</div>
 
         <div class="photo-grid">
@@ -396,7 +897,7 @@
                     />
                 </a>
                 <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Telemetria esp32 -> AWS </div>
+                    <div class="photo-label">Telemetria esp32 → AWS</div>
                 </div>
             </div>
             <div class="photo-item">
@@ -411,7 +912,6 @@
                     <div class="photo-label">UAV Mapping</div>
                 </div>
             </div>
-           
             <div class="photo-item">
                 <a href="https://ide.corpocesar.gov.co/#/" target="_blank" rel="noopener">
                     <img 
@@ -433,19 +933,19 @@
                     />
                 </a>
                 <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">N8N work flow </div>
+                    <div class="photo-label">N8N Workflow</div>
                 </div>
             </div>
             <div class="photo-item">
                 <a href="https://github.com/lob117/Shot_detection_ia_app" target="_blank" rel="noopener">
                     <img 
                         src="https://raw.githubusercontent.com/lob117/javier-portafolio/eba2c402a8f34d95ad94b3bad75e0e96fb6e17e8/imagenes/Captura%20de%20pantalla%202025-06-25%20094603.png"
-                        alt="Work Flow teis"
+                        alt="Work Flow tesis"
                         style="width:100%;height:100%;object-fit:cover;display:block;"
                     />
                 </a>
                 <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Tesis  Deteccion de disparos</div>
+                    <div class="photo-label">Tesis Detección de Disparos</div>
                 </div>
             </div>
             <div class="photo-item">
@@ -512,7 +1012,6 @@
             <div class="tech-card"><div class="tech-icon">🐘</div><div><div class="tech-name">Neon Postgres</div><div class="tech-desc">Almacenamiento serverless de series de tiempo indexadas por timestamp.</div></div></div>
             <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
         </div>
-        <!-- cambiar el link por el de iot -->
         <div style="margin-top:1.75rem;">
             <a href="https://github.com/lob117/Telemetry-hub" 
                target="_blank" rel="noopener"
@@ -540,125 +1039,79 @@
     <div class="page-content">
         <div class="section-title">// videos de vuelo</div>
         <div class="media-grid">
-
-            <!-- ══════════════════════════════════════════════════════════
-                 VIDEO 1 — Vuelo de Mapeo #1
-                 Usando video alojado en GitHub (raw.githubusercontent.com).
-                 ► Para cambiar el video, reemplaza la URL en el atributo src
-                   de la etiqueta <video> que está justo abajo.
-                 Formato recomendado: MP4 (H.264)
-                 URL actual: Video Project 1.mp4 de tu repo GitHub
-            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Vuelo de Mapeo #1</span>
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
-                    <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 1 ▼ -->
-                    <video
-                        class="native-video"
-                        controls
-                        preload="metadata"
+                    <video class="native-video" controls preload="metadata"
                         src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%201.mp4">
                         Tu navegador no soporta video HTML5.
                     </video>
-                    <!-- ▲ FIN Video 1 ▲ -->
-                    <p class="media-desc">Descripción: vuelo panoramico de caracterizacion de la zona.</p>
+                    <p class="media-desc">Descripción: vuelo panorámico de caracterización de la zona.</p>
                 </div>
             </div>
-
-            <!-- ══════════════════════════════════════════════════════════
-                 VIDEO 2 — Vuelo de Mapeo #2
-                 ► Para cambiar el video, reemplaza la URL en el atributo src
-                   de la etiqueta <video> que está justo abajo.
-                 URL actual: Video Project 3.mp4 de tu repo GitHub
-            ════════════════════════════════════════════════════════════ -->
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Vuelo de Mapeo #2</span>
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
-                    <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 2 ▼ -->
-                    <video
-                        class="native-video"
-                        controls
-                        preload="metadata"
+                    <video class="native-video" controls preload="metadata"
                         src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%207.mp4">
                         Tu navegador no soporta video HTML5.
                     </video>
-                    <!-- ▲ FIN Video 2 ▲ -->
-                    <p class="media-desc">Descripción: Creacion de modelo de casas mediante modelo de elevacion.</p>
+                    <p class="media-desc">Descripción: Creación de modelo de casas mediante modelo de elevación.</p>
                 </div>
             </div>
-
         </div>
 
-        <!-- ══════════════════════════════════════════════════════════
-             VIDEO 3 — Vuelo de Mapeo #3 (ancho completo)
-             ► Para cambiar el video, reemplaza la URL en el atributo src
-               de la etiqueta <video> que está justo abajo.
-             URL actual: Video Project 7.mp4 de tu repo GitHub
-        ════════════════════════════════════════════════════════════ -->
         <div class="media-card" style="margin-bottom: 2rem;">
             <div class="media-card-header">
                 <span class="media-card-title">Vuelo de Mapeo #3</span>
                 <span class="media-badge badge-video">Video</span>
             </div>
             <div class="media-body">
-                <!-- ▼ CAMBIA AQUÍ el src para cambiar el Video 3 ▼ -->
-                <video
-                    class="native-video"
-                    controls
-                    preload="metadata"
+                <video class="native-video" controls preload="metadata"
                     src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%203.mp4">
                     Tu navegador no soporta video HTML5.
                 </video>
-                <!-- ▲ FIN Video 3 ▲ -->
-                <p class="media-desc">Descripción: Nube de puntos densa para la contruccion de un modelo hidraulico.</p>
+                <p class="media-desc">Descripción: Nube de puntos densa para la construcción de un modelo hidráulico.</p>
             </div>
         </div>
-        <!-- ══════════════════════════════════════════════════════════ -->
 
         <hr class="section-divider">
         <div class="section-title">// mapas &amp; modelos 3D</div>
         <div class="media-grid">
-        
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Mapa Interactivo</span>
                     <span class="media-badge badge-map">Mapa</span>
                 </div>
                 <div class="media-body">
-                    <div id="map-1-area">
-                        <img 
-                            src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png"
-                            alt="Mapa DTM generado con dron"
-                            style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                        />
-                    </div>
-                    <p class="media-desc">Mapa generado para observar el curso del rio</p>
+                    <img 
+                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png"
+                        alt="Mapa DTM generado con dron"
+                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
+                    />
+                    <p class="media-desc">Mapa generado para observar el curso del río.</p>
                 </div>
             </div>
-        
             <div class="media-card">
                 <div class="media-card-header">
                     <span class="media-card-title">Modelo 3D / Ortofoto</span>
                     <span class="media-badge badge-model">3D</span>
                 </div>
                 <div class="media-body">
-                    <div id="model-1-area">
-                        <img 
-                            src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png"
-                            alt="Modelo DEM 3D generado con fotogrametría"
-                            style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                        />
-                    </div>
-                    <p class="media-desc">Modelo tridimensional generado con modelo de elevacion.</p>
+                    <img 
+                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png"
+                        alt="Modelo DEM 3D generado con fotogrametría"
+                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
+                    />
+                    <p class="media-desc">Modelo tridimensional generado con modelo de elevación.</p>
                 </div>
             </div>
-        
         </div>
     </div>
 </div>
@@ -678,20 +1131,6 @@
             <div>
                 <div class="section-title">// workflows n8n</div>
 
-                <!-- ══════════════════════════════════════════════════════════
-                     WORKFLOW n8n #1
-                     ► Para mostrar tu workflow, reemplaza el bloque .n8n-placeholder
-                       por un <iframe> con la URL de tu instancia n8n.
-                     Si tu n8n es público/cloud, usa la URL directa del workflow.
-                     Ejemplo:
-                       <iframe
-                           class="workflow-embed"
-                           src="https://tu-instancia.n8n.cloud/workflow/TU_ID"
-                           allowfullscreen>
-                       </iframe>
-                     Alternativamente puedes usar una captura de pantalla:
-                       <img src="URL_DE_IMAGEN" style="width:100%;border-radius:6px;">
-                ════════════════════════════════════════════════════════════ -->
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #1</span>
@@ -700,27 +1139,13 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
-                
-                    <!-- ▼ Imagen del Workflow 1 ▼ -->
                     <img 
                         src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png"
                         alt="Workflow #1"
                         style="width: 100%; height: auto; display: block; border-radius: 4px;"
                     />
-
-                    <!-- ▲ FIN Workflow 1 ▲ -->
                 </div>
 
-                <!-- ══════════════════════════════════════════════════════════
-                     WORKFLOW n8n #2
-                     ► Mismas instrucciones que el Workflow #1 arriba.
-                     Ejemplo con iframe:
-                       <iframe
-                           class="workflow-embed"
-                           src="https://tu-instancia.n8n.cloud/workflow/TU_ID_2"
-                           allowfullscreen>
-                       </iframe>
-                ════════════════════════════════════════════════════════════ -->
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #2</span>
@@ -729,65 +1154,34 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
-                
-                    <!-- ▼ Imagen del Workflow 2 ▼ -->
                     <img 
                         src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/work_flow_resumen.png"
                         alt="Workflow #2"
                         style="width: 100%; height: auto; display: block; border-radius: 4px;"
                     />
-
-                    <!-- ▲ FIN Workflow 2 ▲ -->
                 </div>
-
             </div>
 
             <div class="github-sidebar">
                 <div class="section-title">// repositorios github</div>
-
-                <!-- ══════════════════════════════════════════════════════════
-                     REPO GITHUB #1
-                     ► Cambia el onclick con la URL real de tu repositorio.
-                     ► Cambia repo-name y repo-desc con el nombre y descripción reales.
-                ════════════════════════════════════════════════════════════ -->
-                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 1 ▼ -->
                 <div class="github-card" onclick="window.open('https://github.com/lob117/n8n_workflows', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">n8n_workflows</span></div>
-                    <div class="repo-desc">Work flows de extraccion de metadatos de documentos OCR con RAG.</div>
+                    <div class="repo-desc">Work flows de extracción de metadatos de documentos OCR con RAG.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#f34b7d;"></span>json</span></div>
                 </div>
-                <!-- ▲ FIN Repo 1 ▲ -->
-
-                <!-- ══════════════════════════════════════════════════════════
-                     REPO GITHUB #2
-                     ► Cambia el onclick con la URL real de tu repositorio.
-                ════════════════════════════════════════════════════════════ -->
-                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 2 ▼ -->
                 <div class="github-card" onclick="window.open('https://github.com/lob117/One_drive_bot', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">python-automation</span></div>
-                    <div class="repo-desc">repositorio contiene un conjunto de scripts de automatización RPA.</div>
+                    <div class="repo-desc">Conjunto de scripts de automatización RPA.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
-                <!-- ▲ FIN Repo 2 ▲ -->
-
-                <!-- ══════════════════════════════════════════════════════════
-                     REPO GITHUB #3
-                     ► Cambia el onclick con la URL real de tu repositorio.
-                ════════════════════════════════════════════════════════════ -->
-                <!-- ▼ CAMBIA AQUÍ: reemplaza '#' con la URL de tu repo 3 ▼ -->
                 <div class="github-card" onclick="window.open('https://github.com/lob117/app-voice-text', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">app-voice-text</span></div>
-                    <div class="repo-desc">Procesamiento de audio de reuniones y lo transcribe a texto para su revision .</div>
+                    <div class="repo-desc">Procesamiento de audio de reuniones y transcripción a texto para su revisión.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
-                <!-- ▲ FIN Repo 3 ▲ -->
-                <!-- ══════════════════════════════════════════════════════════
-                     REPO GITHUB #4
-                     ► Cambia el onclick con la URL real de tu repositorio.
-                ════════════════════════════════════════════════════════════ -->
                 <div class="github-card" onclick="window.open('https://github.com/lob117/Shot_detection_ia_app', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">Shot_detection_ia_app</span></div>
-                    <div class="repo-desc">Proyecto de deteccion de disparos mediante esp32 IA Iot .</div>
+                    <div class="repo-desc">Detección de disparos mediante ESP32, IA e IoT.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
             </div>
@@ -812,14 +1206,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-    /*
-     * ── LÓGICA GRAFANA ──────────────────────────────────────────────────────
-     * La imagen del dashboard ya está en el HTML y se muestra siempre.
-     * Este script intenta cargar el snapshot de Grafana en segundo plano.
-     *   ✔ Si Grafana responde Y tiene paneles con datos → reemplaza la imagen.
-     *   ✗ Si falla (CORS, red, sin datos) → no toca nada. La imagen queda fija.
-     * ───────────────────────────────────────────────────────────────────────
-     */
     const SNAPSHOT_KEY = 'e1OaqzTUdsfGMbpwMoH86rW4CQWjRbae';
     const GRAFANA_HOST = 'https://snapshots.raintank.io';
     let snapshotLoaded = false;
@@ -832,24 +1218,19 @@
     async function loadGrafanaSnapshot() {
         if (snapshotLoaded) return;
         const area = document.getElementById('iot-charts-area');
-
         try {
             const res = await fetch(`${GRAFANA_HOST}/api/snapshots/${SNAPSHOT_KEY}`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const snap = await res.json();
-
             const panels = snap.dashboard?.panels ?? [];
             if (!panels.length) return;
-
             const hayDatos = panels.some(p => {
                 const d = p.snapshotData ?? p.cachedData ?? [];
                 return Array.isArray(d) && d.length > 0;
             });
             if (!hayDatos) return;
-
             snapshotLoaded = true;
             renderSnapshot(snap, area);
-
         } catch (err) {
             console.warn('Grafana snapshot no disponible:', err.message);
         }
@@ -859,7 +1240,6 @@
         chartInstances.forEach(c => c.destroy());
         chartInstances.length = 0;
         const panels = snap.dashboard?.panels ?? [];
-
         area.innerHTML = `<div id="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;padding:1.25rem;width:100%;"></div>`;
         const grid = document.getElementById('charts-grid');
         const colors = ['#2563eb','#10851e','#e84c0e','#8b5cf6','#06b6d4'];
@@ -888,13 +1268,8 @@
                 let val = '--';
                 if (series?.datapoints?.length) { val = Number(series.datapoints[series.datapoints.length-1][0]).toFixed(2); totalPoints += series.datapoints.length; }
                 else if (series?.fields) { const vf = series.fields.find(f=>f.name!=='Time'); const vs = vf?.values?.buffer??vf?.values??[]; if(vs.length){val=Number(vs[vs.length-1]).toFixed(2);totalPoints+=vs.length;} }
-                const tl = title.toLowerCase();
-                if(tl.includes('temp')) document.getElementById('stat-temp').textContent = val;
-                if(tl.includes('lat'))  document.getElementById('stat-lat').textContent  = val;
-                if(tl.includes('lon'))  document.getElementById('stat-lon').textContent  = val;
                 body.innerHTML = `<div style="text-align:center;padding:1.5rem 0;"><div style="font-family:'Orbitron',sans-serif;font-size:2.8rem;font-weight:700;color:var(--iot);">${val}</div><div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top:0.4rem;">${series?.target??''}</div></div>`;
                 card.appendChild(body); grid.appendChild(card);
-
             } else {
                 body.innerHTML = `<canvas id="chart-${idx}" height="160"></canvas>`;
                 card.appendChild(body); grid.appendChild(card);
@@ -921,7 +1296,6 @@
                 }
             }
         });
-        if(totalPoints) document.getElementById('stat-count').textContent = totalPoints.toLocaleString();
     }
 </script>
 <script>
@@ -929,24 +1303,16 @@
     const URL_API = 'https://t9ji8unzwk.execute-api.us-east-1.amazonaws.com/default/api_last_data';
 
     async function actualizarDatosNeon() {
-        // Indicador visual de carga
         ['stat-temp','stat-hum','stat-sens','stat-niv'].forEach(id => {
             const el = document.getElementById(id);
             if (el && el.textContent === '--') el.textContent = '…';
         });
 
         try {
-            const response = await fetch(URL_API, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' }
-            });
-
+            const response = await fetch(URL_API, { method: 'GET', headers: { 'Accept': 'application/json' } });
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
             const data = await response.json();
-            console.log("✅ Datos recibidos:", data);
 
-            // Intenta varios nombres de campo por si la API usa nombres distintos
             const temp = data.temperatura   ?? data.temperature  ?? data.temp ?? null;
             const hum  = data.humedad       ?? data.humidity     ?? data.hum  ?? null;
             const sens = data.sensacion_termica ?? data.feels_like ?? data.heat_index ?? null;
@@ -957,7 +1323,6 @@
             if (sens !== null) document.getElementById('stat-sens').textContent = Number(sens).toFixed(1);
             if (niv  !== null) document.getElementById('stat-niv').textContent  = Number(niv).toFixed(1);
 
-            // Si algún campo sigue sin datos, muéstralo
             if (temp === null) document.getElementById('stat-temp').textContent = 'N/A';
             if (hum  === null) document.getElementById('stat-hum').textContent  = 'N/A';
             if (sens === null) document.getElementById('stat-sens').textContent = 'N/A';
