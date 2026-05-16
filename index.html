@@ -162,17 +162,6 @@
 
         .hero-sub { color: var(--muted); font-size: 1.1rem; font-weight: 500; max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
 
-        .skills-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 4rem; }
-
-        .skill-chip {
-            font-family: 'Space Mono', monospace; font-size: 0.68rem;
-            padding: 0.3rem 0.8rem; border: 1px solid var(--border);
-            border-radius: 3px; color: var(--muted); letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s;
-        }
-        .skill-chip:nth-child(3n+1):hover { border-color: var(--iot);  color: var(--iot);  cursor: default; }
-        .skill-chip:nth-child(3n+2):hover { border-color: var(--uav);  color: var(--uav);  cursor: default; }
-        .skill-chip:nth-child(3n):hover   { border-color: var(--auto); color: var(--auto); cursor: default; }
-
         /* ─── TECH ICONS GRID ─── */
         .tech-stack-section { margin-bottom: 3.5rem; }
         .tech-category-label {
@@ -195,10 +184,7 @@
             position: relative; overflow: hidden;
         }
         .tech-icon-box img { width: 34px; height: 34px; object-fit: contain; }
-        .tech-icon-box:hover { transform: translateY(-3px); }
-        .tech-icon-item:nth-child(3n+1) .tech-icon-box:hover { border-color: var(--iot); box-shadow: 0 6px 18px var(--iot-glow); }
-        .tech-icon-item:nth-child(3n+2) .tech-icon-box:hover { border-color: var(--uav); box-shadow: 0 6px 18px var(--uav-glow); }
-        .tech-icon-item:nth-child(3n)   .tech-icon-box:hover { border-color: var(--auto); box-shadow: 0 6px 18px var(--auto-glow); }
+        .tech-icon-box:hover { transform: translateY(-3px); border-color: var(--muted); }
         .tech-icon-name {
             font-family: 'Space Mono', monospace; font-size: 0.58rem;
             color: var(--muted); text-align: center; letter-spacing: 0.03em;
@@ -210,14 +196,7 @@
             position: relative;
         }
 
-        .profile-grid {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 1.5rem;
-            align-items: start;
-        }
-
-        /* Summary card */
+        /* Summary card (full width now) */
         .profile-summary-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -268,42 +247,6 @@
             font-weight: 700;
         }
 
-        /* Info sidebar */
-        .profile-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.1rem 1.25rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .info-card:hover { border-color: rgba(37,99,235,0.4); box-shadow: 0 0 14px var(--iot-glow); }
-        .info-card-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.58rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.6rem;
-        }
-        .info-card-value {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1.5;
-        }
-        .info-card-value a {
-            color: var(--iot);
-            text-decoration: none;
-        }
-        .info-card-value a:hover { text-decoration: underline; }
-
         /* Experience timeline */
         .experience-section { margin-bottom: 3rem; }
 
@@ -323,11 +266,11 @@
             left: 0; top: 0; bottom: 0;
             width: 3px;
         }
-        .exp-item.exp-iot::before   { background: var(--iot); }
-        .exp-item.exp-uav::before   { background: var(--uav); }
-        .exp-item.exp-auto::before  { background: var(--auto); }
+        .exp-item.exp-iot::before   { background: var(--border); }
+        .exp-item.exp-uav::before   { background: var(--border); }
+        .exp-item.exp-auto::before  { background: var(--border); }
 
-        .exp-item:hover { box-shadow: 0 0 16px rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
+        .exp-item:hover { border-color: var(--muted); }
 
         .exp-header {
             padding: 1rem 1.25rem 0.75rem 1.5rem;
@@ -378,11 +321,11 @@
             content: '▸';
             position: absolute;
             left: 0;
-            color: var(--iot);
+            color: var(--muted);
             font-size: 0.6rem;
         }
-        .exp-item.exp-uav .exp-list li::before  { color: var(--uav); }
-        .exp-item.exp-auto .exp-list li::before { color: var(--auto); }
+        .exp-item.exp-uav .exp-list li::before  { color: var(--muted); }
+        .exp-item.exp-auto .exp-list li::before { color: var(--muted); }
 
         /* Education row */
         .edu-row {
@@ -398,7 +341,7 @@
             padding: 1.1rem 1.25rem;
             transition: border-color 0.2s;
         }
-        .edu-card:hover { border-color: rgba(37,99,235,0.35); }
+        .edu-card:hover { border-color: var(--muted); }
         .edu-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
         .edu-title {
             font-family: 'Orbitron', sans-serif;
@@ -437,14 +380,6 @@
         .photo-item:nth-child(5) { grid-column: span 4; }
         .photo-item:nth-child(6) { grid-column: span 4; }
 
-        .photo-item .photo-inner {
-            width: 100%; aspect-ratio: 16/10; background: var(--bg2);
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; gap: 0.75rem; color: var(--muted);
-        }
-        .photo-item:nth-child(1) .photo-inner { aspect-ratio: unset; height: 100%; min-height: 340px; }
-        .photo-icon { font-size: 2.5rem; opacity: 0.35; }
-        .photo-placeholder-text { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); text-align: center; }
         .photo-overlay {
             position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%);
@@ -482,8 +417,6 @@
         .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
         .dashboard-url { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); margin-left: 0.75rem; }
 
-        .dashboard-iframe { width: 100%; height: 500px; border: none; display: block; }
-
         /* tech cards */
         .tech-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; margin-top: 1.5rem; }
         .tech-card {
@@ -520,19 +453,6 @@
             margin-bottom: 1rem;
         }
 
-        .map-placeholder {
-            width: 100%; background: var(--bg2); border-radius: 6px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 0.75rem; border: 1px dashed var(--border); color: var(--muted); margin-bottom: 1rem; transition: border-color 0.2s;
-        }
-        .map-placeholder   { height: 260px; position: relative; overflow: hidden; }
-        .map-placeholder::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(16,133,30,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(16,133,30,0.06) 1px,transparent 1px);
-            background-size: 28px 28px;
-        }
-        .map-icon  { font-size: 2.5rem; opacity: 0.3; position: relative; }
-        .map-placeholder p { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-align: center; position: relative; }
         .media-desc { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
 
         /* ─── AUTO ─── */
@@ -550,28 +470,6 @@
         .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--auto); box-shadow: 0 0 8px var(--auto); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
 
-        .workflow-embed {
-            width: 100%;
-            height: 240px;
-            border: none;
-            display: block;
-        }
-
-        .n8n-placeholder {
-            width: 100%; height: 240px; background: var(--bg2);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 1rem; color: var(--muted); position: relative; overflow: hidden;
-        }
-        .n8n-placeholder::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(232,76,14,0.07), transparent 60%),
-                        radial-gradient(ellipse at 70% 50%, rgba(37,99,235,0.05), transparent 60%);
-        }
-        .n8n-nodes { display: flex; align-items: center; gap: 1.25rem; position: relative; }
-        .n8n-node { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; border: 1px solid var(--border); background: var(--surface); }
-        .n8n-connector { width: 28px; height: 2px; background: linear-gradient(90deg, var(--auto), var(--iot)); border-radius: 1px; }
-        .n8n-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
-
         .github-sidebar { display: flex; flex-direction: column; gap: 1rem; }
         .github-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
@@ -587,11 +485,27 @@
         .repo-lang { font-family: 'Space Mono', monospace; font-size: 0.63rem; color: var(--muted); display: flex; align-items: center; gap: 0.35rem; }
         .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
 
+        /* ─── FOOTER ─── */
         footer {
-            background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem;
+            background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem;
             text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--muted);
         }
         footer span { background: linear-gradient(90deg,var(--iot),var(--uav),var(--auto)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .footer-contact {
+            display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-contact a {
+            display: flex; align-items: center; justify-content: center;
+            width: 38px; height: 38px; border-radius: 8px;
+            border: 1px solid var(--border); background: var(--surface);
+            color: var(--muted); text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .footer-contact a svg { width: 16px; height: 16px; fill: currentColor; }
+        .footer-contact a.linkedin:hover { border-color: #0a66c2; color: #0a66c2; box-shadow: 0 0 10px rgba(10,102,194,0.35); }
+        .footer-contact a.github:hover   { border-color: #e8eaf0; color: #e8eaf0; box-shadow: 0 0 10px rgba(232,234,240,0.2); }
+        .footer-contact a.email:hover    { border-color: var(--auto); color: var(--auto); box-shadow: 0 0 10px var(--auto-glow); }
 
         ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -599,7 +513,6 @@
 
         @media (max-width: 860px) {
             .auto-layout { grid-template-columns: 1fr; }
-            .profile-grid { grid-template-columns: 1fr; }
             .edu-row { grid-template-columns: 1fr; }
         }
         @media (max-width: 680px) {
@@ -620,22 +533,17 @@
         <li><button onclick="showView('uav')"    id="nav-uav">UAV &amp; GIS</button></li>
         <li><button onclick="showView('auto')"   id="nav-auto">Automatización</button></li>
     </ul>
-    <!-- ▼ CAMBIA AQUÍ tus links de contacto ▼ -->
     <div class="nav-contact">
-        <!-- LinkedIn: reemplaza href con tu URL de LinkedIn -->
         <a href="https://www.linkedin.com/in/javier-lobato-ceballos" target="_blank" rel="noopener" class="linkedin" title="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <!-- GitHub -->
         <a href="https://github.com/lob117" target="_blank" rel="noopener" class="github" title="GitHub">
             <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
-        <!-- Email: reemplaza href con tu correo -->
         <a href="mailto:javier.lobato@email.com" class="email" title="Correo electrónico">
             <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
         </a>
     </div>
-    <!-- ▲ FIN links de contacto ▲ -->
 </nav>
 
 <!-- ════════ INICIO ════════ -->
@@ -644,81 +552,37 @@
         <div class="hero-label">Portafolio · Ingeniería Aplicada</div>
         <h1>Javier<br>Lobato<br>Ceballos</h1>
         <p class="hero-sub">Crear sistemas donde el hardware se encuentra con la nube — desde sensores ESP32 hasta análisis GIS con drones.</p>
-        <!-- skills row removed — tech grid shown before gallery -->
 
-        <!-- ══════════════════════════════════════════
-             PERFIL PROFESIONAL / CV
-        ═══════════════════════════════════════════ -->
+        <!-- ══ PERFIL PROFESIONAL ══ -->
         <div class="profile-section">
             <div class="section-title">// perfil profesional</div>
-
-            <div class="profile-grid">
-                <!-- Resumen -->
-                <div class="profile-summary-card">
-                    <div class="profile-summary-header">
-                        <span>RESUMEN EJECUTIVO</span>
-                        <div class="profile-badge">Disponible</div>
-                    </div>
-                    <div class="profile-summary-body">
-                        <p>
-                            <strong>Ingeniero Electrónico</strong> con enfoque en automatización de procesos y análisis de datos. Experiencia en soluciones basadas en <strong>Inteligencia Artificial</strong> (OCR, Geoparsing) e integración de flujos de trabajo complejos mediante <strong>n8n</strong> y contenedores <strong>Docker</strong>.
-                        </p>
-                        <br>
-                        <p>
-                            Competente en bases de datos <strong>SQL</strong> y lenguajes de programación como <strong>Python y C</strong>. Sólida formación en análisis geoespacial con satélites y drones — generación de índices de vegetación, modelos 3D y cartografía especializada.
-                        </p>
-                        <br>
-                        <p>
-                            Capaz de <strong>transformar datos técnicos en informes estratégicos</strong> y optimizar la eficiencia operativa mediante infraestructura tecnológica inteligente. Orientado al desarrollo backend y análisis de datos.
-                        </p>
-                    </div>
+            <div class="profile-summary-card">
+                <div class="profile-summary-header">
+                    <span>RESUMEN EJECUTIVO</span>
+                    <div class="profile-badge">Disponible</div>
                 </div>
-
-                <!-- Datos personales / contacto -->
-                <div class="profile-sidebar">
-                    <div class="info-card">
-                        <div class="info-card-label">🎓 Formación</div>
-                        <div class="info-card-value">Ing. Electrónica<br><span style="color:var(--muted);font-size:0.8rem;">Univ. del Magdalena · 2020–2025</span></div>
-                    </div>
-                    <!-- Contact icons card -->
-                    <div class="info-card">
-                        <div class="info-card-label">Contacto</div>
-                        <div style="display:flex;gap:0.7rem;margin-top:0.35rem;">
-                            <a href="https://www.linkedin.com/in/javier-lobato-ceballos" target="_blank" rel="noopener"
-                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
-                               onmouseover="this.style.borderColor='#0a66c2';this.style.color='#0a66c2';this.style.boxShadow='0 0 10px rgba(10,102,194,0.35)'"
-                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
-                               title="LinkedIn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            </a>
-                            <a href="https://github.com/lob117" target="_blank" rel="noopener"
-                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
-                               onmouseover="this.style.borderColor='#e8eaf0';this.style.color='#e8eaf0';this.style.boxShadow='0 0 10px rgba(232,234,240,0.2)'"
-                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
-                               title="GitHub">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                            </a>
-                            <!-- ▼ CAMBIA AQUÍ tu correo ▼ -->
-                            <a href="mailto:javier.lobato@email.com"
-                               style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;"
-                               onmouseover="this.style.borderColor='var(--auto)';this.style.color='var(--auto)';this.style.boxShadow='0 0 10px var(--auto-glow)'"
-                               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';this.style.boxShadow='none'"
-                               title="Correo">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                <div class="profile-summary-body">
+                    <p>
+                        <strong>Ingeniero Electrónico</strong> con enfoque en automatización de procesos y análisis de datos. Experiencia en soluciones basadas en <strong>Inteligencia Artificial</strong> (OCR, Geoparsing) e integración de flujos de trabajo complejos mediante <strong>n8n</strong> y contenedores <strong>Docker</strong>.
+                    </p>
+                    <br>
+                    <p>
+                        Competente en bases de datos <strong>SQL</strong> y lenguajes de programación como <strong>Python y C</strong>. Sólida formación en análisis geoespacial con satélites y drones — generación de índices de vegetación, modelos 3D y cartografía especializada.
+                    </p>
+                    <br>
+                    <p>
+                        Capaz de <strong>transformar datos técnicos en informes estratégicos</strong> y optimizar la eficiencia operativa mediante infraestructura tecnológica inteligente. Orientado al desarrollo backend y análisis de datos.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- ══════════════════════════════════════════
-             EXPERIENCIA LABORAL
-        ═══════════════════════════════════════════ -->
+        <!-- ══ EXPERIENCIA LABORAL ══ -->
         <div class="experience-section">
             <div class="section-title">// experiencia laboral</div>
             <div class="exp-timeline">
 
+                <!-- Experiencia 1: Automatización -->
                 <div class="exp-item exp-auto">
                     <div class="exp-header">
                         <div>
@@ -737,20 +601,37 @@
                     </div>
                 </div>
 
+                <!-- Experiencia 2: UAV Especialista -->
                 <div class="exp-item exp-uav">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-role">Consultor SIG &amp; Mantenimiento de Datos UAV</div>
+                            <div class="exp-role">Especialista en Datos UAV y Flujos Geoespaciales</div>
                             <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
                         </div>
-                        <div class="exp-date">Ene 2025 – Jun 2025 · Ago 2024 – Dic 2024</div>
+                        <div class="exp-date">Ene 2025 – Jun 2025</div>
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li>Creación de planes de vuelo para drones EbeeX y Phantom 4 con certificación APD RAC 100.</li>
-                            <li>Construcción de mosaicos RGB fotogramétricos y multiespectrales para índices de vegetación y suelo.</li>
-                            <li>Modelos 3D y clasificación de puntos para determinar ríos, rutas, casas y vegetación.</li>
-                            <li>Elaboración de informes ambientales técnicos y cartografía especializada para análisis de salud vegetal.</li>
+                            <li>Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4).</li>
+                            <li>Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB.</li>
+                            <li>Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experiencia 3: Practicante -->
+                <div class="exp-item exp-uav">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Practicante de Ingeniería (Optimización y Visión Artificial)</div>
+                            <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
+                        </div>
+                        <div class="exp-date">Ago 2024 – Dic 2024</div>
+                    </div>
+                    <div class="exp-body">
+                        <ul class="exp-list">
+                            <li>Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico.</li>
+                            <li>Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD.</li>
                         </ul>
                     </div>
                 </div>
@@ -758,9 +639,7 @@
             </div>
         </div>
 
-        <!-- ══════════════════════════════════════════
-             EDUCACIÓN
-        ═══════════════════════════════════════════ -->
+        <!-- ══ EDUCACIÓN ══ -->
         <div class="section-title">// formación académica</div>
         <div class="edu-row" style="margin-bottom: 3rem;">
             <div class="edu-card">
@@ -777,9 +656,7 @@
             </div>
         </div>
 
-        <!-- ══════════════════════════════════════════
-             TECNOLOGÍAS & HERRAMIENTAS (iconos)
-        ═══════════════════════════════════════════ -->
+        <!-- ══ TECNOLOGÍAS ══ -->
         <div class="tech-stack-section">
             <div class="section-title">// tecnologías &amp; herramientas</div>
 
@@ -823,12 +700,16 @@
                     <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
                     <span class="tech-icon-name">Docker</span>
                 </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/960px-New_Power_BI_Logo.svg.png" alt="PowerBI"></div>
+                    <span class="tech-icon-name">PowerBI</span>
+                </div>
             </div>
 
             <div class="tech-category-label">IoT &amp; Embedded</div>
             <div class="tech-icons-grid">
                 <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://www.espressif.com/sites/all/themes/espressif/images/logo-guidelines/primary-vertical-logo.png" alt="Arduino/ESP32"></div>
+                    <div class="tech-icon-box"><img src="https://www.espressif.com/sites/all/themes/espressif/images/logo-guidelines/primary-vertical-logo.png" alt="ESP32"></div>
                     <span class="tech-icon-name">ESP32</span>
                 </div>
                 <div class="tech-icon-item">
@@ -859,94 +740,63 @@
                 </div>
                 <div class="tech-icon-item">
                     <div class="tech-icon-box" style="padding:4px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316" alt="QGIS" style="width:42px;height:auto;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316" alt="n8n" style="width:42px;height:auto;">
                     </div>
                     <span class="tech-icon-name">QGIS</span>
                 </div>
                 <div class="tech-icon-item">
                     <div class="tech-icon-box" style="background:#ea4b71;padding:10px;">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA6lBMVEX5+/zl5+v6/P3k5urv8fTp6+/19/jj5eoAAAADBQfs7vHy9PbqS3H////l5uzl5+ngRmzAwsPe4OH//P/u5u7mr7//7fjVbIfsSnFdX2B9f4BERknpS3MDBwr4/PvoSm7/9//x09/mgJrdSG7O0NKEhYcWFxmxsrTYSW4uLzD14+ynqKlzdXjXU3RUVlfoorbmkKb/2ejMWnf/ytzwx9bvnLLXXHrdZ4bxztvijaPkhZvicoskJig7PT6TlZjU1dn/zN3UdY7vvc3nYoH3tsrznLTsiaNpamzntsnVZH/14+rNS2vMYXz/4/JAdYnZAAALD0lEQVR4nO2dDVfaShPHQ0IgAnnRBEgtkkBQYmyMtOFFtFpTbr3qzff/Os/MBkio+FTuxXYju6enjcvfPfNzN7Mzm2nkCssmlLhF44vCslvk0+5y/sQcxwgpNJoRMkL6jWaEjJB+oxnhT4RC2kr8shWXnWUx7eXLORRzpbRVxGUrpr3VtFfMozgzm7y4nGahuJxmvlRWlt18/sSFFcLCGjVXEpbqMp8/8asIC5sMTZuYEVJpNCNkhPQbzQh/IszEN2Ia9hTT3lImrsujmCu+9/ZS5J0Gt9koNo/iHcieGCGFRjNCRki/0YxwhwnLJX6NWsgOLeRPzHGZU6lqelhVTHsrme7ciDOncSuRdxr2rI9iyzkUC5nZ5EVlcUL1mkMuSsTpLbm7+SEjpNBoRsgI6TeaEe4cYTY+EMrzthIflNOWRzGXuV55Yrz8xpXHyzkU71T2lBujGSEjpN9oRsgI6TeaEbLKva2VzFEizszmi1Vw6Zrg8yfeheyJEVJoNCNkhPQbzQh3jjAT3+SmGG8jMavco7IYbyPxDmRPjJBCoxkhI6TfaEa4w4S5KcbbeuVe5mQrj+Idq9xLlzfVCRHLDxkh/UYzQkZIv9GMcOcIs/HBW9bXrYs8tjPyL8S/oXJPUIhYl2X4g8+iFXVLI79K/HuypyrHN8JhtzudxbZSUJXtjUxHfqgKJT1s+o6mOe7oolMQ3h2hINj1p1qt1mrVzJrTnBTU90ZYMOouAJoWANZqWrPzLgjbmUxcCUdA5jSHwaWvwcWFkX/Cdht8p7Fo3oVTs9ygofP2ZAyL1Z8ouSfkdDsO68vmt2rapa1Dtz5wTdMJjLwT6nZ9DJ5z0Zxay3QH+InO2VPT1LqvI+Rl8uxPFKkj1DsPGnEq89YCwqcGGaYtB2ZNu3oNIS/3jq8lSfp6c1v5T4QvPItLj302L5kbPGiwMWQJa+ZTDHcmRjZDqwZz+IqRq5+keTs5U6mq3Kt4dxpMoDNuLpsDXwYGOeaLH/Ba//XIxXNJ2iOA8Hef/22Ve/wvxYoRgDPRHmbfGst2BXvEKMSl6Q0duCdDnZ+L05EhBZDJ8GRkQTyT9vak+16vfwKIJ6tmyBDfvtbmV2ZPsEWrhhcPbBtWGse3iRjNEx/jQdzQ+YzYaMKqHH9T1PZ8mbT5CJhbo+DbIJri1ZW9EMMQqgrOpKKCV7nt3QLk3AzhHMDOeWA5QNS+jGZU0O8UxKLa66kJ5BbzQ2MS3H3+/PmuHutLsap0ZtN/Pn9uBgObXxrd8WEdzpRsjaQ91UyYV993LfjXD+XMyKoqnZycHlQPcUnufVLlxIyDayDsV2EMGSfxDAnFw6MT6abYP8W1e9rHGd8aoeLVwT2iz9AeInshNqI7Bz2JpY1gO18QRj54zoGykqdOms7c6Zg1d6a3VwmBrP9VwqkCr3Irv0hYQd/z6UaaSw85fnuEXuCTyBldpFu3E7ERjTSwGPeFljOFDb3dBrEROKb5T6wUlAxhZXLngha+3/Fn9oodQLi3t3eU+BSw/LSKe0NB/QBcH8BTJqu0NyeEW1KaSyXA3hqhMUNA2LphHi3LjXQi/ubjlgCdsDe0tEBPxEYX9sI7b3UORcWbjV3HcfzpQF61IyGEyft0fEquzopogbiPTvTTQWUfeqWPMj8nxMn7eHxPEK+r/JYIlc4Ip6lbj/7u4mp7iKFb9O4s4BsHUf0SMgfLnSBiyQhd2PAC8efTFEUxvEnY8Yyf7ZgTHoNPkYn//JCYUblJd4vzCs8tCa97RVmufMXLfXlLhLDwYHEOY8/Q7QBo4E7iZePLEyR7dwPPMBoRTHHr0gbnaUeYRvjfCuvOixRDeW4HIZS+omfkZVyap7eJuni2lzQAlLmUsC+CD5Nv8fJsa4S4n93F6B75Rhfupu8XFxfTMXRilqCUi3agQcbwA3rvID1qOZfeekL4o6wnvCFrV+7jjdZL4tDDo+UcfryVF4TS6QEZmUf/c/Mqwkx881IVnAfzpgWQqgt8W55BwGKhz8E1SsKvclHv4OKFDgs9TwuyeBxk7cjKz0/5EkKYDWhyjxDCdxfEY4LW3yf/nqgoFpHwvFwgI3+UcGlvqXLPBu/oRKVisQpffHEXMbVVc/4in1erne/oggCvBb2tL/YmlXVVsvSq5BIJj26rydWedAjBGneAiPf4eekQ/Wsl+S4kPCxtqXJPxzmMwDXzQlkJnBbSQIPOHzLuSUUldGsty9I0yyJz2CBjpPOmVJMF9Gxk0ojPIHMBDhQID3A2j3FBVqogrhyj4KACnYQQzYBFSAgrW6rc0+E+NLuw4fFCwevCAv0+nU4vriBOGcUQwfFFbwgbht+F3isfd44LdKtpjlP+fzkOzyWEpGNOCHfkPS5IGcVinwjAnSaEwAQjiwvCl0detNcQ1h1wmxC26EY8dCFyDgzD0AdPmMtCp96Ywc5oXXqiYXjhGNaqj+nuglAAF7q2YuKXhB+JOInB35iwQU6SulFYv4I12nroqKpQsqdwy2njehjiflhzw4IqqKIeg9Ox6vKCELbBThjiz2EzQoSR9sE6Ee84skrfkJDjoySm0Ujq7tdxXyvx8ahl4s2nYTqoDR/nP44fIJraMIaiqgUjvPDxHGMcYVT3ekK+l8RlB4XePV6do/gNCXW7voxLLTfwFBUJ9dC38Bi0ZsIannrKnPBvt2Y+NJI5fAx8xyKHpM401jch5A9JSHNyfURQ98W3JYT8J3rQyMGE9lD31AIStnl9cudYpHMUdBTYu1UkDH3TfIpxDiFgd5PTDPgpaE2Sdz0n5HFXXxJKCSGA38/PMIDv+qwyn0MpQyhtlZDX4zrJD4OJoSIKzGG7rTeiJD8MMYiBXhDzsQ9TOkPHq2DAblruyNcQEZfu2jlcJZQIIYRw++cJ4tFhr6K+OSFkRrptNyA0Jfl+IoaNgtftht0wCvNesqSbsJ7Hsc4LXhM90HQ2+DIbtWpmkpM8G5mvQuOSXuEA2sLxynJ1/+ysv1+pJKsDgjFQwqfEh5VBKWy5cg838Wfi5JArI+b1CKIebRzFgxlcOMNHuGv1GLOTsb525CQ8WGsGOVFKxckO/ucr9xp41mY54+Z3mLhmhxyD6TOI093GlorxNhJvv3JPMcIH9C8tC5+mDdG96GL5C57eTPDc6d+P/K/E/6Fy74U340GCpIR4JGzi80IrgM90EA/8lqlBUPAse1oz8kZm/Er8NrUYymOAzy0guDEvbSIWZ26r5XTWZMD5JCwUjM4kii4cPDokZ34ehHg133tX9TSKAQ4UnWqoyzoE7HAbXhrvihAycX0IC1XzL4NhE8+q/InyjlYpittcownpB+RYELhamHMV3hkhhDdx00Gfapqm5QfeFkemhZDTG8ORo1mW4zYjT3iPhJyue/Uf3e5F9KiQZ1Xvq3JP1vHJGp5lyxVFUFVB2NbIG4nfsnKPdD87xWPv3MtFtQlNYkZIpdGMkBHSbzQj3DnCF54fpsc+FL5Gj71zj71zb1VN4X9loio//PNiRkil0YyQEdJvNCPcvHIvbXkUs3fuUfkavY3EO5A9MUIKjWaEjJB+oxnhDhPm5jV6f7xyjzIxe+cejQkRyw8ZIf1GM0JGSL/RjHDnCLPxQV5+Ae5GYvbbcmlMiFh+yAjpN5oRMkL6jWaEO0f4wrO49NiHwmI8VrnHKvdW1RQmRCw/ZIT0G80IGSH9RjNCVrn33hqr3KMxIWL5ISOk32hGyAjpN5oRssq9rZXMUSJmlXs0JkQsP2SE9BvNCBkh/UYzQkZIv9GbEf4Pch4pAUe0Ch0AAAAASUVORK5CYII=" alt="n8n" style="width:36px;height:auto;filter:brightness(0) invert(1);">
+                        <img src="data:image/png;base64,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" alt="n8n" style="width:36px;height:auto;filter:brightness(0) invert(1);">
                     </div>
                     <span class="tech-icon-name">n8n</span>
+                </div>
+                <div class="tech-icon-item">
+                    <div class="tech-icon-box" style="background:#ea4b71;padding:10px;">
+                        <img src="https://ih1.redbubble.net/image.5828028850.1234/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="linux" style="width:36px;height:auto;filter:brightness(0) invert(1);">
+                    </div>
+                    <span class="tech-icon-name">Linux</span>
                 </div>
             </div>
         </div>
 
-        <!-- Galería de proyectos -->
+        <!-- ══ GALERÍA ══ -->
         <div class="section-title">// galería de proyectos</div>
-
         <div class="photo-grid">
             <div class="photo-item">
                 <a href="https://github.com/lob117/Telemetry-hub" target="_blank" rel="noopener">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/arquitectura_iot.png"
-                        alt="IOT flow to Cloud"
-                        style="width:100%;height:100%;object-fit:contain;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/arquitectura_iot.png" alt="IOT flow to Cloud" style="width:100%;height:100%;object-fit:contain;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Telemetria esp32 → AWS</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Telemetria esp32 → AWS</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('uav'); return false;">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png"
-                        alt="UAV Mapping"
-                        style="width:100%;height:100%;object-fit:cover;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png" alt="UAV Mapping" style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">UAV Mapping</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">UAV Mapping</div></div>
             </div>
             <div class="photo-item">
                 <a href="https://ide.corpocesar.gov.co/#/" target="_blank" rel="noopener">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/Captura%20de%20pantalla%202026-05-12%20110646.png"
-                        alt="Plataforma Geovisor"
-                        style="width:100%;height:100%;object-fit:cover;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/Captura%20de%20pantalla%202026-05-12%20110646.png" alt="Plataforma Geovisor" style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Plataforma Geovisor</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Plataforma Geovisor</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('auto'); return false;">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png"
-                        alt="N8N"
-                        style="width:100%;height:100%;object-fit:contain;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png" alt="N8N" style="width:100%;height:100%;object-fit:contain;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">N8N Workflow</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">N8N Workflow</div></div>
             </div>
             <div class="photo-item">
                 <a href="https://github.com/lob117/Shot_detection_ia_app" target="_blank" rel="noopener">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/eba2c402a8f34d95ad94b3bad75e0e96fb6e17e8/imagenes/Captura%20de%20pantalla%202025-06-25%20094603.png"
-                        alt="Work Flow tesis"
-                        style="width:100%;height:100%;object-fit:cover;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/eba2c402a8f34d95ad94b3bad75e0e96fb6e17e8/imagenes/Captura%20de%20pantalla%202025-06-25%20094603.png" alt="Work Flow tesis" style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Tesis Detección de Disparos</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Tesis Detección de Disparos</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('iot'); return false;">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
-                        alt="Grafana"
-                        style="width:100%;height:100%;object-fit:contain;display:block;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png" alt="Grafana" style="width:100%;height:100%;object-fit:contain;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;">
-                    <div class="photo-label">Dashboard Grafana</div>
-                </div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Dashboard Grafana</div></div>
             </div>
         </div>
     </div>
@@ -976,19 +826,12 @@
                 <span class="dashboard-url">grafana snapshot → renderizado local</span>
                 <a href="https://lob117.grafana.net/dashboard/snapshot/7jA6XulPyP7fc84I0uLPKMxv4aPt0Tcc"
                    target="_blank"
-                   style="margin-left:auto;font-family:'Space Mono',monospace;font-size:0.62rem;
-                          color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.35);
-                          padding:0.2rem 0.6rem;border-radius:3px;">
+                   style="margin-left:auto;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.35);padding:0.2rem 0.6rem;border-radius:3px;">
                     ↗ Abrir en Grafana
                 </a>
             </div>
-
             <div id="iot-charts-area" style="min-height:420px; overflow:hidden;">
-                <img
-                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png"
-                    alt="Dashboard IoT"
-                    style="width:100%; height:auto; display:block;"
-                >
+                <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png" alt="Dashboard IoT" style="width:100%; height:auto; display:block;">
             </div>
         </div>
 
@@ -1001,11 +844,8 @@
             <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
         </div>
         <div style="margin-top:1.75rem;">
-            <a href="https://github.com/lob117/Telemetry-hub" 
-               target="_blank" rel="noopener"
-               style="font-family:'Orbitron',sans-serif;font-size:0.62rem;letter-spacing:0.08em;
-                      color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.4);
-                      padding:0.65rem 1.4rem;border-radius:5px;display:inline-block;transition:box-shadow 0.2s;"
+            <a href="https://github.com/lob117/Telemetry-hub" target="_blank" rel="noopener"
+               style="font-family:'Orbitron',sans-serif;font-size:0.62rem;letter-spacing:0.08em;color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.4);padding:0.65rem 1.4rem;border-radius:5px;display:inline-block;transition:box-shadow 0.2s;"
                onmouseover="this.style.boxShadow='0 0 16px rgba(37,99,235,0.5)'"
                onmouseout="this.style.boxShadow='none'">
                 ↗ Ver código en GitHub
@@ -1033,10 +873,7 @@
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
-                    <video class="native-video" controls preload="metadata"
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%201.mp4">
-                        Tu navegador no soporta video HTML5.
-                    </video>
+                    <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%201.mp4">Tu navegador no soporta video HTML5.</video>
                     <p class="media-desc">Descripción: vuelo panorámico de caracterización de la zona.</p>
                 </div>
             </div>
@@ -1046,10 +883,7 @@
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
-                    <video class="native-video" controls preload="metadata"
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%207.mp4">
-                        Tu navegador no soporta video HTML5.
-                    </video>
+                    <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%207.mp4">Tu navegador no soporta video HTML5.</video>
                     <p class="media-desc">Descripción: Creación de modelo de casas mediante modelo de elevación.</p>
                 </div>
             </div>
@@ -1061,10 +895,7 @@
                 <span class="media-badge badge-video">Video</span>
             </div>
             <div class="media-body">
-                <video class="native-video" controls preload="metadata"
-                    src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%203.mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
+                <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%203.mp4">Tu navegador no soporta video HTML5.</video>
                 <p class="media-desc">Descripción: Nube de puntos densa para la construcción de un modelo hidráulico.</p>
             </div>
         </div>
@@ -1078,11 +909,7 @@
                     <span class="media-badge badge-map">Mapa</span>
                 </div>
                 <div class="media-body">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png"
-                        alt="Mapa DTM generado con dron"
-                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png" alt="Mapa DTM generado con dron" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
                     <p class="media-desc">Mapa generado para observar el curso del río.</p>
                 </div>
             </div>
@@ -1092,11 +919,7 @@
                     <span class="media-badge badge-model">3D</span>
                 </div>
                 <div class="media-body">
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png"
-                        alt="Modelo DEM 3D generado con fotogrametría"
-                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png" alt="Modelo DEM 3D generado con fotogrametría" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
                     <p class="media-desc">Modelo tridimensional generado con modelo de elevación.</p>
                 </div>
             </div>
@@ -1118,7 +941,6 @@
         <div class="auto-layout">
             <div>
                 <div class="section-title">// workflows n8n</div>
-
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #1</span>
@@ -1127,13 +949,8 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png"
-                        alt="Workflow #1"
-                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png" alt="Workflow #1" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
                 </div>
-
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #2</span>
@@ -1142,11 +959,7 @@
                             <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
                         </div>
                     </div>
-                    <img 
-                        src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/work_flow_resumen.png"
-                        alt="Workflow #2"
-                        style="width: 100%; height: auto; display: block; border-radius: 4px;"
-                    />
+                    <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/work_flow_resumen.png" alt="Workflow #2" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
                 </div>
             </div>
 
@@ -1177,8 +990,20 @@
     </div>
 </div>
 
+<!-- ════════ FOOTER ════════ -->
 <footer>
-    <p>Javier · <span>Ingeniería IoT · UAV &amp; GIS · Automatización</span> · </p>
+    <div class="footer-contact">
+        <a href="https://www.linkedin.com/in/javier-lobato-ceballos" target="_blank" rel="noopener" class="linkedin" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/lob117" target="_blank" rel="noopener" class="github" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="mailto:javier.lobato@email.com" class="email" title="Correo electrónico">
+            <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
+        </a>
+    </div>
+    <p>Javier · <span>Ingeniería IoT · UAV &amp; GIS · Automatización</span></p>
     <p style="margin-top:0.4rem;">Santa Marta, Colombia</p>
 </footer>
 
