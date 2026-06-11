@@ -58,10 +58,59 @@
             padding: 0 2rem; height: 64px;
         }
 
+        /* Logo + lang toggle group */
+        .nav-left {
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+
         .nav-logo {
             font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
             background: linear-gradient(90deg, var(--iot), var(--uav), var(--auto));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* Language toggle button */
+        .lang-toggle {
+            display: flex; align-items: center; gap: 0.35rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 0.28rem 0.6rem;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .lang-toggle:hover {
+            border-color: var(--iot);
+            box-shadow: 0 0 10px var(--iot-glow);
+        }
+        .lang-toggle .lang-flag {
+            font-size: 0.9rem;
+            line-height: 1;
+        }
+        .lang-toggle .lang-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+        .lang-toggle:hover .lang-label {
+            color: var(--iot);
+        }
+        .lang-toggle .lang-divider {
+            width: 1px; height: 10px;
+            background: var(--border);
+            margin: 0 0.1rem;
+        }
+        .lang-toggle .lang-active {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--iot);
         }
 
         .nav-links { display: flex; gap: 0.15rem; list-style: none; }
@@ -196,7 +245,6 @@
             position: relative;
         }
 
-        /* Summary card (full width now) */
         .profile-summary-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -247,9 +295,7 @@
             font-weight: 700;
         }
 
-        /* Experience timeline */
         .experience-section { margin-bottom: 3rem; }
-
         .exp-timeline { display: flex; flex-direction: column; gap: 1.25rem; }
 
         .exp-item {
@@ -269,7 +315,6 @@
         .exp-item.exp-iot::before   { background: var(--border); }
         .exp-item.exp-uav::before   { background: var(--border); }
         .exp-item.exp-auto::before  { background: var(--border); }
-
         .exp-item:hover { border-color: var(--muted); }
 
         .exp-header {
@@ -324,10 +369,7 @@
             color: var(--muted);
             font-size: 0.6rem;
         }
-        .exp-item.exp-uav .exp-list li::before  { color: var(--muted); }
-        .exp-item.exp-auto .exp-list li::before { color: var(--muted); }
 
-        /* Education row */
         .edu-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -360,7 +402,6 @@
             color: var(--iot);
         }
 
-        /* foto grid */
         .photo-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 0.75rem; margin-bottom: 2rem; }
 
         .photo-item {
@@ -388,7 +429,6 @@
         .photo-item:hover .photo-overlay { opacity: 1; }
         .photo-label { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; letter-spacing: 0.08em; color: white; }
 
-        /* ─── IoT stats ─── */
         .stats-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1rem; margin-bottom: 2rem; }
 
         .stat-card {
@@ -402,7 +442,6 @@
         .stat-value { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--iot); line-height: 1; }
         .stat-unit  { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
 
-        /* dashboard frame */
         .dashboard-container {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
             overflow: hidden; margin-bottom: 2rem; transition: box-shadow 0.3s;
@@ -417,7 +456,6 @@
         .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
         .dashboard-url { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); margin-left: 0.75rem; }
 
-        /* tech cards */
         .tech-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; margin-top: 1.5rem; }
         .tech-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
@@ -428,7 +466,6 @@
         .tech-name { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--iot); }
         .tech-desc { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); line-height: 1.55; }
 
-        /* ─── UAV ─── */
         .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
         .media-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
@@ -455,7 +492,6 @@
 
         .media-desc { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
 
-        /* ─── AUTO ─── */
         .auto-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; }
         .workflow-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
@@ -485,7 +521,6 @@
         .repo-lang { font-family: 'Space Mono', monospace; font-size: 0.63rem; color: var(--muted); display: flex; align-items: center; gap: 0.35rem; }
         .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-        /* ─── FOOTER ─── */
         footer {
             background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem;
             text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--muted);
@@ -526,12 +561,18 @@
 <body>
 
 <nav>
-    <div class="nav-logo">JAVIER.DEV</div>
+    <div class="nav-left">
+        <div class="nav-logo">JAVIER.DEV</div>
+        <button class="lang-toggle" onclick="toggleLang()" id="lang-btn" title="Switch language">
+            <span class="lang-flag" id="lang-flag">🇬🇧</span>
+            <span class="lang-active" id="lang-current">EN</span>
+        </button>
+    </div>
     <ul class="nav-links">
-        <li><button onclick="showView('inicio')" id="nav-inicio" class="active">Inicio</button></li>
-        <li><button onclick="showView('iot')"    id="nav-iot">IoT Dashboard</button></li>
-        <li><button onclick="showView('uav')"    id="nav-uav">UAV &amp; GIS</button></li>
-        <li><button onclick="showView('auto')"   id="nav-auto">Automatización</button></li>
+        <li><button onclick="showView('inicio')" id="nav-inicio" class="active" data-es="Inicio" data-en="Home">Inicio</button></li>
+        <li><button onclick="showView('iot')"    id="nav-iot"    data-es="IoT Dashboard" data-en="IoT Dashboard">IoT Dashboard</button></li>
+        <li><button onclick="showView('uav')"    id="nav-uav"    data-es="UAV &amp; GIS" data-en="UAV &amp; GIS">UAV &amp; GIS</button></li>
+        <li><button onclick="showView('auto')"   id="nav-auto"   data-es="Automatización" data-en="Automation">Automatización</button></li>
     </ul>
     <div class="nav-contact">
         <a href="https://www.linkedin.com/in/javier-jose-lobato-ceballos/" target="_blank" rel="noopener" class="linkedin" title="LinkedIn">
@@ -540,7 +581,7 @@
         <a href="https://github.com/lob117" target="_blank" rel="noopener" class="github" title="GitHub">
             <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
-        <a href="javierlobatoceballos@gmail.com" class="email" title="Correo electrónico">
+        <a href="mailto:javierlobatoceballos@gmail.com" class="email" title="Email">
             <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
         </a>
     </div>
@@ -549,39 +590,35 @@
 <!-- ════════ INICIO ════════ -->
 <div class="view active" id="view-inicio">
     <div class="hero">
-        <div class="hero-label">Portafolio · Ingeniería Aplicada</div>
+        <div class="hero-label" data-es="Portafolio · Ingeniería Aplicada" data-en="Portfolio · Applied Engineering">Portafolio · Ingeniería Aplicada</div>
         <h1>Javier<br>Lobato<br>Ceballos</h1>
-        <p class="hero-sub">Ingeniero Electrónico apasionado por la automatización, adquisición de datos y desarrollo de soluciones tecnológicas </p>
+        <p class="hero-sub" data-es="Ingeniero Electrónico apasionado por la automatización, adquisición de datos y desarrollo de soluciones tecnológicas" data-en="Electronics Engineer passionate about automation, data acquisition and the development of technological solutions">Ingeniero Electrónico apasionado por la automatización, adquisición de datos y desarrollo de soluciones tecnológicas</p>
 
-        <!-- ══ PERFIL PROFESIONAL ══ -->
         <div class="profile-section">
-            <div class="section-title">// perfil profesional</div>
+            <div class="section-title" data-es="// perfil profesional" data-en="// professional profile">// perfil profesional</div>
             <div class="profile-summary-card">
                 <div class="profile-summary-header">
-                    <span>RESUMEN EJECUTIVO</span>
-                    <div class="profile-badge">Disponible</div>
+                    <span data-es="RESUMEN EJECUTIVO" data-en="EXECUTIVE SUMMARY">RESUMEN EJECUTIVO</span>
+                    <div class="profile-badge" data-es="Disponible" data-en="Available">Disponible</div>
                 </div>
                 <div class="profile-summary-body">
-                
-                    <p>
+                    <p data-es="<strong>Ingeniero Electrónico</strong> orientado al análisis de datos, automatización de procesos y desarrollo backend, con experiencia en la recolección y procesamiento de datos ambientales mediante microcontroladores, sensores remotos y plataformas UAV. Especializado en almacenamiento, administración y análisis de información utilizando bases de datos <strong>SQL</strong> y tecnologías modernas de automatización."
+                       data-en="<strong>Electronics Engineer</strong> focused on data analysis, process automation and backend development, with experience collecting and processing environmental data using microcontrollers, remote sensors and UAV platforms. Specialized in storing, managing and analyzing information using <strong>SQL</strong> databases and modern automation technologies.">
                         <strong>Ingeniero Electrónico</strong> orientado al análisis de datos, automatización de procesos y desarrollo backend, con experiencia en la recolección y procesamiento de datos ambientales mediante microcontroladores, sensores remotos y plataformas UAV. Especializado en almacenamiento, administración y análisis de información utilizando bases de datos <strong>SQL</strong> y tecnologías modernas de automatización.
                     </p>
-                
                     <br>
-                
-                    <p>
+                    <p data-es="Experiencia en el desarrollo de soluciones basadas en <strong>Inteligencia Artificial</strong> mediante OCR, Geoparsing e integración de flujos de trabajo utilizando herramientas como <strong>n8n</strong> y contenedores <strong>Docker</strong>. Competente en lenguajes de programación como <strong>Python, C y C++</strong>, aplicados al procesamiento de datos, automatización y optimización operativa."
+                       data-en="Experience developing solutions based on <strong>Artificial Intelligence</strong> through OCR, Geoparsing and workflow integration using tools such as <strong>n8n</strong> and <strong>Docker</strong> containers. Proficient in programming languages including <strong>Python, C and C++</strong>, applied to data processing, automation and operational optimization.">
                         Experiencia en el desarrollo de soluciones basadas en <strong>Inteligencia Artificial</strong> mediante OCR, Geoparsing e integración de flujos de trabajo utilizando herramientas como <strong>n8n</strong> y contenedores <strong>Docker</strong>. Competente en lenguajes de programación como <strong>Python, C y C++</strong>, aplicados al procesamiento de datos, automatización y optimización operativa.
                     </p>
-                
                     <br>
-                
-                    <p>
+                    <p data-es="Mi perfil se complementa con conocimientos en tecnologías cloud e infraestructura como <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> y <strong>Git</strong>, enfocados en la construcción de soluciones escalables y eficientes."
+                       data-en="My profile is complemented by knowledge of cloud and infrastructure technologies such as <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> and <strong>Git</strong>, focused on building scalable and efficient solutions.">
                         Mi perfil se complementa con conocimientos en tecnologías cloud e infraestructura como <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> y <strong>Git</strong>, enfocados en la construcción de soluciones escalables y eficientes.
                     </p>
-                
                     <br>
-                
-                    <p>
+                    <p data-es="Cuento con nivel de inglés <strong>B2</strong> y una formación orientada al aprendizaje continuo, la toma de decisiones estratégicas, captura de métricas operativas y mejora de procesos bajo metodologías ágiles."
+                       data-en="I have a <strong>B2</strong> English level and a background oriented toward continuous learning, strategic decision-making, capturing operational metrics and process improvement under agile methodologies.">
                         Cuento con nivel de inglés <strong>B2</strong> y una formación orientada al aprendizaje continuo, la toma de decisiones estratégicas, captura de métricas operativas y mejora de procesos bajo metodologías ágiles.
                     </p>
                 </div>
@@ -590,59 +627,56 @@
 
         <!-- ══ EXPERIENCIA LABORAL ══ -->
         <div class="experience-section">
-            <div class="section-title">// experiencia laboral</div>
+            <div class="section-title" data-es="// experiencia laboral" data-en="// work experience">// experiencia laboral</div>
             <div class="exp-timeline">
 
-                <!-- Experiencia 1: Automatización -->
                 <div class="exp-item exp-auto">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-role">Ingeniero Electrónico &amp; Automatización de Procesos</div>
+                            <div class="exp-role" data-es="Ingeniero Electrónico &amp; Automatización de Procesos" data-en="Electronics Engineer &amp; Process Automation">Ingeniero Electrónico &amp; Automatización de Procesos</div>
                             <div class="exp-company">Corporación NaturalSIG · CORPOCESAR / COOAGROPUERTO</div>
                         </div>
-                        <div class="exp-date">Ago 2025 – Dic 2025</div>
+                        <div class="exp-date" data-es="Ago 2025 – Dic 2025" data-en="Aug 2025 – Dec 2025">Ago 2025 – Dic 2025</div>
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li>Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO.</li>
-                            <li>Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial.</li>
-                            <li>Extracción y procesamiento de información geoespacial y documental.</li>
-                            <li>Creación de flujos de trabajo automatizados con N8N y contenedores Docker.</li>
+                            <li data-es="Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO." data-en="Development of a geospatial platform for CORPOCESAR and COOAGROPUERTO.">Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO.</li>
+                            <li data-es="Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial." data-en="Automation of OCR, geoparsing and artificial intelligence application processes.">Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial.</li>
+                            <li data-es="Extracción y procesamiento de información geoespacial y documental." data-en="Extraction and processing of geospatial and documentary information.">Extracción y procesamiento de información geoespacial y documental.</li>
+                            <li data-es="Creación de flujos de trabajo automatizados con N8N y contenedores Docker." data-en="Creation of automated workflows with N8N and Docker containers.">Creación de flujos de trabajo automatizados con N8N y contenedores Docker.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Experiencia 2: UAV Especialista -->
                 <div class="exp-item exp-uav">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-role">Especialista en Datos UAV y Flujos Geoespaciales</div>
+                            <div class="exp-role" data-es="Especialista en Datos UAV y Flujos Geoespaciales" data-en="UAV Data &amp; Geospatial Workflows Specialist">Especialista en Datos UAV y Flujos Geoespaciales</div>
                             <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
                         </div>
-                        <div class="exp-date">Ene 2025 – Jun 2025</div>
+                        <div class="exp-date" data-es="Ene 2025 – Jun 2025" data-en="Jan 2025 – Jun 2025">Ene 2025 – Jun 2025</div>
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li>Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4).</li>
-                            <li>Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB.</li>
-                            <li>Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos.</li>
+                            <li data-es="Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4)." data-en="Technical management and preventive maintenance of UAV platforms (EbeeX and Phantom 4).">Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4).</li>
+                            <li data-es="Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB." data-en="Automated the capture and processing of large-scale data from multispectral sensors, optimizing the delivery pipeline for 3D models and RGB mosaics.">Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB.</li>
+                            <li data-es="Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos." data-en="Ensured the integrity of UAV equipment performance metrics, managing preventive maintenance based on operational data analysis.">Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Experiencia 3: Practicante -->
                 <div class="exp-item exp-uav">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-role">Practicante de Ingeniería (Optimización y Visión Artificial)</div>
+                            <div class="exp-role" data-es="Practicante de Ingeniería (Optimización y Visión Artificial)" data-en="Engineering Intern (Optimization &amp; Computer Vision)">Practicante de Ingeniería (Optimización y Visión Artificial)</div>
                             <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
                         </div>
-                        <div class="exp-date">Ago 2024 – Dic 2024</div>
+                        <div class="exp-date" data-es="Ago 2024 – Dic 2024" data-en="Aug 2024 – Dec 2024">Ago 2024 – Dic 2024</div>
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li>Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico.</li>
-                            <li>Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD.</li>
+                            <li data-es="Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico." data-en="Developed computer vision algorithms for automated vehicle counting, transforming video footage into traffic analysis dashboards.">Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico.</li>
+                            <li data-es="Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD." data-en="Designed electrical line structures and buildings in AutoCAD.">Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD.</li>
                         </ul>
                     </div>
                 </div>
@@ -651,133 +685,69 @@
         </div>
 
         <!-- ══ EDUCACIÓN ══ -->
-        <div class="section-title">// formación académica</div>
+        <div class="section-title" data-es="// formación académica" data-en="// academic background">// formación académica</div>
         <div class="edu-row" style="margin-bottom: 3rem;">
             <div class="edu-card">
                 <div class="edu-icon">🎓</div>
-                <div class="edu-title">Ingeniería Electrónica</div>
+                <div class="edu-title" data-es="Ingeniería Electrónica" data-en="Electronics Engineering">Ingeniería Electrónica</div>
                 <div class="edu-institution">Universidad del Magdalena</div>
                 <div class="edu-date">2020 – 2025</div>
             </div>
             <div class="edu-card">
                 <div class="edu-icon">🚁</div>
-                <div class="edu-title">Piloto de Dron — APD RAC 100</div>
-                <div class="edu-institution">Curso de piloto con certificación oficial</div>
+                <div class="edu-title" data-es="Piloto de Dron — APD RAC 100" data-en="Drone Pilot — APD RAC 100">Piloto de Dron — APD RAC 100</div>
+                <div class="edu-institution" data-es="Curso de piloto con certificación oficial" data-en="Pilot course with official certification">Curso de piloto con certificación oficial</div>
                 <div class="edu-date">2025</div>
             </div>
         </div>
 
         <!-- ══ TECNOLOGÍAS ══ -->
         <div class="tech-stack-section">
-            <div class="section-title">// tecnologías &amp; herramientas</div>
+            <div class="section-title" data-es="// tecnologías &amp; herramientas" data-en="// technologies &amp; tools">// tecnologías &amp; herramientas</div>
 
-            <div class="tech-category-label">Lenguajes &amp; Backend</div>
+            <div class="tech-category-label" data-es="Lenguajes &amp; Backend" data-en="Languages &amp; Backend">Lenguajes &amp; Backend</div>
             <div class="tech-icons-grid">
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-                    <span class="tech-icon-name">Python</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1920px-C_Programming_Language.svg.png" alt="C"></div>
-                    <span class="tech-icon-name">C</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
-                    <span class="tech-icon-name">C++</span>
-                </div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div><span class="tech-icon-name">Python</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1920px-C_Programming_Language.svg.png" alt="C"></div><span class="tech-icon-name">C</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div><span class="tech-icon-name">C++</span></div>
             </div>
 
-            <div class="tech-category-label">Cloud &amp; Datos</div>
+            <div class="tech-category-label" data-es="Cloud &amp; Datos" data-en="Cloud &amp; Data">Cloud &amp; Datos</div>
             <div class="tech-icons-grid">
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div>
-                    <span class="tech-icon-name">AWS</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
-                    <span class="tech-icon-name">PostgreSQL</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
-                    <span class="tech-icon-name">MySQL</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box" style="background:#f46800;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg" alt="Grafana">
-                    </div>
-                    <span class="tech-icon-name">Grafana</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
-                    <span class="tech-icon-name">Docker</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/960px-New_Power_BI_Logo.svg.png" alt="PowerBI"></div>
-                    <span class="tech-icon-name">PowerBI</span>
-                </div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div><span class="tech-icon-name">AWS</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div><span class="tech-icon-name">PostgreSQL</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div><span class="tech-icon-name">MySQL</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box" style="background:#f46800;"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg" alt="Grafana"></div><span class="tech-icon-name">Grafana</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div><span class="tech-icon-name">Docker</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/960px-New_Power_BI_Logo.svg.png" alt="PowerBI"></div><span class="tech-icon-name">PowerBI</span></div>
             </div>
 
-            <div class="tech-category-label">IoT &amp; Embedded</div>
+            <div class="tech-category-label" data-es="IoT &amp; Embedded" data-en="IoT &amp; Embedded">IoT &amp; Embedded</div>
             <div class="tech-icons-grid">
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://www.espressif.com/sites/all/themes/espressif/images/logo-guidelines/primary-vertical-logo.png" alt="ESP32"></div>
-                    <span class="tech-icon-name">ESP32</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi"></div>
-                    <span class="tech-icon-name">Raspberry Pi</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box" style="padding:6px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Mqtt-hor.svg/1280px-Mqtt-hor.svg.png?_=20210308002911" alt="MQTT" style="width:42px;height:auto;">
-                    </div>
-                    <span class="tech-icon-name">MQTT</span>
-                </div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://www.espressif.com/sites/all/themes/espressif/images/logo-guidelines/primary-vertical-logo.png" alt="ESP32"></div><span class="tech-icon-name">ESP32</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi"></div><span class="tech-icon-name">Raspberry Pi</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box" style="padding:6px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Mqtt-hor.svg/1280px-Mqtt-hor.svg.png?_=20210308002911" alt="MQTT" style="width:42px;height:auto;"></div><span class="tech-icon-name">MQTT</span></div>
             </div>
 
-            <div class="tech-category-label">Herramientas</div>
+            <div class="tech-category-label" data-es="Herramientas" data-en="Tools">Herramientas</div>
             <div class="tech-icons-grid">
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
-                    <span class="tech-icon-name">Git</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1);"></div>
-                    <span class="tech-icon-name">GitHub</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></div>
-                    <span class="tech-icon-name">VS Code</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box" style="padding:4px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/QGIS_logo_minimal.svg/960px-QGIS_logo_minimal.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Qgis" style="width:42px;height:auto;">
-                    </div>
-                    <span class="tech-icon-name">QGIS</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box" style="background:#ea4b71;padding:10px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316" alt="n8n" style="width:36px;height:auto;filter:brightness(0) invert(1);">
-                    </div>
-                    <span class="tech-icon-name">n8n</span>
-                </div>
-                <div class="tech-icon-item">
-                    <div class="tech-icon-box" style="background:#000000;padding:10px;">
-                        <img src="https://images.vexels.com/media/users/3/140692/isolated/lists/72d1f12edf758d24f5b6db73bac4f297-linux-logo.png" alt="linux" style="width:36px;height:auto;filter:brightness(0) invert(1);">
-                    </div>
-                    <span class="tech-icon-name">Linux</span>
-                </div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div><span class="tech-icon-name">Git</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1);"></div><span class="tech-icon-name">GitHub</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></div><span class="tech-icon-name">VS Code</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box" style="padding:4px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/QGIS_logo_minimal.svg/960px-QGIS_logo_minimal.svg.png" alt="QGIS" style="width:42px;height:auto;"></div><span class="tech-icon-name">QGIS</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box" style="background:#ea4b71;padding:10px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316" alt="n8n" style="width:36px;height:auto;filter:brightness(0) invert(1);"></div><span class="tech-icon-name">n8n</span></div>
+                <div class="tech-icon-item"><div class="tech-icon-box" style="background:#000000;padding:10px;"><img src="https://images.vexels.com/media/users/3/140692/isolated/lists/72d1f12edf758d24f5b6db73bac4f297-linux-logo.png" alt="Linux" style="width:36px;height:auto;filter:brightness(0) invert(1);"></div><span class="tech-icon-name">Linux</span></div>
             </div>
         </div>
 
         <!-- ══ GALERÍA ══ -->
-        <div class="section-title">// galería de proyectos</div>
+        <div class="section-title" data-es="// galería de proyectos" data-en="// project gallery">// galería de proyectos</div>
         <div class="photo-grid">
             <div class="photo-item">
                 <a href="https://github.com/lob117/Telemetry-hub" target="_blank" rel="noopener">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/arquitectura_iot.png" alt="IOT flow to Cloud" style="width:100%;height:100%;object-fit:contain;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Telemetria esp32 → AWS</div></div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label" data-es="Telemetria esp32 → AWS" data-en="Telemetry esp32 → AWS">Telemetria esp32 → AWS</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('uav'); return false;">
@@ -789,7 +759,7 @@
                 <a href="https://ide.corpocesar.gov.co/#/" target="_blank" rel="noopener">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/Captura%20de%20pantalla%202026-05-12%20110646.png" alt="Plataforma Geovisor" style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Plataforma Geovisor</div></div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label" data-es="Plataforma Geovisor" data-en="Geovisor Platform">Plataforma Geovisor</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('auto'); return false;">
@@ -801,13 +771,13 @@
                 <a href="https://github.com/lob117/Shot_detection_ia_app" target="_blank" rel="noopener">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/eba2c402a8f34d95ad94b3bad75e0e96fb6e17e8/imagenes/Captura%20de%20pantalla%202025-06-25%20094603.png" alt="Work Flow tesis" style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Tesis Detección de Disparos</div></div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label" data-es="Tesis Detección de Disparos" data-en="Gunshot Detection Thesis">Tesis Detección de Disparos</div></div>
             </div>
             <div class="photo-item">
                 <a href="#" onclick="showView('iot'); return false;">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/dash_board_iot.png" alt="Grafana" style="width:100%;height:100%;object-fit:contain;display:block;" />
                 </a>
-                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label">Dashboard Grafana</div></div>
+                <div class="photo-overlay" style="pointer-events:none;"><div class="photo-label" data-es="Dashboard Grafana" data-en="Grafana Dashboard">Dashboard Grafana</div></div>
             </div>
         </div>
     </div>
@@ -817,27 +787,28 @@
 <div class="view" id="view-iot">
     <div class="page-header">
         <div class="page-header-inner">
-            <div class="page-tag">// 01 · IoT &amp; Cloud</div>
-            <h2>Telemetría en Tiempo Real</h2>
+            <div class="page-tag" data-es="// 01 · IoT &amp; Cloud" data-en="// 01 · IoT &amp; Cloud">// 01 · IoT &amp; Cloud</div>
+            <h2 data-es="Telemetría en Tiempo Real" data-en="Real-Time Telemetry">Telemetría en Tiempo Real</h2>
             <p>ESP32 → MQTT → AWS Lambda → Neon Postgres → Grafana</p>
         </div>
     </div>
 
     <div class="page-content">
         <div class="stats-row">
-            <div class="stat-card"><div class="stat-label">Temperatura</div><div class="stat-value" id="stat-temp">--</div><div class="stat-unit">°C</div></div>
-            <div class="stat-card"><div class="stat-label">Humedad</div><div class="stat-value" id="stat-hum">--</div><div class="stat-unit">%</div></div>
-            <div class="stat-card"><div class="stat-label">Sensación T.</div><div class="stat-value" id="stat-sens">--</div><div class="stat-unit">°C</div></div>
-            <div class="stat-card"><div class="stat-label">Nivel Agua</div><div class="stat-value" id="stat-niv">--</div><div class="stat-unit">cm</div></div>
+            <div class="stat-card"><div class="stat-label" data-es="Temperatura" data-en="Temperature">Temperatura</div><div class="stat-value" id="stat-temp">--</div><div class="stat-unit">°C</div></div>
+            <div class="stat-card"><div class="stat-label" data-es="Humedad" data-en="Humidity">Humedad</div><div class="stat-value" id="stat-hum">--</div><div class="stat-unit">%</div></div>
+            <div class="stat-card"><div class="stat-label" data-es="Sensación T." data-en="Feels Like">Sensación T.</div><div class="stat-value" id="stat-sens">--</div><div class="stat-unit">°C</div></div>
+            <div class="stat-card"><div class="stat-label" data-es="Nivel Agua" data-en="Water Level">Nivel Agua</div><div class="stat-value" id="stat-niv">--</div><div class="stat-unit">cm</div></div>
         </div>
 
         <div class="dashboard-container">
             <div class="dashboard-topbar">
                 <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-                <span class="dashboard-url">grafana snapshot → renderizado local</span>
+                <span class="dashboard-url" data-es="grafana snapshot → renderizado local" data-en="grafana snapshot → local render">grafana snapshot → renderizado local</span>
                 <a href="https://lob117.grafana.net/dashboard/snapshot/7jA6XulPyP7fc84I0uLPKMxv4aPt0Tcc"
                    target="_blank"
-                   style="margin-left:auto;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.35);padding:0.2rem 0.6rem;border-radius:3px;">
+                   style="margin-left:auto;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.35);padding:0.2rem 0.6rem;border-radius:3px;"
+                   data-es="↗ Abrir en Grafana" data-en="↗ Open in Grafana">
                     ↗ Abrir en Grafana
                 </a>
             </div>
@@ -847,18 +818,19 @@
         </div>
 
         <hr class="section-divider">
-        <div class="section-title">// stack tecnológico</div>
+        <div class="section-title" data-es="// stack tecnológico" data-en="// technology stack">// stack tecnológico</div>
         <div class="tech-cards">
-            <div class="tech-card"><div class="tech-icon">🔌</div><div><div class="tech-name">ESP32</div><div class="tech-desc">Captura temperatura y coordenadas GPS. Envío por MQTT cada 30 s.</div></div></div>
-            <div class="tech-card"><div class="tech-icon">☁️</div><div><div class="tech-name">AWS Lambda</div><div class="tech-desc">Procesa y valida cada payload. Enruta datos a la base de datos.</div></div></div>
-            <div class="tech-card"><div class="tech-icon">🐘</div><div><div class="tech-name">Neon Postgres</div><div class="tech-desc">Almacenamiento serverless de series de tiempo indexadas por timestamp.</div></div></div>
-            <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
+            <div class="tech-card"><div class="tech-icon">🔌</div><div><div class="tech-name">ESP32</div><div class="tech-desc" data-es="Captura temperatura y coordenadas GPS. Envío por MQTT cada 30 s." data-en="Captures temperature and GPS coordinates. Sends via MQTT every 30 s.">Captura temperatura y coordenadas GPS. Envío por MQTT cada 30 s.</div></div></div>
+            <div class="tech-card"><div class="tech-icon">☁️</div><div><div class="tech-name">AWS Lambda</div><div class="tech-desc" data-es="Procesa y valida cada payload. Enruta datos a la base de datos." data-en="Processes and validates each payload. Routes data to the database.">Procesa y valida cada payload. Enruta datos a la base de datos.</div></div></div>
+            <div class="tech-card"><div class="tech-icon">🐘</div><div><div class="tech-name">Neon Postgres</div><div class="tech-desc" data-es="Almacenamiento serverless de series de tiempo indexadas por timestamp." data-en="Serverless storage for timestamp-indexed time series.">Almacenamiento serverless de series de tiempo indexadas por timestamp.</div></div></div>
+            <div class="tech-card"><div class="tech-icon">📈</div><div><div class="tech-name">Grafana</div><div class="tech-desc" data-es="Visualización en tiempo real con alertas y dashboards públicos." data-en="Real-time visualization with alerts and public dashboards.">Visualización en tiempo real con alertas y dashboards públicos.</div></div></div>
         </div>
         <div style="margin-top:1.75rem;">
             <a href="https://github.com/lob117/Telemetry-hub" target="_blank" rel="noopener"
                style="font-family:'Orbitron',sans-serif;font-size:0.62rem;letter-spacing:0.08em;color:var(--iot);text-decoration:none;border:1px solid rgba(37,99,235,0.4);padding:0.65rem 1.4rem;border-radius:5px;display:inline-block;transition:box-shadow 0.2s;"
                onmouseover="this.style.boxShadow='0 0 16px rgba(37,99,235,0.5)'"
-               onmouseout="this.style.boxShadow='none'">
+               onmouseout="this.style.boxShadow='none'"
+               data-es="↗ Ver código en GitHub" data-en="↗ View code on GitHub">
                 ↗ Ver código en GitHub
             </a>
         </div>
@@ -869,69 +841,69 @@
 <div class="view" id="view-uav">
     <div class="page-header">
         <div class="page-header-inner">
-            <div class="page-tag">// 02 · UAV &amp; GIS</div>
-            <h2>Drones &amp; Análisis Espacial</h2>
-            <p>Procesamiento de imágenes aéreas · Modelos 3D · Cartografía topográfica</p>
+            <div class="page-tag" data-es="// 02 · UAV &amp; GIS" data-en="// 02 · UAV &amp; GIS">// 02 · UAV &amp; GIS</div>
+            <h2 data-es="Drones &amp; Análisis Espacial" data-en="Drones &amp; Spatial Analysis">Drones &amp; Análisis Espacial</h2>
+            <p data-es="Procesamiento de imágenes aéreas · Modelos 3D · Cartografía topográfica" data-en="Aerial image processing · 3D models · Topographic cartography">Procesamiento de imágenes aéreas · Modelos 3D · Cartografía topográfica</p>
         </div>
     </div>
 
     <div class="page-content">
-        <div class="section-title">// videos de vuelo</div>
+        <div class="section-title" data-es="// videos de vuelo" data-en="// flight videos">// videos de vuelo</div>
         <div class="media-grid">
             <div class="media-card">
                 <div class="media-card-header">
-                    <span class="media-card-title">Vuelo de Mapeo #1</span>
+                    <span class="media-card-title" data-es="Vuelo de Mapeo #1" data-en="Mapping Flight #1">Vuelo de Mapeo #1</span>
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
                     <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%201.mp4">Tu navegador no soporta video HTML5.</video>
-                    <p class="media-desc">Descripción: vuelo panorámico de caracterización de la zona.</p>
+                    <p class="media-desc" data-es="Descripción: vuelo panorámico de caracterización de la zona." data-en="Description: panoramic characterization flight of the area.">Descripción: vuelo panorámico de caracterización de la zona.</p>
                 </div>
             </div>
             <div class="media-card">
                 <div class="media-card-header">
-                    <span class="media-card-title">Vuelo de Mapeo #2</span>
+                    <span class="media-card-title" data-es="Vuelo de Mapeo #2" data-en="Mapping Flight #2">Vuelo de Mapeo #2</span>
                     <span class="media-badge badge-video">Video</span>
                 </div>
                 <div class="media-body">
                     <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%207.mp4">Tu navegador no soporta video HTML5.</video>
-                    <p class="media-desc">Descripción: Creación de modelo de casas mediante modelo de elevación.</p>
+                    <p class="media-desc" data-es="Descripción: Creación de modelo de casas mediante modelo de elevación." data-en="Description: Building model generation using an elevation model.">Descripción: Creación de modelo de casas mediante modelo de elevación.</p>
                 </div>
             </div>
         </div>
 
         <div class="media-card" style="margin-bottom: 2rem;">
             <div class="media-card-header">
-                <span class="media-card-title">Vuelo de Mapeo #3</span>
+                <span class="media-card-title" data-es="Vuelo de Mapeo #3" data-en="Mapping Flight #3">Vuelo de Mapeo #3</span>
                 <span class="media-badge badge-video">Video</span>
             </div>
             <div class="media-body">
                 <video class="native-video" controls preload="metadata" src="https://raw.githubusercontent.com/lob117/javier-portafolio/main/imagenes/video/Video%20Project%203.mp4">Tu navegador no soporta video HTML5.</video>
-                <p class="media-desc">Descripción: Nube de puntos densa para la construcción de un modelo hidráulico.</p>
+                <p class="media-desc" data-es="Descripción: Nube de puntos densa para la construcción de un modelo hidráulico." data-en="Description: Dense point cloud for the construction of a hydraulic model.">Descripción: Nube de puntos densa para la construcción de un modelo hidráulico.</p>
             </div>
         </div>
 
         <hr class="section-divider">
-        <div class="section-title">// mapas &amp; modelos 3D</div>
+        <div class="section-title" data-es="// mapas &amp; modelos 3D" data-en="// maps &amp; 3D models">// mapas &amp; modelos 3D</div>
         <div class="media-grid">
             <div class="media-card">
                 <div class="media-card-header">
-                    <span class="media-card-title">Mapa Interactivo</span>
-                    <span class="media-badge badge-map">Mapa</span>
+                    <span class="media-card-title" data-es="Mapa Interactivo" data-en="Interactive Map">Mapa Interactivo</span>
+                    <span class="media-badge badge-map" data-es="Mapa" data-en="Map">Mapa</span>
                 </div>
                 <div class="media-body">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/MP-CIB-DTM-Dron_1_compressed_page-0001.png" alt="Mapa DTM generado con dron" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
-                    <p class="media-desc">Mapa generado para observar el curso del río.</p>
+                    <p class="media-desc" data-es="Mapa generado para observar el curso del río." data-en="Map generated to observe the river course.">Mapa generado para observar el curso del río.</p>
                 </div>
             </div>
             <div class="media-card">
                 <div class="media-card-header">
-                    <span class="media-card-title">Modelo 3D / Ortofoto</span>
+                    <span class="media-card-title" data-es="Modelo 3D / Ortofoto" data-en="3D Model / Orthophoto">Modelo 3D / Ortofoto</span>
                     <span class="media-badge badge-model">3D</span>
                 </div>
                 <div class="media-body">
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/DEM_3D.png" alt="Modelo DEM 3D generado con fotogrametría" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
-                    <p class="media-desc">Modelo tridimensional generado con modelo de elevación.</p>
+                    <p class="media-desc" data-es="Modelo tridimensional generado con modelo de elevación." data-en="Three-dimensional model generated using an elevation model.">Modelo tridimensional generado con modelo de elevación.</p>
                 </div>
             </div>
         </div>
@@ -942,8 +914,8 @@
 <div class="view" id="view-auto">
     <div class="page-header">
         <div class="page-header-inner">
-            <div class="page-tag">// 03 · Automatización</div>
-            <h2>Flujos &amp; Scripts</h2>
+            <div class="page-tag" data-es="// 03 · Automatización" data-en="// 03 · Automation">// 03 · Automatización</div>
+            <h2 data-es="Flujos &amp; Scripts" data-en="Workflows &amp; Scripts">Flujos &amp; Scripts</h2>
             <p>n8n · Python · Web Scraping · GitHub</p>
         </div>
     </div>
@@ -951,13 +923,13 @@
     <div class="page-content">
         <div class="auto-layout">
             <div>
-                <div class="section-title">// workflows n8n</div>
+                <div class="section-title" data-es="// workflows n8n" data-en="// n8n workflows">// workflows n8n</div>
                 <div class="workflow-card">
                     <div class="workflow-header">
                         <span class="workflow-title">Workflow #1</span>
                         <div style="display:flex;align-items:center;gap:0.5rem;">
                             <div class="status-dot"></div>
-                            <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
+                            <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);" data-es="activo" data-en="active">activo</span>
                         </div>
                     </div>
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/worflow_meta_data.png" alt="Workflow #1" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
@@ -967,7 +939,7 @@
                         <span class="workflow-title">Workflow #2</span>
                         <div style="display:flex;align-items:center;gap:0.5rem;">
                             <div class="status-dot"></div>
-                            <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);">activo</span>
+                            <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);" data-es="activo" data-en="active">activo</span>
                         </div>
                     </div>
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/work_flow_resumen.png" alt="Workflow #2" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
@@ -975,25 +947,25 @@
             </div>
 
             <div class="github-sidebar">
-                <div class="section-title">// repositorios github</div>
+                <div class="section-title" data-es="// repositorios github" data-en="// github repositories">// repositorios github</div>
                 <div class="github-card" onclick="window.open('https://github.com/lob117/n8n_workflows', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">n8n_workflows</span></div>
-                    <div class="repo-desc">Work flows de extracción de metadatos de documentos OCR con RAG.</div>
+                    <div class="repo-desc" data-es="Work flows de extracción de metadatos de documentos OCR con RAG." data-en="Workflows for metadata extraction from OCR documents with RAG.">Work flows de extracción de metadatos de documentos OCR con RAG.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#f34b7d;"></span>json</span></div>
                 </div>
                 <div class="github-card" onclick="window.open('https://github.com/lob117/One_drive_bot', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">python-automation</span></div>
-                    <div class="repo-desc">Conjunto de scripts de automatización RPA.</div>
+                    <div class="repo-desc" data-es="Conjunto de scripts de automatización RPA." data-en="Collection of RPA automation scripts.">Conjunto de scripts de automatización RPA.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
                 <div class="github-card" onclick="window.open('https://github.com/lob117/app-voice-text', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">app-voice-text</span></div>
-                    <div class="repo-desc">Procesamiento de audio de reuniones y transcripción a texto para su revisión.</div>
+                    <div class="repo-desc" data-es="Procesamiento de audio de reuniones y transcripción a texto para su revisión." data-en="Meeting audio processing and transcription to text for review.">Procesamiento de audio de reuniones y transcripción a texto para su revisión.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
                 <div class="github-card" onclick="window.open('https://github.com/lob117/Shot_detection_ia_app', '_blank')">
                     <div class="github-card-top"><span class="repo-icon">📁</span><span class="repo-name">Shot_detection_ia_app</span></div>
-                    <div class="repo-desc">Detección de disparos mediante ESP32, IA e IoT.</div>
+                    <div class="repo-desc" data-es="Detección de disparos mediante ESP32, IA e IoT." data-en="Gunshot detection using ESP32, AI and IoT.">Detección de disparos mediante ESP32, IA e IoT.</div>
                     <div class="repo-meta"><span class="repo-lang"><span class="lang-dot" style="background:#3572A5;"></span>Python</span></div>
                 </div>
             </div>
@@ -1010,21 +982,53 @@
         <a href="https://github.com/lob117" target="_blank" rel="noopener" class="github" title="GitHub">
             <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
-        <a href="mailto:javier.lobato@email.com" class="email" title="Correo electrónico">
+        <a href="mailto:javierlobatoceballos@gmail.com" class="email" title="Email">
             <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.73-1.636 1.636-1.636h.749L12 11.01l9.615-7.19h.749C23.268 3.82 24 4.556 24 5.457z"/></svg>
         </a>
     </div>
-    <p>Javier · <span>Ingeniería IoT · UAV &amp; GIS · Automatización</span></p>
-    <p style="margin-top:0.4rem;">Santa Marta, Colombia</p>
+    <p>Javier · <span data-es="Ingeniería IoT · UAV &amp; GIS · Automatización" data-en="IoT Engineering · UAV &amp; GIS · Automation">Ingeniería IoT · UAV &amp; GIS · Automatización</span></p>
+    <p style="margin-top:0.4rem;" data-es="Santa Marta, Colombia" data-en="Santa Marta, Colombia">Santa Marta, Colombia</p>
 </footer>
 
 <script>
+    /* ─── VIEW NAVIGATION ─── */
     function showView(name) {
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
         document.getElementById('view-' + name).classList.add('active');
         document.getElementById('nav-' + name).classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ─── LANGUAGE TOGGLE ─── */
+    let currentLang = 'es';
+
+    function toggleLang() {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        applyLang(currentLang);
+    }
+
+    function applyLang(lang) {
+        const flag  = document.getElementById('lang-flag');
+        const label = document.getElementById('lang-current');
+
+        if (lang === 'en') {
+            flag.textContent  = '🇪🇸';
+            label.textContent = 'ES';
+            document.getElementById('lang-btn').title = 'Cambiar a español';
+            document.documentElement.lang = 'en';
+        } else {
+            flag.textContent  = '🇬🇧';
+            label.textContent = 'EN';
+            document.getElementById('lang-btn').title = 'Switch to English';
+            document.documentElement.lang = 'es';
+        }
+
+        /* Translate all elements with data-es / data-en */
+        document.querySelectorAll('[data-es][data-en]').forEach(el => {
+            const val = el.getAttribute('data-' + lang);
+            if (val !== null) el.innerHTML = val;
+        });
     }
 </script>
 
