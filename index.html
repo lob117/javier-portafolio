@@ -1167,6 +1167,16 @@
     let intervaloActualizacion;
     const URL_API = 'https://t9ji8unzwk.execute-api.us-east-1.amazonaws.com/default/api_last_data';
 
+    /* Último registro conocido (snapshot Grafana 2026-04-20). Se muestra si la API no responde. */
+    const VALORES_FALLBACK = { 'stat-temp': 31.6, 'stat-hum': 37.0, 'stat-sens': 30.8, 'stat-niv': 18.3 };
+
+    function mostrarFallback() {
+        Object.entries(VALORES_FALLBACK).forEach(([id, v]) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = v.toFixed(1);
+        });
+    }
+
     async function actualizarDatosNeon() {
         ['stat-temp','stat-hum','stat-sens','stat-niv'].forEach(id => {
             const el = document.getElementById(id);
@@ -1188,17 +1198,15 @@
             if (sens !== null) document.getElementById('stat-sens').textContent = Number(sens).toFixed(1);
             if (niv  !== null) document.getElementById('stat-niv').textContent  = Number(niv).toFixed(1);
 
-            if (temp === null) document.getElementById('stat-temp').textContent = 'N/A';
-            if (hum  === null) document.getElementById('stat-hum').textContent  = 'N/A';
-            if (sens === null) document.getElementById('stat-sens').textContent = 'N/A';
-            if (niv  === null) document.getElementById('stat-niv').textContent  = 'N/A';
+            if (temp === null) document.getElementById('stat-temp').textContent = VALORES_FALLBACK['stat-temp'].toFixed(1);
+            if (hum  === null) document.getElementById('stat-hum').textContent  = VALORES_FALLBACK['stat-hum'].toFixed(1);
+            if (sens === null) document.getElementById('stat-sens').textContent = VALORES_FALLBACK['stat-sens'].toFixed(1);
+            if (niv  === null) document.getElementById('stat-niv').textContent  = VALORES_FALLBACK['stat-niv'].toFixed(1);
 
         } catch (error) {
-            console.error("❌ Error consultando API:", error);
-            ['stat-temp','stat-hum','stat-sens','stat-niv'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.textContent = 'ERR';
-            });
+            console.warn("API IoT no disponible, mostrando último registro:", error.message);
+            mostrarFallback();
+            detenerMonitoreo();
         }
     }
 
