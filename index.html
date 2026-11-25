@@ -556,6 +556,18 @@
             .photo-item:nth-child(1),.photo-item:nth-child(2),.photo-item:nth-child(3),
             .photo-item:nth-child(4),.photo-item:nth-child(5),.photo-item:nth-child(6) { grid-column: span 2; }
         }
+        /* ─── POWER BI EMBED ─── */
+        .pbi-wrap { position: relative; width: 100%; padding-top: 62.25%; background: #000; }
+        .pbi-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .pbi-footer { padding: 1rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+        .pbi-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
+        .pbi-btn {
+            font-family: 'Orbitron', sans-serif; font-size: 0.6rem; letter-spacing: 0.08em;
+            color: var(--auto); text-decoration: none; border: 1px solid rgba(232,76,14,0.4);
+            padding: 0.5rem 1rem; border-radius: 5px; transition: box-shadow 0.2s, background 0.2s;
+        }
+        .pbi-btn:hover { box-shadow: 0 0 14px var(--auto-glow); background: rgba(232,76,14,0.08); }
+
     </style>
 </head>
 <body>
@@ -916,7 +928,7 @@
         <div class="page-header-inner">
             <div class="page-tag" data-es="// 03 · Automatización" data-en="// 03 · Automation">// 03 · Automatización</div>
             <h2 data-es="Flujos &amp; Scripts" data-en="Workflows &amp; Scripts">Flujos &amp; Scripts</h2>
-            <p>n8n · Python · Web Scraping · GitHub</p>
+            <p>n8n · Python · Power BI · GitHub</p>
         </div>
     </div>
 
@@ -943,6 +955,33 @@
                         </div>
                     </div>
                     <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/work_flow_resumen.png" alt="Workflow #2" style="width: 100%; height: auto; display: block; border-radius: 4px;" />
+                </div>
+
+                <!-- ══ POWER BI · SEGUIMIENTO OCR ══ -->
+                <div class="section-title" style="margin-top:2.5rem;" data-es="// dashboard power bi · seguimiento ocr" data-en="// power bi dashboard · ocr tracking">// dashboard power bi · seguimiento ocr</div>
+                <div class="workflow-card">
+                    <div class="workflow-header">
+                        <span class="workflow-title" data-es="Seguimiento Digitalización &amp; OCR · CORPOCESAR" data-en="Digitization &amp; OCR Tracking · CORPOCESAR">Seguimiento Digitalización &amp; OCR · CORPOCESAR</span>
+                        <div style="display:flex;align-items:center;gap:0.5rem;">
+                            <div class="status-dot"></div>
+                            <span style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--auto);" data-es="en vivo" data-en="live">en vivo</span>
+                        </div>
+                    </div>
+                    <div class="pbi-wrap">
+                        <iframe title="seguimiento_folios_corpocesar"
+                            src="https://app.powerbi.com/view?r=eyJrIjoiOWJhODU1NzQtN2E4MC00ODA4LWI3MTgtNjU5ZGQxNTI3YjM2IiwidCI6ImZkNjljZTFiLTIwYzYtNDJlYy1iNTRlLTZkMWIzODcwYWM2ZSIsImMiOjR9"
+                            frameborder="0" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="pbi-footer">
+                        <p class="media-desc" data-es="412 expedientes ambientales · 6 tipos de documento · avance de digitalización, OCR y extracción de metadatos. Excel en SharePoint → Power BI con actualización automática."
+                           data-en="412 environmental case files · 6 document types · digitization, OCR and metadata extraction progress. Excel on SharePoint → Power BI with automatic refresh.">
+                           412 expedientes ambientales · 6 tipos de documento · avance de digitalización, OCR y extracción de metadatos. Excel en SharePoint → Power BI con actualización automática.
+                        </p>
+                        <div class="pbi-links">
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiOWJhODU1NzQtN2E4MC00ODA4LWI3MTgtNjU5ZGQxNTI3YjM2IiwidCI6ImZkNjljZTFiLTIwYzYtNDJlYy1iNTRlLTZkMWIzODcwYWM2ZSIsImMiOjR9" target="_blank" rel="noopener" class="pbi-btn" data-es="↗ Abrir en Power BI" data-en="↗ Open in Power BI">↗ Abrir en Power BI</a>
+                            <a href="https://universidadmag-my.sharepoint.com/:x:/g/personal/javierlobatojc_unimagdalena_edu_co/IQCCC3M2giz_Q7rx0JcBQ5TdAf7-Jcz80YosCwg_gKSyBuw?e=4KbQNV" target="_blank" rel="noopener" class="pbi-btn" data-es="📊 Ver Excel fuente" data-en="📊 View source Excel">📊 Ver Excel fuente</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
