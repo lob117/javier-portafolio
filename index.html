@@ -19,6 +19,8 @@
             --uav-glow: rgba(16,133,30,0.35);
             --auto:     #e84c0e;
             --auto-glow:rgba(232,76,14,0.35);
+            --dev:      #8b5cf6;
+            --dev-glow: rgba(139,92,246,0.35);
             --card-bg:  #08090f;
         }
 
@@ -369,7 +371,7 @@
 
         .edu-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 1rem;
             margin-bottom: 3rem;
         }
@@ -553,6 +555,79 @@
             .photo-item:nth-child(1),.photo-item:nth-child(2),.photo-item:nth-child(3),
             .photo-item:nth-child(4),.photo-item:nth-child(5),.photo-item:nth-child(6) { grid-column: span 2; }
         }
+        /* ─── DESARROLLO ─── */
+        #nav-dev.active, #nav-dev:hover { color: var(--dev); }
+        #nav-dev::after { background: var(--dev); }
+        #view-dev .page-tag, #view-dev .page-header h2 { color: var(--dev); }
+        #view-dev .page-header { background: linear-gradient(135deg, #000 0%, #0d0619 100%); }
+
+        .dev-project {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+            overflow: hidden; position: relative; margin-bottom: 1rem;
+        }
+        .dev-project::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--dev); }
+        .dev-head {
+            background: var(--surface); border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+        }
+        .dev-name { font-family: 'Orbitron', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: var(--dev); }
+        .dev-badge {
+            font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 0.18rem 0.55rem; border-radius: 3px; color: var(--dev);
+            border: 1px solid rgba(139,92,246,0.4); background: rgba(139,92,246,0.08);
+        }
+        .dev-btn {
+            margin-left: auto; font-family: 'Orbitron', sans-serif; font-size: 0.58rem; letter-spacing: 0.08em;
+            color: var(--dev); text-decoration: none; border: 1px solid rgba(139,92,246,0.4);
+            padding: 0.45rem 0.9rem; border-radius: 5px; background: none; cursor: pointer;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+        .dev-btn + .dev-btn { margin-left: 0; }
+        .dev-btn:hover { box-shadow: 0 0 14px var(--dev-glow); background: rgba(139,92,246,0.08); }
+        .dev-body { padding: 1.5rem; }
+        .dev-text { font-family: 'Space Mono', monospace; font-size: 0.72rem; line-height: 1.85; color: #9aa3be; margin-bottom: 1rem; }
+        .dev-text strong { color: var(--text); }
+        .dev-flow {
+            font-family: 'Space Mono', monospace; font-size: 0.66rem; color: var(--dev); line-height: 1.8;
+            background: rgba(139,92,246,0.06); border: 1px dashed rgba(139,92,246,0.35);
+            border-radius: 6px; padding: 0.7rem 1rem; margin-bottom: 1.5rem;
+        }
+        .dev-sub {
+            font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--muted); margin: 1.75rem 0 1rem;
+        }
+        #view-dev .tech-cards { margin-top: 0; }
+        #view-dev .tech-card:hover { border-color: var(--dev); box-shadow: 0 0 12px var(--dev-glow); }
+        #view-dev .tech-name { color: var(--dev); }
+        .dev-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .dev-shot {
+            display: block; text-decoration: none; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .dev-shot:hover { border-color: var(--dev); box-shadow: 0 0 18px var(--dev-glow); }
+        .dev-shot.wide { grid-column: span 2; }
+        .dev-shot img { width: 100%; height: auto; display: block; }
+        .dev-shot span {
+            display: block; padding: 0.65rem 1rem; border-top: 1px solid var(--border);
+            font-family: 'Space Mono', monospace; font-size: 0.64rem; color: var(--muted); line-height: 1.55;
+        }
+        .dev-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .dev-chip {
+            font-family: 'Space Mono', monospace; font-size: 0.6rem; color: #9aa3be;
+            border: 1px solid var(--border); background: var(--surface); padding: 0.25rem 0.6rem; border-radius: 4px;
+        }
+        @media (max-width: 860px) { .edu-row { grid-template-columns: 1fr; } }
+        /* Barra de navegación en pantallas angostas: los iconos de contacto quedan en el footer y las pestañas se deslizan */
+        @media (max-width: 900px) {
+            nav { padding: 0 1rem; gap: 0.75rem; }
+            .nav-contact { display: none; }
+            .nav-links { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links li button { white-space: nowrap; padding: 0.5rem 0.65rem; }
+        }
+        @media (max-width: 680px) { .dev-gallery { grid-template-columns: 1fr; } .dev-shot.wide { grid-column: span 1; } .dev-btn { margin-left: 0; } }
+
         /* ─── POWER BI EMBED ─── */
         .pbi-wrap { position: relative; width: 100%; padding-top: 62.25%; background: #000; }
         .pbi-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -583,6 +658,7 @@
         <li><button onclick="showView('iot')"    id="nav-iot"    data-es="IoT Dashboard" data-en="IoT Dashboard">IoT Dashboard</button></li>
         <li><button onclick="showView('uav')"    id="nav-uav"    data-es="UAV &amp; GIS" data-en="UAV &amp; GIS">UAV &amp; GIS</button></li>
         <li><button onclick="showView('auto')"   id="nav-auto"   data-es="Automatización" data-en="Automation">Automatización</button></li>
+        <li><button onclick="showView('dev')"    id="nav-dev"    data-es="Desarrollo" data-en="Development">Desarrollo</button></li>
     </ul>
     <div class="nav-contact">
         <a href="https://www.linkedin.com/in/javier-jose-lobato-ceballos/" target="_blank" rel="noopener" class="linkedin" title="LinkedIn">
@@ -602,7 +678,7 @@
     <div class="hero">
         <div class="hero-label" data-es="Portafolio · Ingeniería Aplicada" data-en="Portfolio · Applied Engineering">Portafolio · Ingeniería Aplicada</div>
         <h1>Javier<br>Lobato<br>Ceballos</h1>
-        <p class="hero-sub" data-es="Ingeniero Electrónico apasionado por la automatización, adquisición de datos y desarrollo de soluciones tecnológicas" data-en="Electronics Engineer passionate about automation, data acquisition and the development of technological solutions">Ingeniero Electrónico apasionado por la automatización, adquisición de datos y desarrollo de soluciones tecnológicas</p>
+        <p class="hero-sub" data-es="Ingeniero Electrónico · IoT &amp; Cloud (AWS) · Backend serverless · Automatización y análisis de datos" data-en="Electronics Engineer · IoT &amp; Cloud (AWS) · Serverless backend · Automation and data analysis">Ingeniero Electrónico · IoT &amp; Cloud (AWS) · Backend serverless · Automatización y análisis de datos</p>
 
         <div class="profile-section">
             <div class="section-title" data-es="// perfil profesional" data-en="// professional profile">// perfil profesional</div>
@@ -612,24 +688,24 @@
                     <div class="profile-badge" data-es="Disponible" data-en="Available">Disponible</div>
                 </div>
                 <div class="profile-summary-body">
-                    <p data-es="<strong>Ingeniero Electrónico</strong> orientado al análisis de datos, automatización de procesos y desarrollo backend, con experiencia en la recolección y procesamiento de datos ambientales mediante microcontroladores, sensores remotos y plataformas UAV. Especializado en almacenamiento, administración y análisis de información utilizando bases de datos <strong>SQL</strong> y tecnologías modernas de automatización."
-                       data-en="<strong>Electronics Engineer</strong> focused on data analysis, process automation and backend development, with experience collecting and processing environmental data using microcontrollers, remote sensors and UAV platforms. Specialized in storing, managing and analyzing information using <strong>SQL</strong> databases and modern automation technologies.">
-                        <strong>Ingeniero Electrónico</strong> orientado al análisis de datos, automatización de procesos y desarrollo backend, con experiencia en la recolección y procesamiento de datos ambientales mediante microcontroladores, sensores remotos y plataformas UAV. Especializado en almacenamiento, administración y análisis de información utilizando bases de datos <strong>SQL</strong> y tecnologías modernas de automatización.
+                    <p data-es="<strong>Ingeniero Electrónico</strong> con 2 años de experiencia en IoT, backend serverless en AWS, automatización de procesos y análisis de datos. He construido el backend IoT de una plataforma agrotech con <strong>AWS IoT Core, Lambda, AppSync (GraphQL), DynamoDB y S3</strong>, con mapas integrados mediante la API de ArcGIS, y flujos automatizados con <strong>n8n, Python, OCR e IA</strong> que digitalizaron más de 250 tomos de expedientes para dos entidades."
+                       data-en="<strong>Electronics Engineer</strong> with 2 years of experience in IoT, AWS serverless backend, process automation and data analysis. I built the IoT backend of an agrotech platform with <strong>AWS IoT Core, Lambda, AppSync (GraphQL), DynamoDB and S3</strong>, with maps integrated through the ArcGIS API, and automated workflows with <strong>n8n, Python, OCR and AI</strong> that digitized over 250 volumes of case files for two organizations.">
+                        <strong>Ingeniero Electrónico</strong> con 2 años de experiencia en IoT, backend serverless en AWS, automatización de procesos y análisis de datos. He construido el backend IoT de una plataforma agrotech con <strong>AWS IoT Core, Lambda, AppSync (GraphQL), DynamoDB y S3</strong>, con mapas integrados mediante la API de ArcGIS, y flujos automatizados con <strong>n8n, Python, OCR e IA</strong> que digitalizaron más de 250 tomos de expedientes para dos entidades.
                     </p>
                     <br>
-                    <p data-es="Experiencia en el desarrollo de soluciones basadas en <strong>Inteligencia Artificial</strong> mediante OCR, Geoparsing e integración de flujos de trabajo utilizando herramientas como <strong>n8n</strong> y contenedores <strong>Docker</strong>. Competente en lenguajes de programación como <strong>Python, C y C++</strong>, aplicados al procesamiento de datos, automatización y optimización operativa."
-                       data-en="Experience developing solutions based on <strong>Artificial Intelligence</strong> through OCR, Geoparsing and workflow integration using tools such as <strong>n8n</strong> and <strong>Docker</strong> containers. Proficient in programming languages including <strong>Python, C and C++</strong>, applied to data processing, automation and operational optimization.">
-                        Experiencia en el desarrollo de soluciones basadas en <strong>Inteligencia Artificial</strong> mediante OCR, Geoparsing e integración de flujos de trabajo utilizando herramientas como <strong>n8n</strong> y contenedores <strong>Docker</strong>. Competente en lenguajes de programación como <strong>Python, C y C++</strong>, aplicados al procesamiento de datos, automatización y optimización operativa.
+                    <p data-es="Trabajo de extremo a extremo: firmware <strong>ESP32</strong>, MQTT, APIs REST/GraphQL con <strong>Node.js y Python</strong>, bases de datos <strong>SQL/NoSQL</strong> (PostgreSQL, PostGIS, DynamoDB), control de acceso por roles y dashboards en <strong>Power BI y Grafana</strong> usados por equipos técnicos, administrativos y directivos para tomar decisiones operativas."
+                       data-en="End-to-end work: <strong>ESP32</strong> firmware, MQTT, REST/GraphQL APIs with <strong>Node.js and Python</strong>, <strong>SQL/NoSQL</strong> databases (PostgreSQL, PostGIS, DynamoDB), role-based access control and dashboards in <strong>Power BI and Grafana</strong> used by technical, administrative and management teams to make operational decisions.">
+                        Trabajo de extremo a extremo: firmware <strong>ESP32</strong>, MQTT, APIs REST/GraphQL con <strong>Node.js y Python</strong>, bases de datos <strong>SQL/NoSQL</strong> (PostgreSQL, PostGIS, DynamoDB), control de acceso por roles y dashboards en <strong>Power BI y Grafana</strong> usados por equipos técnicos, administrativos y directivos para tomar decisiones operativas.
                     </p>
                     <br>
-                    <p data-es="Mi perfil se complementa con conocimientos en tecnologías cloud e infraestructura como <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> y <strong>Git</strong>, enfocados en la construcción de soluciones escalables y eficientes."
-                       data-en="My profile is complemented by knowledge of cloud and infrastructure technologies such as <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> and <strong>Git</strong>, focused on building scalable and efficient solutions.">
-                        Mi perfil se complementa con conocimientos en tecnologías cloud e infraestructura como <strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Linux</strong>, <strong>Docker</strong> y <strong>Git</strong>, enfocados en la construcción de soluciones escalables y eficientes.
+                    <p data-es="Infraestructura y datos geoespaciales: <strong>Linux, Docker, Git/GitHub</strong>, servidores con <strong>GeoServer, Django y MapStore</strong>, gobernanza de capas SIG, procesamiento de imágenes UAV y cartografía temática."
+                       data-en="Infrastructure and geospatial data: <strong>Linux, Docker, Git/GitHub</strong>, servers with <strong>GeoServer, Django and MapStore</strong>, GIS layer governance, UAV image processing and thematic cartography.">
+                        Infraestructura y datos geoespaciales: <strong>Linux, Docker, Git/GitHub</strong>, servidores con <strong>GeoServer, Django y MapStore</strong>, gobernanza de capas SIG, procesamiento de imágenes UAV y cartografía temática.
                     </p>
                     <br>
-                    <p data-es="Cuento con nivel de inglés <strong>B2</strong> y una formación orientada al aprendizaje continuo, la toma de decisiones estratégicas, captura de métricas operativas y mejora de procesos bajo metodologías ágiles."
-                       data-en="I have a <strong>B2</strong> English level and a background oriented toward continuous learning, strategic decision-making, capturing operational metrics and process improvement under agile methodologies.">
-                        Cuento con nivel de inglés <strong>B2</strong> y una formación orientada al aprendizaje continuo, la toma de decisiones estratégicas, captura de métricas operativas y mejora de procesos bajo metodologías ágiles.
+                    <p data-es="Inglés <strong>B2</strong>. Tarjeta profesional AT206-188296. Orientado a la mejora continua de procesos y a convertir datos en información clara para el negocio."
+                       data-en="English <strong>B2</strong>. Professional license AT206-188296. Focused on continuous process improvement and turning data into clear business information.">
+                        Inglés <strong>B2</strong>. Tarjeta profesional AT206-188296. Orientado a la mejora continua de procesos y a convertir datos en información clara para el negocio.
                     </p>
                 </div>
             </div>
@@ -639,6 +715,24 @@
         <div class="experience-section">
             <div class="section-title" data-es="// experiencia laboral" data-en="// work experience">// experiencia laboral</div>
             <div class="exp-timeline">
+
+                <div class="exp-item exp-iot">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role" data-es="Desarrollador Backend e IoT" data-en="Backend &amp; IoT Developer">Desarrollador Backend e IoT</div>
+                            <div class="exp-company">Dalia Tech · Plataforma agrotech Cima IoT (café y aguacate)</div>
+                        </div>
+                        <div class="exp-date" data-es="Ago 2026 – Oct 2026" data-en="Aug 2026 – Oct 2026">Ago 2026 – Oct 2026</div>
+                    </div>
+                    <div class="exp-body">
+                        <ul class="exp-list">
+                            <li data-es="Construí el backend serverless con Node.js, AWS Lambda, AppSync (GraphQL) y Amplify, consumido por un frontend en React." data-en="Built the serverless backend with Node.js, AWS Lambda, AppSync (GraphQL) and Amplify, consumed by a React frontend.">Construí el backend serverless con Node.js, AWS Lambda, AppSync (GraphQL) y Amplify, consumido por un frontend en React.</li>
+                            <li data-es="Ingesta de telemetría de sensores en finca vía MQTT en AWS IoT Core, con reglas de enrutamiento hacia Lambda y DynamoDB para la toma de decisiones agronómicas." data-en="Field-sensor telemetry ingestion via MQTT on AWS IoT Core, with routing rules to Lambda and DynamoDB to support agronomic decisions.">Ingesta de telemetría de sensores en finca vía MQTT en AWS IoT Core, con reglas de enrutamiento hacia Lambda y DynamoDB para la toma de decisiones agronómicas.</li>
+                            <li data-es="Diseñé el modelo de datos (dispositivos, mediciones, usuarios), autenticación y control de acceso basado en roles (RBAC)." data-en="Designed the data model (devices, measurements, users), authentication and role-based access control (RBAC).">Diseñé el modelo de datos (dispositivos, mediciones, usuarios), autenticación y control de acceso basado en roles (RBAC).</li>
+                            <li data-es="Tareas programadas (cron) para control de horarios y envío de mensajes en la plataforma; mapas de lotes y unidades de cultivo con la API de ArcGIS Online." data-en="Scheduled jobs (cron) for schedule control and in-platform messages; lot and crop-unit maps with the ArcGIS Online API.">Tareas programadas (cron) para control de horarios y envío de mensajes en la plataforma; mapas de lotes y unidades de cultivo con la API de ArcGIS Online.</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="exp-item exp-auto">
                     <div class="exp-header">
@@ -650,10 +744,10 @@
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li data-es="Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO." data-en="Development of a geospatial platform for CORPOCESAR and COOAGROPUERTO.">Creación de plataforma geoespacial para CORPOCESAR y COOAGROPUERTO.</li>
-                            <li data-es="Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial." data-en="Automation of OCR, geoparsing and artificial intelligence application processes.">Automatización de procesos de OCR, geoparsing y aplicaciones de inteligencia artificial.</li>
-                            <li data-es="Extracción y procesamiento de información geoespacial y documental." data-en="Extraction and processing of geospatial and documentary information.">Extracción y procesamiento de información geoespacial y documental.</li>
-                            <li data-es="Creación de flujos de trabajo automatizados con N8N y contenedores Docker." data-en="Creation of automated workflows with N8N and Docker containers.">Creación de flujos de trabajo automatizados con N8N y contenedores Docker.</li>
+                            <li data-es="Diseñé e implementé con n8n, Python, OCR e IA (RAG) el flujo de digitalización y extracción de información de 40 expedientes (más de 250 tomos), almacenados en AWS S3 y servidor local, reemplazando la digitación manual." data-en="Designed and implemented with n8n, Python, OCR and AI (RAG) the digitization and information-extraction workflow for 40 case files (over 250 volumes) stored on AWS S3 and a local server, replacing manual data entry.">Diseñé e implementé con n8n, Python, OCR e IA (RAG) el flujo de digitalización y extracción de información de 40 expedientes (más de 250 tomos), almacenados en AWS S3 y servidor local, reemplazando la digitación manual.</li>
+                            <li data-es="Construí el dashboard de seguimiento en Power BI usado por 8 personas en tres niveles (técnicos OCR, administradores y jefes) para controlar avance, calidad y pendientes." data-en="Built the Power BI tracking dashboard used by 8 people across three levels (OCR technicians, administrators and managers) to monitor progress, quality and backlog.">Construí el dashboard de seguimiento en Power BI usado por 8 personas en tres niveles (técnicos OCR, administradores y jefes) para controlar avance, calidad y pendientes.</li>
+                            <li data-es="Participé en el Geovisor público de CORPOCESAR (ide.corpocesar.gov.co): administración de capas con gobernanza de datos sobre Debian, PostGIS, GeoServer, Django y MapStore." data-en="Contributed to CORPOCESAR&#39;s public Geoviewer (ide.corpocesar.gov.co): layer administration with data governance on Debian, PostGIS, GeoServer, Django and MapStore.">Participé en el Geovisor público de CORPOCESAR (ide.corpocesar.gov.co): administración de capas con gobernanza de datos sobre Debian, PostGIS, GeoServer, Django y MapStore.</li>
+                            <li data-es="Verifiqué la información extraída contra fuentes geoespaciales y bases SQL antes de su publicación; servicios desplegados en Docker sobre Linux." data-en="Validated extracted information against geospatial sources and SQL databases before publication; services deployed with Docker on Linux.">Verifiqué la información extraída contra fuentes geoespaciales y bases SQL antes de su publicación; servicios desplegados en Docker sobre Linux.</li>
                         </ul>
                     </div>
                 </div>
@@ -668,9 +762,8 @@
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li data-es="Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4)." data-en="Technical management and preventive maintenance of UAV platforms (EbeeX and Phantom 4).">Gestión técnica y mantenimiento preventivo de plataformas UAV (EbeeX y Phantom 4).</li>
-                            <li data-es="Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB." data-en="Automated the capture and processing of large-scale data from multispectral sensors, optimizing the delivery pipeline for 3D models and RGB mosaics.">Automaticé la captura y procesamiento de datos masivos provenientes de sensores multiespectrales, optimizando el procesamiento de entrega de modelos 3D y mosaicos RGB.</li>
-                            <li data-es="Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos." data-en="Ensured the integrity of UAV equipment performance metrics, managing preventive maintenance based on operational data analysis.">Aseguré la integridad de las métricas de rendimiento de los equipos UAV, gestionando el mantenimiento preventivo basado en análisis de datos operativos.</li>
+                            <li data-es="Automaticé el procesamiento de imágenes RGB y multiespectrales (mosaicos, modelos 3D) de 2 plataformas UAV (eBee X y Phantom 4) y produje informes técnicos y cartografía para la caracterización de la cuenca." data-en="Automated RGB and multispectral image processing (mosaics, 3D models) from 2 UAV platforms (eBee X and Phantom 4) and produced technical reports and cartography for the watershed characterization.">Automaticé el procesamiento de imágenes RGB y multiespectrales (mosaicos, modelos 3D) de 2 plataformas UAV (eBee X y Phantom 4) y produje informes técnicos y cartografía para la caracterización de la cuenca.</li>
+                            <li data-es="Registro y análisis de métricas operativas de los equipos UAV para su mantenimiento preventivo." data-en="Logged and analyzed UAV operational metrics for preventive maintenance.">Registro y análisis de métricas operativas de los equipos UAV para su mantenimiento preventivo.</li>
                         </ul>
                     </div>
                 </div>
@@ -678,15 +771,15 @@
                 <div class="exp-item exp-uav">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-role" data-es="Practicante de Ingeniería (Optimización y Visión Artificial)" data-en="Engineering Intern (Optimization &amp; Computer Vision)">Practicante de Ingeniería (Optimización y Visión Artificial)</div>
-                            <div class="exp-company">Corporación NaturalSIG · Caracterización Ambiental – Cuenca Hidrográfica, Agustín Codazzi, Cesar</div>
+                            <div class="exp-role" data-es="Practicante de Ingeniería – Visión Artificial" data-en="Engineering Intern – Computer Vision">Practicante de Ingeniería – Visión Artificial</div>
+                            <div class="exp-company">Corporación NaturalSIG · EIA Doble Calzada Ciénaga–Barranquilla</div>
                         </div>
                         <div class="exp-date" data-es="Ago 2024 – Dic 2024" data-en="Aug 2024 – Dec 2024">Ago 2024 – Dic 2024</div>
                     </div>
                     <div class="exp-body">
                         <ul class="exp-list">
-                            <li data-es="Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico." data-en="Developed computer vision algorithms for automated vehicle counting, transforming video footage into traffic analysis dashboards.">Desarrollé algoritmos de visión artificial para la automatización del conteo vehicular, transformando capturas de video en dashboards de análisis de tráfico.</li>
-                            <li data-es="Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD." data-en="Designed electrical line structures and buildings in AutoCAD.">Diseñé estructuras de líneas eléctricas y edificaciones en AutoCAD.</li>
+                            <li data-es="Desarrollé algoritmos de visión artificial en Python para el conteo automático de flujo vehicular a partir de video, con dashboards para el estudio de tráfico." data-en="Developed computer vision algorithms in Python for automatic vehicle counting from video, with dashboards for the traffic study.">Desarrollé algoritmos de visión artificial en Python para el conteo automático de flujo vehicular a partir de video, con dashboards para el estudio de tráfico.</li>
+                            <li data-es="Elaboré cartografía temática y diseños de líneas eléctricas y edificaciones en AutoCAD." data-en="Produced thematic cartography and electrical line and building designs in AutoCAD.">Elaboré cartografía temática y diseños de líneas eléctricas y edificaciones en AutoCAD.</li>
                         </ul>
                     </div>
                 </div>
@@ -700,7 +793,7 @@
             <div class="edu-card">
                 <div class="edu-icon">🎓</div>
                 <div class="edu-title" data-es="Ingeniería Electrónica" data-en="Electronics Engineering">Ingeniería Electrónica</div>
-                <div class="edu-institution">Universidad del Magdalena</div>
+                <div class="edu-institution" data-es="Universidad del Magdalena · T.P. AT206-188296" data-en="Universidad del Magdalena · License AT206-188296">Universidad del Magdalena · T.P. AT206-188296</div>
                 <div class="edu-date">2020 – 2025</div>
             </div>
             <div class="edu-card">
@@ -708,6 +801,12 @@
                 <div class="edu-title" data-es="Piloto de Dron — APD RAC 100" data-en="Drone Pilot — APD RAC 100">Piloto de Dron — APD RAC 100</div>
                 <div class="edu-institution" data-es="Curso de piloto con certificación oficial" data-en="Pilot course with official certification">Curso de piloto con certificación oficial</div>
                 <div class="edu-date">2025</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-icon">🗣️</div>
+                <div class="edu-title" data-es="Inglés B2" data-en="English B2">Inglés B2</div>
+                <div class="edu-institution">IFT Cajamag</div>
+                <div class="edu-date">2025 – 2026</div>
             </div>
         </div>
 
@@ -1007,6 +1106,178 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- ════════ DESARROLLO ════════ -->
+<div class="view" id="view-dev">
+    <div class="page-header">
+        <div class="page-header-inner">
+            <div class="page-tag" data-es="// 04 · Desarrollo" data-en="// 04 · Development">// 04 · Desarrollo</div>
+            <h2 data-es="Plataformas &amp; Geoportales" data-en="Platforms &amp; Geoportals">Plataformas &amp; Geoportales</h2>
+            <p>React · Node.js · AWS Amplify · PostGIS · GeoServer · Django · ArcGIS Hub · Survey123</p>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="section-title" data-es="// 01 · cima iot · plataforma agrotech" data-en="// 01 · cima iot · agrotech platform">// 01 · cima iot · plataforma agrotech</div>
+        <div class="dev-project">
+            <div class="dev-head">
+                <span class="dev-name">Cima IoT · Dalia Dorada</span>
+                <span class="dev-badge" data-es="En producción" data-en="In production">En producción</span>
+                <a class="dev-btn" href="https://dev.cimaiot.com/agro/lots" target="_blank" rel="noopener">↗ dev.cimaiot.com</a>
+            </div>
+            <div class="dev-body">
+                <p class="dev-text" data-es="<strong>Cima IoT</strong> es una plataforma para el control y seguimiento de fincas agrícolas, enfocada en cultivos de <strong>café y aguacate</strong>. Reúne en un solo lugar el mapa de la finca, las labores del día a día y los datos de los sensores instalados en campo." data-en="<strong>Cima IoT</strong> is a platform for managing and monitoring farms, focused on <strong>coffee and avocado</strong> crops. It brings together the farm map, the day-to-day field work and the data from sensors installed in the field."><strong>Cima IoT</strong> es una plataforma para el control y seguimiento de fincas agrícolas, enfocada en cultivos de <strong>café y aguacate</strong>. Reúne en un solo lugar el mapa de la finca, las labores del día a día y los datos de los sensores instalados en campo.</p>
+                <p class="dev-text" data-es="Está construida sobre <strong>AWS Amplify</strong> con frontend en <strong>React</strong> y backend en <strong>Node.js y Python</strong>. Los sensores de la finca se conectan por <strong>AWS IoT Core</strong>, y los mapas usan la API de <strong>ArcGIS Online</strong>." data-en="It is built on <strong>AWS Amplify</strong> with a <strong>React</strong> frontend and a <strong>Node.js and Python</strong> backend. Field sensors connect through <strong>AWS IoT Core</strong>, and the maps use the <strong>ArcGIS Online</strong> API.">Está construida sobre <strong>AWS Amplify</strong> con frontend en <strong>React</strong> y backend en <strong>Node.js y Python</strong>. Los sensores de la finca se conectan por <strong>AWS IoT Core</strong>, y los mapas usan la API de <strong>ArcGIS Online</strong>.</p>
+                <div class="dev-flow" data-es="Sensores en finca → AWS IoT Core → Lambda → DynamoDB → AppSync (GraphQL) → React + ArcGIS" data-en="Field sensors → AWS IoT Core → Lambda → DynamoDB → AppSync (GraphQL) → React + ArcGIS">Sensores en finca → AWS IoT Core → Lambda → DynamoDB → AppSync (GraphQL) → React + ArcGIS</div>
+
+                <div class="dev-sub" data-es="// qué hace" data-en="// what it does">// qué hace</div>
+                <div class="tech-cards">
+                    <div class="tech-card"><div class="tech-icon">🗺️</div><div><div class="tech-name" data-es="Mapa de finca" data-en="Farm map">Mapa de finca</div><div class="tech-desc" data-es="Lotes y unidades de cultivo (árbol por árbol) dibujados sobre imagen satelital con la API de ArcGIS Online." data-en="Lots and crop units (tree by tree) drawn over satellite imagery with the ArcGIS Online API.">Lotes y unidades de cultivo (árbol por árbol) dibujados sobre imagen satelital con la API de ArcGIS Online.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">📡</div><div><div class="tech-name" data-es="Sensores en finca" data-en="Field sensors">Sensores en finca</div><div class="tech-desc" data-es="Telemetría de sensores recibida por AWS IoT Core para apoyar las decisiones agronómicas." data-en="Sensor telemetry received through AWS IoT Core to support agronomic decisions.">Telemetría de sensores recibida por AWS IoT Core para apoyar las decisiones agronómicas.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">⏱️</div><div><div class="tech-name" data-es="Tareas programadas" data-en="Scheduled jobs">Tareas programadas</div><div class="tech-desc" data-es="Procesos cron para el control de horarios y el envío de mensajes dentro de la plataforma." data-en="Cron processes for schedule control and for sending messages inside the platform.">Procesos cron para el control de horarios y el envío de mensajes dentro de la plataforma.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">🔐</div><div><div class="tech-name" data-es="Roles de usuario" data-en="User roles">Roles de usuario</div><div class="tech-desc" data-es="Separación por roles: cada tipo de usuario ve y opera solo lo que le corresponde." data-en="Role separation: each type of user sees and operates only what belongs to them.">Separación por roles: cada tipo de usuario ve y opera solo lo que le corresponde.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">📅</div><div><div class="tech-name" data-es="Calendario agronómico" data-en="Agronomic calendar">Calendario agronómico</div><div class="tech-desc" data-es="Labores culturales, recolecciones y monitoreo de plagas programados por lote, con estado de cada tarea." data-en="Field work, harvests and pest monitoring scheduled per lot, with the status of each task.">Labores culturales, recolecciones y monitoreo de plagas programados por lote, con estado de cada tarea.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">🚀</div><div><div class="tech-name" data-es="Despliegue real" data-en="Real deployment">Despliegue real</div><div class="tech-desc" data-es="Aplicación desplegada y en uso sobre AWS Amplify, no un prototipo." data-en="Application deployed and in use on AWS Amplify, not a prototype.">Aplicación desplegada y en uso sobre AWS Amplify, no un prototipo.</div></div></div>
+                </div>
+
+                <div class="dev-sub" data-es="// capturas" data-en="// screenshots">// capturas</div>
+                <div class="dev-gallery">
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_lotes.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_lotes.jpg" alt="Lotes de una finca en Cima IoT" loading="lazy" />
+                        <span data-es="Finca con sus lotes y unidades de cultivo delimitados sobre imagen satelital." data-en="Farm with its lots and crop units outlined over satellite imagery.">Finca con sus lotes y unidades de cultivo delimitados sobre imagen satelital.</span>
+                    </a>
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_mapa.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_mapa.jpg" alt="Mapa de lotes Cima IoT" loading="lazy" />
+                        <span data-es="Lote de aguacate y ficha de un árbol con su estado y etapa." data-en="Avocado lot and the record of one tree with its status and stage.">Lote de aguacate y ficha de un árbol con su estado y etapa.</span>
+                    </a>
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_calendario.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_calendario.jpg" alt="Calendario agronómico Cima IoT" loading="lazy" />
+                        <span data-es="Calendario agronómico con las tareas de cada semana por lote." data-en="Agronomic calendar with each week&#39;s tasks per lot.">Calendario agronómico con las tareas de cada semana por lote.</span>
+                    </a>
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_copiloto.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/cimaiot_copiloto.jpg" alt="Copiloto Cima IoT" loading="lazy" />
+                        <span data-es="Pantalla de inicio (Copiloto): tareas pendientes y avance de configuración de la finca." data-en="Home screen (Copilot): pending tasks and farm setup progress.">Pantalla de inicio (Copiloto): tareas pendientes y avance de configuración de la finca.</span>
+                    </a>
+                </div>
+
+                <div class="dev-sub" data-es="// stack" data-en="// stack">// stack</div>
+                <div class="dev-chips">
+                    <span class="dev-chip">React</span>
+                    <span class="dev-chip">Node.js</span>
+                    <span class="dev-chip">Python</span>
+                    <span class="dev-chip">AWS Amplify</span>
+                    <span class="dev-chip">AppSync (GraphQL)</span>
+                    <span class="dev-chip">Lambda</span>
+                    <span class="dev-chip">DynamoDB</span>
+                    <span class="dev-chip">S3</span>
+                    <span class="dev-chip">IoT Core (MQTT)</span>
+                    <span class="dev-chip">Cognito</span>
+                    <span class="dev-chip">ArcGIS Online API</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-title" data-es="// 02 · geoportal ide · corpocesar" data-en="// 02 · ide geoportal · corpocesar">// 02 · geoportal ide · corpocesar</div>
+        <div class="dev-project">
+            <div class="dev-head">
+                <span class="dev-name">Geoportal IDE · CORPOCESAR</span>
+                <span class="dev-badge" data-es="Público" data-en="Public">Público</span>
+                <a class="dev-btn" href="https://ide.corpocesar.gov.co/all#/" target="_blank" rel="noopener">↗ ide.corpocesar.gov.co</a>
+                <button class="dev-btn" onclick="showView('auto')" data-es="📊 Ver dashboard Power BI" data-en="📊 View Power BI dashboard">📊 Ver dashboard Power BI</button>
+            </div>
+            <div class="dev-body">
+                <p class="dev-text" data-es="Geoportal público de la <strong>Corporación Autónoma Regional del Cesar</strong>, donde cualquier persona puede consultar la información geográfica de la entidad. Mi trabajo fue la <strong>administración de capas</strong> aplicando procesos de <strong>gobernanza de datos</strong>." data-en="Public geoportal of the <strong>Corporación Autónoma Regional del Cesar</strong>, where anyone can browse the organization&#39;s geographic information. My work was <strong>layer administration</strong>, applying <strong>data-governance</strong> processes.">Geoportal público de la <strong>Corporación Autónoma Regional del Cesar</strong>, donde cualquier persona puede consultar la información geográfica de la entidad. Mi trabajo fue la <strong>administración de capas</strong> aplicando procesos de <strong>gobernanza de datos</strong>.</p>
+                <p class="dev-text" data-es="Funciona sobre un <strong>servidor local con Debian</strong>: los datos viven en <strong>PostGIS</strong>, <strong>GeoServer</strong> los publica como capas, <strong>Django</strong> administra usuarios y contenido, y <strong>MapStore</strong> es el visor que ve el público." data-en="It runs on an <strong>on-premise Debian server</strong>: data lives in <strong>PostGIS</strong>, <strong>GeoServer</strong> publishes it as layers, <strong>Django</strong> manages users and content, and <strong>MapStore</strong> is the viewer the public sees.">Funciona sobre un <strong>servidor local con Debian</strong>: los datos viven en <strong>PostGIS</strong>, <strong>GeoServer</strong> los publica como capas, <strong>Django</strong> administra usuarios y contenido, y <strong>MapStore</strong> es el visor que ve el público.</p>
+                <div class="dev-flow" data-es="PostGIS (datos) → GeoServer (capas) → Django (administración) → MapStore (visor público)" data-en="PostGIS (data) → GeoServer (layers) → Django (administration) → MapStore (public viewer)">PostGIS (datos) → GeoServer (capas) → Django (administración) → MapStore (visor público)</div>
+
+                <div class="dev-sub" data-es="// qué hice" data-en="// what I did">// qué hice</div>
+                <div class="tech-cards">
+                    <div class="tech-card"><div class="tech-icon">🗂️</div><div><div class="tech-name" data-es="Administración de capas" data-en="Layer administration">Administración de capas</div><div class="tech-desc" data-es="Carga, organización y publicación de las capas geográficas de la entidad." data-en="Loading, organizing and publishing the organization&#39;s geographic layers.">Carga, organización y publicación de las capas geográficas de la entidad.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">⚖️</div><div><div class="tech-name" data-es="Gobernanza de datos" data-en="Data governance">Gobernanza de datos</div><div class="tech-desc" data-es="Procesos para definir qué se publica, con qué nombre y metadatos, y quién lo administra." data-en="Processes that define what gets published, under which name and metadata, and who manages it.">Procesos para definir qué se publica, con qué nombre y metadatos, y quién lo administra.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">🖥️</div><div><div class="tech-name" data-es="Servidor local" data-en="On-premise server">Servidor local</div><div class="tech-desc" data-es="Montado sobre un servidor propio con Debian, sin depender de servicios SIG en la nube." data-en="Built on an in-house Debian server, with no dependency on cloud GIS services.">Montado sobre un servidor propio con Debian, sin depender de servicios SIG en la nube.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">📊</div><div><div class="tech-name" data-es="Seguimiento en Power BI" data-en="Power BI tracking">Seguimiento en Power BI</div><div class="tech-desc" data-es="Hace parte del mismo proyecto del dashboard de expedientes y OCR de la pestaña Automatización." data-en="Part of the same project as the case-file and OCR dashboard in the Automation tab.">Hace parte del mismo proyecto del dashboard de expedientes y OCR de la pestaña Automatización.</div></div></div>
+                </div>
+
+                <div class="dev-sub" data-es="// capturas" data-en="// screenshots">// capturas</div>
+                <div class="dev-gallery">
+                    <a class="dev-shot wide" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/Captura%20de%20pantalla%202026-05-12%20110646.png" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/Captura%20de%20pantalla%202026-05-12%20110646.png" alt="Geoportal IDE CORPOCESAR" loading="lazy" />
+                        <span data-es="Geovisor público de CORPOCESAR." data-en="CORPOCESAR public geoviewer.">Geovisor público de CORPOCESAR.</span>
+                    </a>
+                </div>
+
+                <div class="dev-sub" data-es="// stack" data-en="// stack">// stack</div>
+                <div class="dev-chips">
+                    <span class="dev-chip">Debian</span>
+                    <span class="dev-chip">PostgreSQL + PostGIS</span>
+                    <span class="dev-chip">GeoServer</span>
+                    <span class="dev-chip">Django</span>
+                    <span class="dev-chip">GeoNode</span>
+                    <span class="dev-chip">MapStore</span>
+                    <span class="dev-chip">Docker</span>
+                    <span class="dev-chip">n8n</span>
+                    <span class="dev-chip">Power BI</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-title" data-es="// 03 · atlas hub protierra catatumbo · mercy corps" data-en="// 03 · atlas hub protierra catatumbo · mercy corps">// 03 · atlas hub protierra catatumbo · mercy corps</div>
+        <div class="dev-project">
+            <div class="dev-head">
+                <span class="dev-name">Atlas Hub ProTierra Catatumbo</span>
+                <span class="dev-badge">Mercy Corps</span>
+                <a class="dev-btn" href="https://atlas-hub-protierra-catatumbo-mcprotierracat.hub.arcgis.com/" target="_blank" rel="noopener" data-es="↗ Abrir el Atlas Hub" data-en="↗ Open the Atlas Hub">↗ Abrir el Atlas Hub</a>
+            </div>
+            <div class="dev-body">
+                <p class="dev-text" data-es="Geovisor y portal de datos del programa <strong>ProTierra Catatumbo</strong> de <strong>Mercy Corps Colombia</strong>, que acompaña a familias rurales de Tibú, El Tarra y Sardinata (Norte de Santander). Reúne en un solo sitio los mapas, las capas oficiales y los tableros de avance del programa." data-en="Geoviewer and data portal for <strong>Mercy Corps Colombia</strong>&#39;s <strong>ProTierra Catatumbo</strong> program, which supports rural families in Tibú, El Tarra and Sardinata (Norte de Santander). It brings the program&#39;s maps, official layers and progress dashboards together in one site.">Geovisor y portal de datos del programa <strong>ProTierra Catatumbo</strong> de <strong>Mercy Corps Colombia</strong>, que acompaña a familias rurales de Tibú, El Tarra y Sardinata (Norte de Santander). Reúne en un solo sitio los mapas, las capas oficiales y los tableros de avance del programa.</p>
+                <p class="dev-text" data-es="Está hecho <strong>enteramente en ArcGIS</strong>: los datos se toman en campo con <strong>Survey123</strong>, llegan a las capas en <strong>ArcGIS Online</strong> y el sitio en <strong>ArcGIS Hub</strong> los muestra actualizados en tiempo real." data-en="It is built <strong>entirely on ArcGIS</strong>: data is collected in the field with <strong>Survey123</strong>, lands in layers on <strong>ArcGIS Online</strong>, and the <strong>ArcGIS Hub</strong> site shows it updated in real time.">Está hecho <strong>enteramente en ArcGIS</strong>: los datos se toman en campo con <strong>Survey123</strong>, llegan a las capas en <strong>ArcGIS Online</strong> y el sitio en <strong>ArcGIS Hub</strong> los muestra actualizados en tiempo real.</p>
+                <div class="dev-flow" data-es="Survey123 (campo) → Capas en ArcGIS Online → Reglas de calidad → Mapas y tableros → ArcGIS Hub" data-en="Survey123 (field) → Layers on ArcGIS Online → Quality rules → Maps and dashboards → ArcGIS Hub">Survey123 (campo) → Capas en ArcGIS Online → Reglas de calidad → Mapas y tableros → ArcGIS Hub</div>
+
+                <div class="dev-sub" data-es="// qué incluye" data-en="// what it includes">// qué incluye</div>
+                <div class="tech-cards">
+                    <div class="tech-card"><div class="tech-icon">📋</div><div><div class="tech-name" data-es="Captura en campo" data-en="Field data capture">Captura en campo</div><div class="tech-desc" data-es="Los equipos llenan formularios de Survey123 en los predios y cada registro entra directo a las capas del programa." data-en="Field teams fill in Survey123 forms on the farms and each record goes straight into the program&#39;s layers.">Los equipos llenan formularios de Survey123 en los predios y cada registro entra directo a las capas del programa.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">⚡</div><div><div class="tech-name" data-es="Actualización en tiempo real" data-en="Real-time updates">Actualización en tiempo real</div><div class="tech-desc" data-es="Mapas y tableros muestran los datos apenas se envían desde campo, sin cargas manuales." data-en="Maps and dashboards show the data as soon as it is sent from the field, with no manual uploads.">Mapas y tableros muestran los datos apenas se envían desde campo, sin cargas manuales.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">🗂️</div><div><div class="tech-name" data-es="Catálogo de datos" data-en="Data catalog">Catálogo de datos</div><div class="tech-desc" data-es="139 recursos entre capas, mapas y tableros, con buscador, filtros por tipo, etiquetas y categorías." data-en="139 resources across layers, maps and dashboards, with search, type filters, tags and categories.">139 recursos entre capas, mapas y tableros, con buscador, filtros por tipo, etiquetas y categorías.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">✅</div><div><div class="tech-name" data-es="Calidad y gobernanza" data-en="Quality and governance">Calidad y gobernanza</div><div class="tech-desc" data-es="Reglas que revisan cada registro (coordenada vacía, baja precisión del GPS, punto fuera de la zona) y lo marcan como Conforme, Advertencia o Error." data-en="Rules that check each record (empty coordinate, low GPS accuracy, point outside the area) and mark it as Compliant, Warning or Error.">Reglas que revisan cada registro (coordenada vacía, baja precisión del GPS, punto fuera de la zona) y lo marcan como Conforme, Advertencia o Error.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">👥</div><div><div class="tech-name" data-es="Acceso por grupos" data-en="Group-based access">Acceso por grupos</div><div class="tech-desc" data-es="Cada equipo ve la información que le corresponde; cada capa tiene un responsable y su metadato." data-en="Each team sees the information that belongs to it; every layer has an owner and its metadata.">Cada equipo ve la información que le corresponde; cada capa tiene un responsable y su metadato.</div></div></div>
+                    <div class="tech-card"><div class="tech-icon">🧭</div><div><div class="tech-name" data-es="Páginas por componente" data-en="Pages per component">Páginas por componente</div><div class="tech-desc" data-es="Secciones para formalización de tierras, seguridad alimentaria y asistencia técnica, con la ruta de trabajo de cada una." data-en="Sections for land formalization, food security and technical assistance, each with its workflow.">Secciones para formalización de tierras, seguridad alimentaria y asistencia técnica, con la ruta de trabajo de cada una.</div></div></div>
+                </div>
+
+                <div class="dev-sub" data-es="// capturas" data-en="// screenshots">// capturas</div>
+                <div class="dev-gallery">
+                    <a class="dev-shot wide" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_inicio.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_inicio.jpg" alt="Inicio del Atlas Hub ProTierra Catatumbo" loading="lazy" />
+                        <span data-es="Página de inicio del Atlas: qué es el programa, dónde trabaja y para quién es el sitio." data-en="Atlas home page: what the program is, where it works and who the site is for.">Página de inicio del Atlas: qué es el programa, dónde trabaja y para quién es el sitio.</span>
+                    </a>
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_catalogo.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_catalogo.jpg" alt="Catálogo de datos del Atlas Hub" loading="lazy" />
+                        <span data-es="Catálogo con 139 recursos, buscador y filtros por ubicación y tipo." data-en="Catalog with 139 resources, search, and filters by location and type.">Catálogo con 139 recursos, buscador y filtros por ubicación y tipo.</span>
+                    </a>
+                    <a class="dev-shot" href="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_gobernanza.jpg" target="_blank" rel="noopener">
+                        <img src="https://raw.githubusercontent.com/lob117/javier-portafolio/refs/heads/main/imagenes/mercycorps_hub_gobernanza.jpg" alt="Calidad y gobernanza en el Atlas Hub" loading="lazy" />
+                        <span data-es="Ruta de cinco pasos de cada registro y reglas de calidad del dato." data-en="Five-step path of each record and the data-quality rules.">Ruta de cinco pasos de cada registro y reglas de calidad del dato.</span>
+                    </a>
+                </div>
+
+                <div class="dev-sub" data-es="// stack" data-en="// stack">// stack</div>
+                <div class="dev-chips">
+                    <span class="dev-chip">ArcGIS Online</span>
+                    <span class="dev-chip">ArcGIS Hub</span>
+                    <span class="dev-chip">Survey123</span>
+                    <span class="dev-chip">Feature Services</span>
+                    <span class="dev-chip">Mapas web</span>
+                    <span class="dev-chip">Tableros (Dashboards)</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
